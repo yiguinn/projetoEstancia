@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estancia Ilha da Madeira - Casamentos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rosa-vibrante: #C53366;
+            --rosa-suave: #EDA8C5;
+            --cinza-claro: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .text-rosa-vibrante {
+            color: var(--rosa-vibrante);
+        }
+        
+        .bg-rosa-vibrante {
+            background-color: var(--rosa-vibrante);
+        }
+        
+        .bg-rosa-suave {
+            background-color: var(--rosa-suave);
+        }
+        
+        .border-rosa-vibrante {
+            border-color: var(--rosa-vibrante);
+        }
+        
+        .hover\:bg-rosa-vibrante:hover {
+            background-color: var(--rosa-vibrante);
+        }
+        
+        .hover\:text-rosa-vibrante:hover {
+            color: var(--rosa-vibrante);
+        }
+        
+        .mobile-menu {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu.active {
+                display: block;
+            }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+        }
+        
+        .shadow-custom {
+            box-shadow: 0 10px 25px -3px rgba(197, 51, 102, 0.1);
+        }
+        
+        .featured-card {
+            border: 3px solid var(--rosa-vibrante);
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            background: linear-gradient(45deg, rgba(197, 51, 102, 0.8), rgba(237, 168, 197, 0.6));
+        }
+        
+        .contact-bg {
+            background: linear-gradient(135deg, #f3e8ff 0%, #fce7f3 50%, #fef2f2 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Top Bar -->
+    <div class="bg-rosa-vibrante text-white px-4 md:px-8 py-2">
+        <div class="max-w-7xl mx-auto flex items-center justify-between text-sm">
+            <div class="flex items-center space-x-6">
+                <div class="flex items-center space-x-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                    </svg>
+                    <span>(19) 99762-4321</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>São Paulo, SP</span>
+                </div>
+            </div>
+            <div class="text-sm">Segunda a Sexta: 8h às 18h</div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="w-full bg-white border-b border-gray-100 px-4 md:px-8 py-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <h1 class="text-xl font-medium text-rosa-vibrante">Estância</h1>
+                    <p class="text-sm text-gray-600 -mt-1">Ilha da Madeira</p>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#inicio" class="text-rosa-vibrante font-medium">Início</a>
+                <a href="#espacos" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Espaços</a>
+                <a href="#servicos" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Serviços</a>
+                <a href="#pacotes" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Pacotes</a>
+                <a href="#galeria" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Galeria</a>
+                <a href="#sobre" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Sobre</a>
+                <a href="#contato" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Contato</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <button onclick="scrollToContact()" class="bg-rosa-vibrante hover:opacity-90 text-white px-6 py-2 rounded-lg transition-opacity">
+                Agendar Visita
+            </button>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden flex flex-col space-y-1">
+                <div class="w-6 h-0.5 bg-gray-600"></div>
+                <div class="w-6 h-0.5 bg-gray-600"></div>
+                <div class="w-6 h-0.5 bg-gray-600"></div>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav id="mobile-menu" class="mobile-menu md:hidden mt-4 pb-4 border-t border-gray-100">
+            <div class="flex flex-col space-y-4 pt-4">
+                <a href="#inicio" class="text-rosa-vibrante font-medium">Início</a>
+                <a href="#espacos" class="text-gray-700">Espaços</a>
+                <a href="#servicos" class="text-gray-700">Serviços</a>
+                <a href="#pacotes" class="text-gray-700">Pacotes</a>
+                <a href="#galeria" class="text-gray-700">Galeria</a>
+                <a href="#sobre" class="text-gray-700">Sobre</a>
+                <a href="#contato" class="text-gray-700">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="gradient-bg px-4 md:px-8 py-16">
+        <div class="max-w-7xl mx-auto">
+            <!-- Rating -->
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="space-y-8">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-normal leading-tight text-rosa-vibrante">
+                        O Cenário Perfeito<br />
+                        para o Seu Sim
+                    </h1>
+                    
+                    <p class="text-lg text-gray-700 max-w-lg leading-relaxed">
+                        Na Estância Ilha da Madeira, sua cerimônia de casamento ganha vida em meio à natureza exuberante. Um espaço único onde cada detalhe é pensado para tornar seu dia inesquecível.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToSpaces()" class="bg-rosa-vibrante hover:opacity-90 text-white px-8 py-3 rounded-lg transition-opacity">
+                            Conhecer Espaços →
+                        </button>
+                        <button onclick="scrollToContact()" class="border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-8 py-3 rounded-lg transition-colors">
+                            Agendar Visita
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Content -->
+                <div class="relative">
+                    <img
+                        src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Cerimônia de casamento"
+                        class="w-full h-[500px] object-cover rounded-2xl shadow-2xl"
+                    />
+                    
+                    <div class="absolute bottom-8 left-8 bg-white rounded-xl p-4 shadow-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-rosa-suave flex items-center justify-center">
+                                <svg class="w-5 h-5 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-medium text-gray-900">Ambiente Natural</div>
+                                <div class="text-sm text-gray-500">Paisagem Exuberante</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="grid grid-cols-3 gap-8 pt-16 mt-16 border-t border-gray-200">
+                <div class="text-center">
+                    <div class="text-4xl font-medium text-rosa-vibrante mb-2">300+</div>
+                    <div class="text-gray-600">Casamentos Realizados</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-medium text-rosa-vibrante mb-2">15+</div>
+                    <div class="text-gray-600">Anos de Experiência</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-medium text-rosa-vibrante mb-2">100%</div>
+                    <div class="text-gray-600">Sonhos Realizados</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spaces Section -->
+    <section id="espacos" class="bg-white px-4 md:px-8 py-16">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <div class="inline-block bg-rosa-vibrante text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+                    Nossos Espaços
+                </div>
+                <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante mb-4">
+                    Cenários Únicos para Momentos Especiais
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Cada espaço foi cuidadosamente projetado para proporcionar experiências únicas e inesquecíveis
+                </p>
+            </div>
+
+            <!-- Venue Cards -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Jardim das Cerejeiras" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-rosa-vibrante text-white px-3 py-1 rounded-full text-sm font-medium">Jardim</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="text-yellow-400">⭐</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-900 mb-3">Jardim das Cerejeiras</h3>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Um espaço mágico cercado por cerejeiras em flor, ideal para cerimônias ao ar livre
+                        </p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center space-x-2 text-sm">
+                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-600">Até 150 pessoas</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-sm">
+                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-600">Altar natural</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-sm">
+                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-600">Vista panorâmica</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-rosa-vibrante hover:opacity-90 text-white py-2 rounded-lg transition-opacity">
+                            Ver Detalhes
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Salão Madeira Nobre" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-rosa-vibrante text-white px-3 py-1 rounded-full text-sm font-medium">Interior</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="text-yellow-400">⭐</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-900 mb-3">Salão Madeira Nobre</h3>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Elegância em cada detalhe com acabamentos em madeira nobre e ambiente acolhedor
+                        </p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center space-x-2 text-sm">
+                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-600">Até 80 pessoas</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-sm">
+                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-600">Ar condicionado</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-sm">
+                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-600">Sistema de som</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-rosa-vibrante hover:opacity-90 text-white py-2 rounded-lg transition-opacity">
+                            Ver Detalhes
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Capela do Vale" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-rosa-vibrante text-white px-3 py-1 rounded-full text-sm font-medium">Capela</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="text-yellow-400">⭐</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-900 mb-3">Capela do Vale</h3>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Ambiente sagrado e intimista com vista para o vale, ideal para cerimônias religiosas
+                        </p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center space-x-2 text-sm">
+                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-600">Até 60 pessoas</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-sm">
+                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-600">Altar consagrado</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-sm">
+                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-600">Vitral colorido</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-rosa-vibrante hover:opacity-90 text-white py-2 rounded-lg transition-opacity">
+                            Ver Detalhes
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Mirante do Pôr do Sol" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-rosa-vibrante text-white px-3 py-1 rounded-full text-sm font-medium">Externo</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="text-yellow-400">⭐</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium text-gray-900 mb-3">Mirante do Pôr do Sol</h3>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            O cenário perfeito para o 'sim' com vista deslumbrante do pôr do sol
+                        </p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center space-x-2 text-sm">
+                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-600">Até 200 pessoas</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-sm">
+                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-600">Vista panorâmica</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-sm">
+                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-600">Altar elevado</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-rosa-vibrante hover:opacity-90 text-white py-2 rounded-lg transition-opacity">
+                            Ver Detalhes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="gradient-bg px-4 md:px-8 py-16">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante mb-4">
+                    Serviços Completos
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Oferecemos tudo que você precisa para tornar seu casamento perfeito
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <!-- Service 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-rosa-vibrante rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732L14.146 12.8l-1.179 4.456a1 1 0 01-1.934 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732L9.854 7.2l1.179-4.456A1 1 0 0112 2z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-medium text-gray-900 mb-3">Decoração Floral Premium</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        Arranjos florais únicos e personalizados para cada espaço da cerimônia
+                    </p>
+                    <div class="space-y-1 mb-6 text-sm text-gray-500">
+                        <div>• Flores frescas</div>
+                        <div>• Arranjos personalizados</div>
+                        <div>• Decoração completa</div>
+                    </div>
+                    <button class="border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
+                        Saiba Mais
+                    </button>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-medium text-gray-900 mb-3">Fotografia Profissional</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        Cobertura completa do casamento com fotógrafo especializado em cerimônias
+                    </p>
+                    <div class="space-y-1 mb-6 text-sm text-gray-500">
+                        <div>• Sessão de fotos</div>
+                        <div>• Álbum premium</div>
+                        <div>• Fotos digitais</div>
+                    </div>
+                    <button class="border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
+                        Saiba Mais
+                    </button>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-medium text-gray-900 mb-3">Som & Música Ambiente</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        Sistema de som profissional com playlist personalizada e DJ especializado
+                    </p>
+                    <div class="space-y-1 mb-6 text-sm text-gray-500">
+                        <div>• DJ profissional</div>
+                        <div>• Sistema de som</div>
+                        <div>• Playlist personalizada</div>
+                    </div>
+                    <button class="border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
+                        Saiba Mais
+                    </button>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-medium text-gray-900 mb-3">Gastronomia Especial</h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        Menu exclusivo preparado por chef especializado em eventos especiais
+                    </p>
+                    <div class="space-y-1 mb-6 text-sm text-gray-500">
+                        <div>• Menu degustação</div>
+                        <div>• Pratos principais</div>
+                        <div>• Sobremesas especiais</div>
+                    </div>
+                    <button class="border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
+                        Saiba Mais
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="pacotes" class="bg-white px-4 md:px-8 py-16">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <div class="inline-block bg-rosa-vibrante text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+                    Pacotes Especiais
+                </div>
+                <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante mb-4">
+                    Escolha o Pacote Ideal
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Combinamos nossos melhores serviços em pacotes especiais para sua conveniência
+                </p>
+            </div>
+
+            <!-- Packages Grid -->
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Essential Package -->
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-shadow">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Essencial</h3>
+                        <p class="text-gray-600 text-sm mb-4">Tudo que você precisa para uma cerimônia perfeita</p>
+                        <div class="text-4xl font-medium text-rosa-vibrante mb-1">R$ 15.000</div>
+                        <div class="text-sm text-gray-500">a partir de</div>
+                    </div>
+                    
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 text-sm">Decoração floral completa</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 text-sm">Fotografia profissional</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 text-sm">Som e música ambiente</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 text-sm">Suporte durante o evento</span>
+                        </div>
+                    </div>
+                    
+                    <button onclick="selectPackage('essencial')" class="w-full border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white py-3 rounded-lg transition-colors">
+                        Saber Mais
+                    </button>
+                </div>
+
+                <!-- Premium Package - Featured -->
+                <div class="featured-card bg-white rounded-2xl shadow-xl p-8 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-rosa-vibrante text-white px-4 py-1 rounded-full text-sm font-medium">Mais Popular</span>
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Premium</h3>
+                        <p class="text-gray-600 text-sm mb-4">A experiência completa para o seu dia especial</p>
+                        <div class="text-4xl font-medium text-rosa-vibrante mb-1">R$ 28.000</div>
+                        <div class="text-sm text-gray-500">a partir de</div>
+                    </div>
+                    
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 text-sm">Todos os serviços essenciais</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 text-sm">Gastronomia especial</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 text-sm">Cerimônia completa</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 text-sm">Coordenação profissional</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 text-sm">Suporte VIP</span>
+                        </div>
+                    </div>
+                    
+                    <button onclick="selectPackage('premium')" class="w-full bg-rosa-vibrante hover:opacity-90 text-white py-3 rounded-lg transition-opacity">
+                        Escolher Este Pacote
+                    </button>
+                </div>
+
+                <!-- Luxo Package -->
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-shadow">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Luxo</h3>
+                        <p class="text-gray-600 text-sm mb-4">O máximo em sofisticação e exclusividade</p>
+                        <div class="text-4xl font-medium text-rosa-vibrante mb-1">R$ 42.000</div>
+                        <div class="text-sm text-gray-500">a partir de</div>
+                    </div>
+                    
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 text-sm">Todos os serviços premium</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 text-sm">Filmagem cinematográfica</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 text-sm">Decoração exclusiva</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 text-sm">Menu gourmet personalizado</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-600 text-sm">Atendimento 24/7</span>
+                        </div>
+                    </div>
+                    
+                    <button onclick="selectPackage('luxo')" class="w-full border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white py-3 rounded-lg transition-colors">
+                        Saber Mais
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeria" class="gradient-bg px-4 md:px-8 py-16">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <div class="inline-block bg-rosa-vibrante text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+                    Nossa Galeria
+                </div>
+                <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante mb-4">
+                    Momentos Únicos, Memórias Eternas
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Veja alguns dos casamentos mais especiais já realizados em nossos espaços
+                </p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Cerimônia" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                    <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Cerimônia</span>
+                    </div>
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-rosa-vibrante text-white px-3 py-1 rounded-full text-sm font-medium">Cerimônia</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Evento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                    <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Evento</span>
+                    </div>
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-rosa-vibrante text-white px-3 py-1 rounded-full text-sm font-medium">Evento</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Casamento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                    <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Casamento</span>
+                    </div>
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-rosa-vibrante text-white px-3 py-1 rounded-full text-sm font-medium">Casamento</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                    <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Recepção</span>
+                    </div>
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">Recepção</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Decoração" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                    <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Decoração</span>
+                    </div>
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium">Decoração</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                    <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Recepção</span>
+                    </div>
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">Recepção</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="bg-white px-4 md:px-8 py-16">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="space-y-8">
+                    <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante">
+                        Nossa História de Amor com Casamentos
+                    </h2>
+                    
+                    <div class="space-y-6 text-gray-600 leading-relaxed">
+                        <p>
+                            Há mais de 15 anos, transformamos sonhos em realidade, criando cenários únicos para os momentos mais especiais da vida de nossos casais.
+                        </p>
+                        <p>
+                            A Estância Ilha da Madeira nasceu do sonho de criar um espaço onde a natureza e a elegância se encontram para celebrar o amor. O que começou como uma simples loja de madeira evoluiu para um dos mais belos espaços de casamento de São Paulo.
+                        </p>
+                        <p>
+                            Nossa paixão está em cada detalhe: desde a escolha das flores até a disposição das mesas, tudo é pensado para tornar seu dia único e inesquecível.
+                        </p>
+                    </div>
+
+                    <div class="bg-rosa-suave/30 p-6 rounded-xl">
+                        <div class="flex items-start space-x-4">
+                            <svg class="w-6 h-6 text-rosa-vibrante mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                            </svg>
+                            <div>
+                                <h3 class="font-medium text-rosa-vibrante mb-2">Nossa Missão</h3>
+                                <p class="text-gray-600 text-sm">Realizar sonhos através de cerimônias únicas que celebram o amor de forma autêntica e memorável.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center p-4 bg-gray-50 rounded-lg">
+                            <div class="text-2xl font-medium text-rosa-vibrante mb-1">Maria Silva</div>
+                            <div class="text-sm text-gray-600">Fundadora & CEO</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 rounded-lg">
+                            <div class="text-2xl font-medium text-rosa-vibrante mb-1">João Santos</div>
+                            <div class="text-sm text-gray-600">Diretor Criativo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content -->
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Nossa história" class="w-full h-[500px] object-cover rounded-2xl shadow-2xl">
+                    
+                    <!-- Testimonial Card -->
+                    <div class="absolute bottom-8 right-8 bg-white rounded-xl p-6 shadow-lg max-w-sm">
+                        <div class="flex items-center space-x-1 mb-3">
+                            <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="text-gray-700 text-sm mb-3 italic">
+                            "Foi exatamente como sonhávamos. Cada detalhe perfeito!"
+                        </p>
+                        <div class="text-sm font-medium text-gray-900">- Marina & Carlos</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-gray-200">
+                <div class="text-center">
+                    <div class="text-3xl font-medium text-rosa-vibrante mb-2">Top 1</div>
+                    <div class="text-gray-600 text-sm">Melhor Espaço<br>Santos Exclusivos</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-medium text-rosa-vibrante mb-2">Top 10</div>
+                    <div class="text-gray-600 text-sm">Venues<br>São Paulo Wedding</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-medium text-rosa-vibrante mb-2">5 Estrelas</div>
+                    <div class="text-gray-600 text-sm">Avaliação Clientes</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-medium text-rosa-vibrante mb-2">ISO</div>
+                    <div class="text-gray-600 text-sm">Certificado<br>Qualidade Garantida</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="contact-bg px-4 md:px-8 py-16">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Left Content -->
+                <div class="space-y-8">
+                    <div class="inline-block bg-rosa-vibrante text-white px-4 py-2 rounded-full text-sm font-medium">
+                        Entre em Contato
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante">
+                        Vamos Realizar Seu Sonho
+                    </h2>
+                    
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Entre em contato conosco e vamos começar a planejar o casamento dos seus sonhos. Nossa equipe está pronta para criar uma experiência única e inesquecível.
+                    </p>
+
+                    <!-- Contact Info -->
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-rosa-vibrante rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-900 mb-1">Telefone</h3>
+                                <p class="text-rosa-vibrante font-medium">(19) 99762-4321</p>
+                                <p class="text-sm text-gray-600">Segunda a Sexta - 8h às 18h</p>
+                                <p class="text-sm text-gray-600">Resposta em até 24h</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-rosa-vibrante rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-900 mb-1">E-mail</h3>
+                                <p class="text-rosa-vibrante font-medium">contato@estanciailhamadeira.com.br</p>
+                                <p class="text-sm text-gray-600">Resposta em até 24h</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-rosa-vibrante rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-900 mb-1">Localização</h3>
+                                <p class="text-rosa-vibrante font-medium">Estrada da Ilha da Madeira, 1234 - São Paulo, SP</p>
+                                <p class="text-sm text-gray-600">Fácil acesso e estacionamento</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-rosa-vibrante rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-900 mb-1">WhatsApp</h3>
+                                <p class="text-rosa-vibrante font-medium">Atendimento rápido e personalizado</p>
+                                <button onclick="openWhatsApp()" class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-600 transition-colors mt-2">
+                                    Conversar Agora
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content - Contact Form -->
+                <div class="bg-white rounded-2xl shadow-2xl p-8">
+                    <h3 class="text-2xl font-medium text-rosa-vibrante mb-6">Agende Sua Visita</h3>
+                    
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Nome da Noiva</label>
+                                <input 
+                                    type="text" 
+                                    name="nome_noiva"
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
+                                    placeholder="Digite seu nome"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Nome do Noivo</label>
+                                <input 
+                                    type="text" 
+                                    name="nome_noivo"
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
+                                    placeholder="Digite o nome do noivo"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Telefone</label>
+                                <input 
+                                    type="tel" 
+                                    name="telefone"
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
+                                    placeholder="(11) 99999-9999"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">E-mail</label>
+                                <input 
+                                    type="email" 
+                                    name="email"
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
+                                    placeholder="seu@email.com"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Data Preferencial</label>
+                                <input 
+                                    type="date" 
+                                    name="data_preferencial"
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
+                                    placeholder="mm/dd/yyyy"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Número de Convidados</label>
+                                <select 
+                                    name="numero_convidados"
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
+                                >
+                                    <option value="">Selecione</option>
+                                    <option value="50">Até 50 pessoas</option>
+                                    <option value="100">50 a 100 pessoas</option>
+                                    <option value="150">100 a 150 pessoas</option>
+                                    <option value="200">150 a 200 pessoas</option>
+                                    <option value="200+">Mais de 200 pessoas</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Mensagem (Opcional)</label>
+                            <textarea 
+                                name="mensagem"
+                                rows="4"
+                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors resize-none"
+                                placeholder="Conte-nos um pouco sobre o casamento dos seus sonhos..."
+                            ></textarea>
+                        </div>
+
+                        <button 
+                            type="submit"
+                            class="w-full bg-rosa-vibrante hover:opacity-90 text-white py-4 rounded-lg font-medium transition-opacity flex items-center justify-center space-x-2"
+                        >
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                            <span>Enviar Solicitação</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white px-4 md:px-8 py-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- Logo and Description -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-medium">Estância Ilha da Madeira</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">Transformando sonhos em realidade há mais de 15 anos. Seu casamento perfeito nos espera em meio à natureza exuberante de São Paulo.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+                            <span class="text-sm font-bold">f</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+                            <span class="text-sm font-bold">@</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+                            <span class="text-sm font-bold">in</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-medium mb-4">Links Rápidos</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <a href="#inicio" class="block hover:text-white transition-colors">Início</a>
+                        <a href="#espacos" class="block hover:text-white transition-colors">Espaços</a>
+                        <a href="#servicos" class="block hover:text-white transition-colors">Serviços</a>
+                        <a href="#pacotes" class="block hover:text-white transition-colors">Pacotes</a>
+                        <a href="#galeria" class="block hover:text-white transition-colors">Galeria</a>
+                        <a href="#sobre" class="block hover:text-white transition-colors">Sobre</a>
+                        <a href="#contato" class="block hover:text-white transition-colors">Contato</a>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-medium mb-4">Contato</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <p>(19) 99762-4321</p>
+                        <p>contato@estanciailhamadeira.com.br</p>
+                        <p>Estrada da Ilha da Madeira, 1234</p>
+                        <p>São Paulo, SP</p>
+                        <p class="pt-2 text-sm">Segunda a Sexta: 8h às 18h</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="grid md:grid-cols-2 gap-4 items-center">
+                    <div class="text-gray-400">
+                        <p>&copy; 2024 Estância Ilha da Madeira. Todos os direitos reservados.</p>
+                    </div>
+                    <div class="text-gray-400 text-sm md:text-right">
+                        <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
+                        <span class="mx-2">|</span>
+                        <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling functions
+        function scrollToContact() {
+            document.getElementById('contato').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        function scrollToSpaces() {
+            document.getElementById('espacos').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Package selection
+        function selectPackage(packageType) {
+            alert(`Você selecionou o pacote ${packageType}. Em breve você será redirecionado para mais informações!`);
+            scrollToContact();
+        }
+
+        // WhatsApp function
+        function openWhatsApp() {
+            const phoneNumber = '5519997624321';
+            const message = 'Olá! Gostaria de saber mais sobre os serviços da Estância Ilha da Madeira para casamentos.';
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.remove('active');
+            });
+        });
+
+        // Add scroll effect to header
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.nome_noiva || !data.nome_noivo || !data.telefone || !data.email) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            
+            submitButton.innerHTML = '<div class="animate-pulse">Enviando...</div>';
+            submitButton.disabled = true;
+            
+            setTimeout(() => {
+                alert('Solicitação enviada com sucesso! Entraremos em contato em breve.');
+                this.reset();
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }, 2000);
+        });
+
+        // Form input animations
+        document.querySelectorAll('input, textarea, select').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('focused');
+            });
+        });
+    </script>
+</body>
+</html>
