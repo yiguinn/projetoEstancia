@@ -24,7 +24,7 @@
 
         // WhatsApp function
         function openWhatsApp() {
-            const phoneNumber = '5519997624321';
+            const phoneNumber = '5511961006060';
             const message = 'Olá! Gostaria de saber mais sobre os serviços da Estância Ilha da Madeira para casamentos.';
             const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
