@@ -46,9 +46,7 @@
             <!-- Navigation -->
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#inicio" class="text-rosa-vibrante font-medium">Início</a>
-                <a href="#espacos" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Espaços</a>
                 <a href="#servicos" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Serviços</a>
-                <a href="#pacotes" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Pacotes</a>
                 <a href="#galeria" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Galeria</a>
                 <a href="#sobre" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Sobre</a>
                 <a href="#contato" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Contato</a>
@@ -99,9 +97,9 @@
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="scrollToSpaces()" class="bg-rosa-vibrante hover:opacity-90 text-white px-8 py-3 rounded-lg transition-opacity">
-                            Conhecer Espaços →
-                        </button>
+                        <a href="#sobre"><button class="bg-rosa-vibrante hover:opacity-90 text-white px-8 py-3 rounded-lg transition-opacity">
+                            Conhecer nossa história →
+                        </button></a>
                         <button onclick="scrollToContact()" class="border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-8 py-3 rounded-lg transition-colors">
                             Agendar Visita
                         </button>
@@ -111,7 +109,7 @@
                 <!-- Right Content -->
                 <div class="relative">
                     <img
-                        src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        src="imagens/img7.png"
                         alt="Cerimônia de casamento"
                         class="w-full h-[500px] object-cover rounded-2xl shadow-2xl"
                     />
@@ -150,201 +148,10 @@
         </div>
     </section>
 
-    <!-- Spaces Section -->
-    <section id="espacos" class="bg-white px-4 md:px-8 py-16">
-        <div class="max-w-7xl mx-auto">
-            <!-- Header -->
-            <div class="text-center mb-12">
-                <div class="inline-block bg-rosa-vibrante text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
-                    Nossos Espaços
-                </div>
-                <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante mb-4">
-                    Cenários Únicos para Momentos Especiais
-                </h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    Cada espaço foi cuidadosamente projetado para proporcionar experiências únicas e inesquecíveis
-                </p>
-            </div>
-
-            <!-- Venue Cards -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Jardim das Cerejeiras" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-rosa-vibrante text-white px-3 py-1 rounded-full text-sm font-medium">Jardim</span>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <span class="text-yellow-400">⭐</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-medium text-gray-900 mb-3">Jardim das Cerejeiras</h3>
-                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                            Um espaço mágico cercado por cerejeiras em flor, ideal para cerimônias ao ar livre
-                        </p>
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center space-x-2 text-sm">
-                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-gray-600">Até 150 pessoas</span>
-                            </div>
-                            <div class="flex items-center space-x-2 text-sm">
-                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-gray-600">Altar natural</span>
-                            </div>
-                            <div class="flex items-center space-x-2 text-sm">
-                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-gray-600">Vista panorâmica</span>
-                            </div>
-                        </div>
-                        <button class="w-full bg-rosa-vibrante hover:opacity-90 text-white py-2 rounded-lg transition-opacity">
-                            Ver Detalhes
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Salão Madeira Nobre" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-rosa-vibrante text-white px-3 py-1 rounded-full text-sm font-medium">Interior</span>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <span class="text-yellow-400">⭐</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-medium text-gray-900 mb-3">Salão Madeira Nobre</h3>
-                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                            Elegância em cada detalhe com acabamentos em madeira nobre e ambiente acolhedor
-                        </p>
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center space-x-2 text-sm">
-                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-gray-600">Até 80 pessoas</span>
-                            </div>
-                            <div class="flex items-center space-x-2 text-sm">
-                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-gray-600">Ar condicionado</span>
-                            </div>
-                            <div class="flex items-center space-x-2 text-sm">
-                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-gray-600">Sistema de som</span>
-                            </div>
-                        </div>
-                        <button class="w-full bg-rosa-vibrante hover:opacity-90 text-white py-2 rounded-lg transition-opacity">
-                            Ver Detalhes
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Capela do Vale" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-rosa-vibrante text-white px-3 py-1 rounded-full text-sm font-medium">Capela</span>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <span class="text-yellow-400">⭐</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-medium text-gray-900 mb-3">Capela do Vale</h3>
-                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                            Ambiente sagrado e intimista com vista para o vale, ideal para cerimônias religiosas
-                        </p>
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center space-x-2 text-sm">
-                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-gray-600">Até 60 pessoas</span>
-                            </div>
-                            <div class="flex items-center space-x-2 text-sm">
-                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-gray-600">Altar consagrado</span>
-                            </div>
-                            <div class="flex items-center space-x-2 text-sm">
-                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-gray-600">Vitral colorido</span>
-                            </div>
-                        </div>
-                        <button class="w-full bg-rosa-vibrante hover:opacity-90 text-white py-2 rounded-lg transition-opacity">
-                            Ver Detalhes
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Mirante do Pôr do Sol" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-rosa-vibrante text-white px-3 py-1 rounded-full text-sm font-medium">Externo</span>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <span class="text-yellow-400">⭐</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-medium text-gray-900 mb-3">Mirante do Pôr do Sol</h3>
-                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                            O cenário perfeito para o 'sim' com vista deslumbrante do pôr do sol
-                        </p>
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center space-x-2 text-sm">
-                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-gray-600">Até 200 pessoas</span>
-                            </div>
-                            <div class="flex items-center space-x-2 text-sm">
-                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-gray-600">Vista panorâmica</span>
-                            </div>
-                            <div class="flex items-center space-x-2 text-sm">
-                                <svg class="w-4 h-4 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="text-gray-600">Altar elevado</span>
-                            </div>
-                        </div>
-                        <button class="w-full bg-rosa-vibrante hover:opacity-90 text-white py-2 rounded-lg transition-opacity">
-                            Ver Detalhes
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
     <!-- Services Section -->
-    <section id="servicos" class="gradient-bg px-4 md:px-8 py-16">
+    <section id="servicos" class=" px-4 md:px-8 py-16">
         <div class="max-w-7xl mx-auto">
             <!-- Header -->
             <div class="text-center mb-12">
@@ -445,166 +252,7 @@
         </div>
     </section>
 
-    <!-- Packages Section -->
-    <section id="pacotes" class="bg-white px-4 md:px-8 py-16">
-        <div class="max-w-7xl mx-auto">
-            <!-- Header -->
-            <div class="text-center mb-12">
-                <div class="inline-block bg-rosa-vibrante text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
-                    Pacotes Especiais
-                </div>
-                <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante mb-4">
-                    Escolha o Pacote Ideal
-                </h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    Combinamos nossos melhores serviços em pacotes especiais para sua conveniência
-                </p>
-            </div>
-
-            <!-- Packages Grid -->
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Essential Package -->
-                <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-shadow">
-                    <div class="text-center mb-6">
-                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Essencial</h3>
-                        <p class="text-gray-600 text-sm mb-4">Tudo que você precisa para uma cerimônia perfeita</p>
-                        <div class="text-4xl font-medium text-rosa-vibrante mb-1">R$ 15.000</div>
-                        <div class="text-sm text-gray-500">a partir de</div>
-                    </div>
-                    
-                    <div class="space-y-3 mb-8">
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-gray-600 text-sm">Decoração floral completa</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-gray-600 text-sm">Fotografia profissional</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-gray-600 text-sm">Som e música ambiente</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-gray-600 text-sm">Suporte durante o evento</span>
-                        </div>
-                    </div>
-                    
-                    <button onclick="selectPackage('essencial')" class="w-full border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white py-3 rounded-lg transition-colors">
-                        Saber Mais
-                    </button>
-                </div>
-
-                <!-- Premium Package - Featured -->
-                <div class="featured-card bg-white rounded-2xl shadow-xl p-8 relative">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <span class="bg-rosa-vibrante text-white px-4 py-1 rounded-full text-sm font-medium">Mais Popular</span>
-                    </div>
-                    
-                    <div class="text-center mb-6">
-                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Premium</h3>
-                        <p class="text-gray-600 text-sm mb-4">A experiência completa para o seu dia especial</p>
-                        <div class="text-4xl font-medium text-rosa-vibrante mb-1">R$ 28.000</div>
-                        <div class="text-sm text-gray-500">a partir de</div>
-                    </div>
-                    
-                    <div class="space-y-3 mb-8">
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-gray-600 text-sm">Todos os serviços essenciais</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-gray-600 text-sm">Gastronomia especial</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-gray-600 text-sm">Cerimônia completa</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-gray-600 text-sm">Coordenação profissional</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-gray-600 text-sm">Suporte VIP</span>
-                        </div>
-                    </div>
-                    
-                    <button onclick="selectPackage('premium')" class="w-full bg-rosa-vibrante hover:opacity-90 text-white py-3 rounded-lg transition-opacity">
-                        Escolher Este Pacote
-                    </button>
-                </div>
-
-                <!-- Luxo Package -->
-                <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-shadow">
-                    <div class="text-center mb-6">
-                        <h3 class="text-2xl font-medium text-gray-900 mb-2">Luxo</h3>
-                        <p class="text-gray-600 text-sm mb-4">O máximo em sofisticação e exclusividade</p>
-                        <div class="text-4xl font-medium text-rosa-vibrante mb-1">R$ 42.000</div>
-                        <div class="text-sm text-gray-500">a partir de</div>
-                    </div>
-                    
-                    <div class="space-y-3 mb-8">
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-gray-600 text-sm">Todos os serviços premium</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-gray-600 text-sm">Filmagem cinematográfica</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-gray-600 text-sm">Decoração exclusiva</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-gray-600 text-sm">Menu gourmet personalizado</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <svg class="w-5 h-5 text-rosa-vibrante flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-gray-600 text-sm">Atendimento 24/7</span>
-                        </div>
-                    </div>
-                    
-                    <button onclick="selectPackage('luxo')" class="w-full border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white py-3 rounded-lg transition-colors">
-                        Saber Mais
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
+  
     <!-- Gallery Section -->
     <section id="galeria" class="gradient-bg px-4 md:px-8 py-16">
         <div class="max-w-7xl mx-auto">
@@ -625,7 +273,7 @@
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- Gallery Item 1 -->
                 <div class="relative group overflow-hidden rounded-2xl">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                    <img src="imagens/img2.png" 
                          alt="Cerimônia" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Cerimônia</span>
@@ -637,7 +285,7 @@
 
                 <!-- Gallery Item 2 -->
                 <div class="relative group overflow-hidden rounded-2xl">
-                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                    <img src="imagens/img4.png" 
                          alt="Evento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Evento</span>
@@ -649,7 +297,8 @@
 
                 <!-- Gallery Item 3 -->
                 <div class="relative group overflow-hidden rounded-2xl">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                    <img src="imagens/img3.png
+                    " 
                          alt="Casamento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Casamento</span>
@@ -661,7 +310,7 @@
 
                 <!-- Gallery Item 4 -->
                 <div class="relative group overflow-hidden rounded-2xl">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                    <img src="imagens/img6.png" 
                          alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Recepção</span>
@@ -673,7 +322,7 @@
 
                 <!-- Gallery Item 5 -->
                 <div class="relative group overflow-hidden rounded-2xl">
-                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                    <img src="imagens/img1.png" 
                          alt="Decoração" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Decoração</span>
@@ -685,13 +334,13 @@
 
                 <!-- Gallery Item 6 -->
                 <div class="relative group overflow-hidden rounded-2xl">
-                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                    <img src="imagens/img5.png" 
                          alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Recepção</span>
+                        <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Espaço</span>
                     </div>
                     <div class="absolute top-4 left-4">
-                        <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">Recepção</span>
+                        <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">Espaço</span>
                     </div>
                 </div>
             </div>
@@ -699,7 +348,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="sobre" class="bg-white px-4 md:px-8 py-16">
+    <section id="sobre" class=" bg-white px-4 md:px-8 py-16">
         <div class="max-w-7xl mx-auto">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Left Content -->
@@ -1017,9 +666,7 @@
                     <h4 class="font-medium mb-4">Links Rápidos</h4>
                     <div class="space-y-2 text-gray-400">
                         <a href="#inicio" class="block hover:text-white transition-colors">Início</a>
-                        <a href="#espacos" class="block hover:text-white transition-colors">Espaços</a>
                         <a href="#servicos" class="block hover:text-white transition-colors">Serviços</a>
-                        <a href="#pacotes" class="block hover:text-white transition-colors">Pacotes</a>
                         <a href="#galeria" class="block hover:text-white transition-colors">Galeria</a>
                         <a href="#sobre" class="block hover:text-white transition-colors">Sobre</a>
                         <a href="#contato" class="block hover:text-white transition-colors">Contato</a>
