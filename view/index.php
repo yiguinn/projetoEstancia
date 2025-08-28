@@ -535,11 +535,11 @@
                                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
                                 >
                                     <option value="">Selecione</option>
-                                    <option value="50">Aniversário</option>
-                                    <option value="100">Casamento</option>
-                                    <option value="150">Bodas</option>
-                                    <option value="200">Comemorações para Empresas</option>
-                                    <option value="200+">Outro(a)</option>
+                                    <option value="aniversario">Aniversário</option>
+                                    <option value="casamento">Casamento</option>
+                                    <option value="bodas">Bodas</option>
+                                    <option value="empresa">Comemorações para Empresas</option>
+                                    <option value="outro">Outro(a)</option>
                                 </select>
                             </div>
                         </div>
@@ -599,7 +599,7 @@
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Mensagem (Opcional)</label>
-                            <textarea 
+                            <textarea maxlength="2500"
                                 name="mensagem"
                                 rows="4"
                                 class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors resize-none"
