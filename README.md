@@ -1,2 +1,2 @@
 # projetoEstancia
-Projeto escolar da estância ilha da madeira
+Projeto Escolar da Estância Ilha da Madeira
