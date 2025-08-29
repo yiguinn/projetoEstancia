@@ -178,9 +178,7 @@
         <div class="max-w-7xl mx-auto">
             <?php /* Header */ ?>
             <div class="text-center mb-12">
-                <div class="inline-block bg-rosa-vibrante text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
-                    Nossa Galeria
-                </div>
+              
                 <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante mb-4">
                     Momentos Únicos, Memórias Eternas
                 </h2>
@@ -192,76 +190,70 @@
             <?php /* Gallery Grid */ ?>
             <div class="grid md:grid-cols-3 gap-6">
                 <?php /* Gallery Item 1 */ ?>
-                <div class="relative group overflow-hidden rounded-2xl">
-                    <img src="imagens/img2.png" 
-                            alt="Cerimônia" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                <a href="galeriaCerimonia.php" class="relative group overflow-hidden rounded-2xl">
+                    <img src="imagens/img2.png" alt="Cerimônia" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Cerimônia</span>
                     </div>
                     <div class="absolute top-4 left-4">
                         <span class="bg-rosa-vibrante text-white px-3 py-1 rounded-full text-sm font-medium">Cerimônia</span>
                     </div>
-                </div>
+                </a>
 
                 <?php /* Gallery Item 2 */ ?>
-                <div class="relative group overflow-hidden rounded-2xl">
-                    <img src="imagens/img4.png" 
-                            alt="Evento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                <a href="galeriaEvento.php" class="relative group overflow-hidden rounded-2xl">
+                    <img src="imagens/img4.png" alt="Evento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Evento</span>
                     </div>
                     <div class="absolute top-4 left-4">
                         <span class="bg-rosa-vibrante text-white px-3 py-1 rounded-full text-sm font-medium">Evento</span>
                     </div>
-                </div>
+                </a>
 
                 <?php /* Gallery Item 3 */ ?>
-                <div class="relative group overflow-hidden rounded-2xl">
-                    <img src="imagens/img3.png" 
-                            alt="Casamento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                <a href="galeriaCasamento.php" class="relative group overflow-hidden rounded-2xl">
+                    <img src="imagens/img3.png" alt="Casamento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Casamento</span>
                     </div>
                     <div class="absolute top-4 left-4">
                         <span class="bg-rosa-vibrante text-white px-3 py-1 rounded-full text-sm font-medium">Casamento</span>
                     </div>
-                </div>
+                </a>
 
                 <?php /* Gallery Item 4 */ ?>
-                <div class="relative group overflow-hidden rounded-2xl">
-                    <img src="imagens/img6.png" 
-                            alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                <a href="galeriaRecepcao.php" class="relative group overflow-hidden rounded-2xl">
+                    <img src="imagens/img6.png" alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Recepção</span>
                     </div>
                     <div class="absolute top-4 left-4">
                         <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">Recepção</span>
                     </div>
-                </div>
+                </a>
 
                 <?php /* Gallery Item 5 */ ?>
-                <div class="relative group overflow-hidden rounded-2xl">
-                    <img src="imagens/img1.png" 
-                            alt="Decoração" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                <a href="galeriaDecoracao.php" class="relative group overflow-hidden rounded-2xl">
+                    <img src="imagens/img1.png" alt="Decoração" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Decoração</span>
                     </div>
                     <div class="absolute top-4 left-4">
                         <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium">Decoração</span>
                     </div>
-                </div>
+                </a>
 
                 <?php /* Gallery Item 6 */ ?>
-                <div class="relative group overflow-hidden rounded-2xl">
-                    <img src="imagens/img5.png" 
-                            alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                <a href="galeriaEspaco.php" class="relative group overflow-hidden rounded-2xl">
+                    <img src="imagens/img5.png" alt="Espaço" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Espaço</span>
                     </div>
                     <div class="absolute top-4 left-4">
                         <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">Espaço</span>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -518,7 +510,7 @@
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Mensagem (Opcional)</label>
-                            <textarea maxlength="500"
+                            <textarea maxlength="2500"
                                 name="mensagem"
                                 rows="4"
                                 class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors resize-none"

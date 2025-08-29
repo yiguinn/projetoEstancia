@@ -36,10 +36,12 @@
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <?php /* Logo */ ?>
             <div class="flex items-center space-x-3">
-                <img src="imagens/logo.png" width="50" alt="">
-                <div class="flex flex-col">
-                    <h1 class="text-xl font-medium text-rosa-vibrante">Estância</h1>
-                    <p class="text-sm text-gray-600 -mt-1">Ilha da Madeira</p>
+                <a href="../view/index.php">
+                    <img src="imagens/logo.png" width="50" alt="">
+                    <div class="flex flex-col">
+                        <h1 class="text-xl font-medium text-rosa-vibrante">Estância</h1>
+                        <p class="text-sm text-gray-600 -mt-1">Ilha da Madeira</p>
+                </a>
                 </div>
             </div>
 
