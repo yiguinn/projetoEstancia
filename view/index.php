@@ -518,7 +518,7 @@
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Mensagem (Opcional)</label>
-                            <textarea maxlength="2500"
+                            <textarea maxlength="500"
                                 name="mensagem"
                                 rows="4"
                                 class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors resize-none"
