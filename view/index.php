@@ -1,91 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estancia Ilha da Madeira - Casamentos</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-</head>
-<body class="min-h-screen">
-    <!-- Top Bar 
-    <div class="bg-rosa-vibrante text-white px-4 md:px-8 py-2">
-        <div class="max-w-7xl mx-auto flex items-center justify-between text-sm">
-            <div class="flex items-center space-x-6">
-                <div class="flex items-center space-x-2">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
-                    </svg>
-                    <span>(11) 96100-6060</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span>São Paulo, SP</span>
-                </div>
-            </div>
-            <div class="text-sm">Segunda a Sexta: 8h às 18h</div>
-        </div>
-    </div>-->
+<?php 
+    include_once("header.php");
+?>
 
-    <!-- Main Header -->
-    <header class="w-full bg-white border-b border-gray-100 px-4 md:px-8 py-4 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <!-- Logo -->
-            <div class="flex items-center space-x-3">
-                <img src="imagens/logo.png" width="50" alt="">
-                <div class="flex flex-col">
-                    <h1 class="text-xl font-medium text-rosa-vibrante">Estância</h1>
-                    <p class="text-sm text-gray-600 -mt-1">Ilha da Madeira</p>
-                </div>
-            </div>
-
-            <!-- Navigation -->
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="#inicio" class="text-rosa-vibrante font-medium">Início</a>
-                <a href="#servicos" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Serviços</a>
-                <a href="#galeria" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Galeria</a>
-                <a href="#sobre" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Sobre</a>
-                <a href="#contato" class="text-gray-700 hover:text-rosa-vibrante transition-colors">Contato</a>
-            </nav>
-
-            <!-- CTA Button -->
-            <button onclick="scrollToContact()" class="bg-rosa-vibrante hover:opacity-90 text-white px-6 py-2 rounded-lg transition-opacity">
-                Agendar Visita
-            </button>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden flex flex-col space-y-1">
-                <div class="w-6 h-0.5 bg-gray-600"></div>
-                <div class="w-6 h-0.5 bg-gray-600"></div>
-                <div class="w-6 h-0.5 bg-gray-600"></div>
-            </button>
-        </div>
-
-        <!-- Mobile Navigation -->
-        <nav id="mobile-menu" class="mobile-menu md:hidden mt-4 pb-4 border-t border-gray-100">
-            <div class="flex flex-col space-y-4 pt-4">
-                <a href="#inicio" class="text-rosa-vibrante font-medium">Início</a>
-                <a href="#espacos" class="text-gray-700">Espaços</a>
-                <a href="#servicos" class="text-gray-700">Serviços</a>
-                <a href="#pacotes" class="text-gray-700">Pacotes</a>
-                <a href="#galeria" class="text-gray-700">Galeria</a>
-                <a href="#sobre" class="text-gray-700">Sobre</a>
-                <a href="#contato" class="text-gray-700">Contato</a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
+    <?php /* Hero Section */ ?>
     <section id="inicio" class="gradient-bg px-4 md:px-8 py-16">
         <div class="max-w-7xl mx-auto">
-            <!-- Rating -->
+            <?php /* Rating */ ?>
 
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Left Content -->
+                <?php /* Left Content */ ?>
                 <div class="space-y-8">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-normal leading-tight text-rosa-vibrante">
                         O Cenário Perfeito<br />
@@ -106,7 +29,7 @@
                     </div>
                 </div>
 
-                <!-- Right Content -->
+                <?php /* Right Content */ ?>
                 <div class="relative">
                     <img
                         src="imagens/img7.png"
@@ -130,7 +53,7 @@
                 </div>
             </div>
 
-            <!-- Statistics -->
+            <?php /* Statistics */ ?>
             <div class="grid grid-cols-3 gap-8 pt-16 mt-16 border-t border-gray-200">
                 <div class="text-center">
                     <div class="text-4xl font-medium text-rosa-vibrante mb-2">300+</div>
@@ -148,12 +71,10 @@
         </div>
     </section>
 
-   
-
-    <!-- Services Section -->
+    <?php /* Services Section */ ?>
     <section id="servicos" class=" px-4 md:px-8 py-16">
         <div class="max-w-7xl mx-auto">
-            <!-- Header -->
+            <?php /* Header */ ?>
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante mb-4">
                     Serviços Completos
@@ -163,9 +84,9 @@
                 </p>
             </div>
 
-            <!-- Services Grid -->
+            <?php /* Services Grid */ ?>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-                <!-- Service 1 -->
+                <?php /* Service 1 */ ?>
                 <div class="text-center">
                     <div class="w-16 h-16 bg-rosa-vibrante rounded-2xl flex items-center justify-center mx-auto mb-6">
                         <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -186,7 +107,7 @@
                     </button>
                 </div>
 
-                <!-- Service 2 -->
+                <?php /* Service 2 */ ?>
                 <div class="text-center">
                     <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
                         <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -207,7 +128,7 @@
                     </button>
                 </div>
 
-                <!-- Service 3 -->
+                <?php /* Service 3 */ ?>
                 <div class="text-center">
                     <div class="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
                         <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -228,7 +149,7 @@
                     </button>
                 </div>
 
-                <!-- Service 4 -->
+                <?php /* Service 4 */ ?>
                 <div class="text-center">
                     <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
                         <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -252,11 +173,10 @@
         </div>
     </section>
 
-  
-    <!-- Gallery Section -->
+    <?php /* Gallery Section */ ?>
     <section id="galeria" class="gradient-bg px-4 md:px-8 py-16">
         <div class="max-w-7xl mx-auto">
-            <!-- Header -->
+            <?php /* Header */ ?>
             <div class="text-center mb-12">
                 <div class="inline-block bg-rosa-vibrante text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
                     Nossa Galeria
@@ -269,12 +189,12 @@
                 </p>
             </div>
 
-            <!-- Gallery Grid -->
+            <?php /* Gallery Grid */ ?>
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- Gallery Item 1 -->
+                <?php /* Gallery Item 1 */ ?>
                 <div class="relative group overflow-hidden rounded-2xl">
                     <img src="imagens/img2.png" 
-                         alt="Cerimônia" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                            alt="Cerimônia" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Cerimônia</span>
                     </div>
@@ -283,10 +203,10 @@
                     </div>
                 </div>
 
-                <!-- Gallery Item 2 -->
+                <?php /* Gallery Item 2 */ ?>
                 <div class="relative group overflow-hidden rounded-2xl">
                     <img src="imagens/img4.png" 
-                         alt="Evento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                            alt="Evento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Evento</span>
                     </div>
@@ -295,11 +215,10 @@
                     </div>
                 </div>
 
-                <!-- Gallery Item 3 -->
+                <?php /* Gallery Item 3 */ ?>
                 <div class="relative group overflow-hidden rounded-2xl">
-                    <img src="imagens/img3.png
-                    " 
-                         alt="Casamento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                    <img src="imagens/img3.png" 
+                            alt="Casamento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Casamento</span>
                     </div>
@@ -308,10 +227,10 @@
                     </div>
                 </div>
 
-                <!-- Gallery Item 4 -->
+                <?php /* Gallery Item 4 */ ?>
                 <div class="relative group overflow-hidden rounded-2xl">
                     <img src="imagens/img6.png" 
-                         alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                            alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Recepção</span>
                     </div>
@@ -320,10 +239,10 @@
                     </div>
                 </div>
 
-                <!-- Gallery Item 5 -->
+                <?php /* Gallery Item 5 */ ?>
                 <div class="relative group overflow-hidden rounded-2xl">
                     <img src="imagens/img1.png" 
-                         alt="Decoração" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                            alt="Decoração" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Decoração</span>
                     </div>
@@ -332,10 +251,10 @@
                     </div>
                 </div>
 
-                <!-- Gallery Item 6 -->
+                <?php /* Gallery Item 6 */ ?>
                 <div class="relative group overflow-hidden rounded-2xl">
                     <img src="imagens/img5.png" 
-                         alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+                            alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                     <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Espaço</span>
                     </div>
@@ -347,11 +266,11 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <?php /* About Section */ ?>
     <section id="sobre" class=" bg-white px-4 md:px-8 py-16">
         <div class="max-w-7xl mx-auto">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Left Content -->
+                <?php /* Left Content */ ?>
                 <div class="space-y-8">
                     <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante">
                         Nossa História de Amor com Casamentos
@@ -393,12 +312,12 @@
                     </div>
                 </div>
 
-                <!-- Right Content -->
+                <?php /* Right Content */ ?>
                 <div class="relative">
                     <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                         alt="Nossa história" class="w-full h-[500px] object-cover rounded-2xl shadow-2xl">
+                            alt="Nossa história" class="w-full h-[500px] object-cover rounded-2xl shadow-2xl">
                     
-                    <!-- Testimonial Card -->
+                    <?php /* Testimonial Card */ ?>
                     <div class="absolute bottom-8 right-8 bg-white rounded-xl p-6 shadow-lg max-w-sm">
                         <div class="flex items-center space-x-1 mb-3">
                             <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
@@ -411,7 +330,7 @@
                 </div>
             </div>
 
-            <!-- Statistics Row -->
+            <?php /* Statistics Row */ ?>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-gray-200">
                 <div class="text-center">
                     <div class="text-3xl font-medium text-rosa-vibrante mb-2">Top 1</div>
@@ -433,11 +352,11 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <?php /* Contact Section */ ?>
     <section id="contato" class="contact-bg px-4 md:px-8 py-16">
         <div class="max-w-7xl mx-auto">
             <div class="grid lg:grid-cols-2 gap-12">
-                <!-- Left Content -->
+                <?php /* Left Content */ ?>
                 <div class="space-y-8">
                     <div class="inline-block bg-rosa-vibrante text-white px-4 py-2 rounded-full text-sm font-medium">
                         Entre em Contato
@@ -451,7 +370,7 @@
                         Entre em contato conosco e vamos começar a planejar o casamento dos seus sonhos. Nossa equipe está pronta para criar uma experiência única e inesquecível.
                     </p>
 
-                    <!-- Contact Info -->
+                    <?php /* Contact Info */ ?>
                     <div class="space-y-6">
                         <div class="flex items-start space-x-4">
                             <div class="w-12 h-12 bg-rosa-vibrante rounded-full flex items-center justify-center flex-shrink-0">
@@ -511,7 +430,7 @@
                     </div>
                 </div>
 
-                <!-- Right Content - Contact Form -->
+                <?php /* Right Content - Contact Form */ ?>
                 <div class="bg-white rounded-2xl shadow-2xl p-8">
                     <h3 class="text-2xl font-medium text-rosa-vibrante mb-6">Agende Sua Visita</h3>
                     
@@ -623,86 +542,4 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white px-4 md:px-8 py-12">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <!-- Logo and Description -->
-                <div class="md:col-span-2">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-medium">Estância Ilha da Madeira</h3>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 mb-6 max-w-md">Transformando sonhos em realidade há mais de 15 anos. Seu casamento perfeito nos espera em meio à natureza exuberante de São Paulo.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
-                            <span class="text-sm font-bold">f</span>
-                        </a>
-                        <a href="https://www.instagram.com/estanciailhadamadeira" 
-   class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center hover:opacity-80 transition-opacity text-white" aria-label="Link para o Instagram"
->
-    <i class="fa-brands fa-instagram text-xl"></i>
-</a>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
-                            <span class="text-sm font-bold">in</span>
-                        </a>
-                        <a href="https://api.whatsapp.com/send/?phone=5511961006060&text=Olá%21+Gostaria+de+saber+mais+sobre+os+serviços+da+Estância+Ilha+da+Madeira+para+casamentos.&type=phone_number&app_absent=0" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="font-medium mb-4">Links Rápidos</h4>
-                    <div class="space-y-2 text-gray-400">
-                        <a href="#inicio" class="block hover:text-white transition-colors">Início</a>
-                        <a href="#servicos" class="block hover:text-white transition-colors">Serviços</a>
-                        <a href="#galeria" class="block hover:text-white transition-colors">Galeria</a>
-                        <a href="#sobre" class="block hover:text-white transition-colors">Sobre</a>
-                        <a href="#contato" class="block hover:text-white transition-colors">Contato</a>
-                    </div>
-                </div>
-
-                <!-- Contact -->
-                <div>
-                    <h4 class="font-medium mb-4">Contato</h4>
-                    <div class="space-y-2 text-gray-400">
-                        <p>(11) 96100-6060</p>
-                        <p>sitio_ilhadamadeira</p>
-                        <p>Estrada da Vargem Grande, 3151</p>
-                        <p>São Paulo, SP</p>
-                        <p class="pt-2 text-sm">Segunda a Sexta: 8h às 18h</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom Footer -->
-            <div class="border-t border-gray-800 pt-8">
-                <div class="grid md:grid-cols-2 gap-4 items-center">
-                    <div class="text-gray-400">
-                        <p>&copy; 2025 Estância Ilha da Madeira. Todos os direitos reservados.</p>
-                    </div>
-                    <div class="text-gray-400 text-sm md:text-right">
-                        <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
-                        <span class="mx-2">|</span>
-                        <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-<script src="scriptcelular.js"></script>
-<script src="telefone.js"></script>
-</body>
-</html>
+    <?php include_once("footer.php"); ?>
