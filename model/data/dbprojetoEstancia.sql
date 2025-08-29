@@ -16,7 +16,7 @@ idUsuario int not null,
 tipoCerimonia varchar(40) not null,
 dataPref date not null,
 qtdConvidados int not null,
-mensagemCerimonia varchar(5000) not null,
+mensagemCerimonia varchar(500) not null,
 foreign key (idUsuario) references usuario(idUsuario)
 );
 
