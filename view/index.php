@@ -426,13 +426,14 @@
                 <div class="bg-white rounded-2xl shadow-2xl p-8">
                     <h3 class="text-2xl font-medium text-rosa-vibrante mb-6">Agende Sua Visita</h3>
                     
-                    <form id="contact-form" class="space-y-6">
+                    <form action="../controller/controller.php" method="post" id="contact-form" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Nome do(a) contratante </label>
                                 <input 
                                     type="text" 
-                                    name="nome_noiva"
+                                    name="nometxt"
+                                    id="nome"
                                     required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
                                     placeholder="Digite seu nome"
@@ -441,7 +442,8 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Comemoração</label>
                                 <select 
-                                    name="eventoComemorativo"
+                                    name="eventotxt"
+                                    id="evento"
                                     required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
                                 >
@@ -461,7 +463,7 @@
                                 <label for="telefone" class="block text-sm font-medium text-gray-700 mb-2">Telefone</label>
                                 <input 
                                     type="tel" 
-                                    name="telefone"
+                                    name="telefonenum"
                                     id="telefone" required
                                     maxlength="15" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
                                     placeholder="(XX) XXXXX-XXXX"
@@ -472,7 +474,8 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">E-mail</label>
                                 <input 
                                     type="email" 
-                                    name="email"
+                                    name="emailtxt"
+                                    id="email"
                                     required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
                                     placeholder="seu@email.com"
@@ -485,6 +488,7 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Data Preferencial</label>
                                 <input 
                                     type="date" 
+                                    id="data"
                                     name="data_preferencial"
                                     required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
@@ -495,6 +499,7 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Número de Convidados</label>
                                 <select 
                                     name="numero_convidados"
+                                    id="convidados"
                                     required
                                     class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
                                 >
@@ -511,8 +516,9 @@
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Mensagem (Opcional)</label>
                             <textarea maxlength="2500"
-                                name="mensagem"
+                                name="mensagemtxt"
                                 rows="4"
+                                id="mensagem"
                                 class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors resize-none"
                                 placeholder="Conte-nos um pouco sobre o casamento dos seus sonhos..."
                             ></textarea>
