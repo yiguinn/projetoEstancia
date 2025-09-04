@@ -6,7 +6,7 @@ use dbprojetoEstancia;
 create table usuario (
 idUsuario int auto_increment primary key,
 nomeUsuario varchar(255) not null,
-telefoneUsuario varchar(11) not null,
+telefoneUsuario varchar(15) not null,
 emailUsuario varchar(320) not null
 );
 
