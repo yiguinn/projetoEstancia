@@ -15,6 +15,12 @@
         $conn->inserir($nome, $telefone, $email, $evento, $data, $convidados, $mensagem);
         
         print_r($nome);
+        print_r($telefone);
+        print_r($email);
+        print_r($evento);
+        print_r($data);
+        print_r($convidados);
+        print_r($mensagem);
         exit();
     }
 ?>
