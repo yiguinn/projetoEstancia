@@ -20,4 +20,8 @@ mensagemCerimonia varchar(500) not null,
 foreign key (idUsuario) references usuario(idUsuario)
 );
 
+select * from usuario;
+
+select * from cerimonia;
+
 drop database dbprojetoEstancia;
