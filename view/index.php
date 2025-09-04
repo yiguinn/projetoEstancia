@@ -426,7 +426,7 @@
                 <div class="bg-white rounded-2xl shadow-2xl p-8">
                     <h3 class="text-2xl font-medium text-rosa-vibrante mb-6">Agende Sua Visita</h3>
                     
-                    <form action="../controller/controller.php" method="post" id="contact-form" class="space-y-6">
+                    <form action="../controller/formController.php" method="post" id="contact-form" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Nome do(a) contratante </label>

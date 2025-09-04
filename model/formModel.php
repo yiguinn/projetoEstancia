@@ -5,7 +5,7 @@
         private $pdo;
 
         public function __construct(){
-            $conexao = new Conexao();
+            $conexao = new conexaoDb();
             $this->pdo = $conexao->conectar();
         }
         public function inserir($nome, $telefone, $email){
