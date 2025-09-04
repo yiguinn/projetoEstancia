@@ -508,7 +508,7 @@
                                     <option value="100">50 a 100 pessoas</option>
                                     <option value="150">100 a 150 pessoas</option>
                                     <option value="200">150 a 200 pessoas</option>
-                                    <option value="200+">Mais de 200 pessoas</option>
+                                    <option value="250">Mais de 200 pessoas</option>
                                 </select>
                             </div>
                         </div>
