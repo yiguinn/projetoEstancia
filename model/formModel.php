@@ -11,27 +11,18 @@ class formModel {
 
     public function inserir($nome, $telefone, $email, $tipoCerimonia, $dataPref, $qtdConvidados, $mensagemCerimonia){
         try {
-            $stmtUsuario = $this->pdo->prepare("
-                INSERT INTO usuario (nomeUsuario, telefoneUsuario, emailUsuario) 
-                VALUES (:nome, :telefone, :email)
+            $stmtInfo = $this->pdo->prepare("
+                INSERT INTO info (nomeUsuario, telefoneUsuario, emailUsuario, tipoCerimonia, dataPref, qtdConvidados, mensagemCerimonia) 
+                VALUES (:nome, :telefone, :email, :tipoCerimonia, :dataPref, :qtdConvidados, :mensagemCerimonia)
             ");
-            $stmtUsuario->bindParam(':nome', $nome);
-            $stmtUsuario->bindParam(':telefone', $telefone);
-            $stmtUsuario->bindParam(':email', $email);
-            $stmtUsuario->execute();
-
-            $idUsuario = $this->pdo->lastInsertId();
-
-            $stmtCerimonia = $this->pdo->prepare("
-                INSERT INTO cerimonia (idUsuario, tipoCerimonia, dataPref, qtdConvidados, mensagemCerimonia) 
-                VALUES (:idUsuario, :tipoCerimonia, :dataPref, :qtdConvidados, :mensagemCerimonia)
-            ");
-            $stmtCerimonia->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
-            $stmtCerimonia->bindParam(':tipoCerimonia', $tipoCerimonia);
-            $stmtCerimonia->bindParam(':dataPref', $dataPref);
-            $stmtCerimonia->bindParam(':qtdConvidados', $qtdConvidados, PDO::PARAM_INT);
-            $stmtCerimonia->bindParam(':mensagemCerimonia', $mensagemCerimonia);
-            $stmtCerimonia->execute();
+            $stmtInfo->bindParam(':nome', $nome);
+            $stmtInfo->bindParam(':telefone', $telefone);
+            $stmtInfo->bindParam(':email', $email);
+            $stmtInfo->bindParam(':tipoCerimonia', $tipoCerimonia);
+            $stmtInfo->bindParam(':dataPref', $dataPref);
+            $stmtInfo->bindParam(':qtdConvidados', $qtdConvidados, PDO::PARAM_INT);
+            $stmtInfo->bindParam(':mensagemCerimonia', $mensagemCerimonia);
+            $stmtInfo->execute();
 
             return true;
         } catch (PDOException $e) {
