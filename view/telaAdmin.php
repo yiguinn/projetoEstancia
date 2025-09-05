@@ -1,6 +1,5 @@
 <?php
-// --- SIMULAÇÃO DE DADOS DO BANCO DE DADOS ---
-// (Esta parte permanece a mesma)
+// duds dados hardcoded aq so mudar pelo backend dps
 $solicitacoes = [
     [
         'id' => 1,
@@ -27,7 +26,6 @@ $solicitacoes = [
         'data_envio' => '2025-09-04 09:15:00'
     ],
 ];
-// --- FIM DA SIMULAÇÃO ---
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -36,12 +34,8 @@ $solicitacoes = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Administrativo - Estância Ilha da Madeira</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* A cor personalizada continua a mesma */
-        .bg-rosa-vibrante { background-color: #E63946; }
-        .text-rosa-vibrante { color: #E63946; }
-    </style>
 </head>
 <body class="bg-white font-['SF_Pro_Display',_sans_serif]">
 

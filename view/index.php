@@ -48,7 +48,7 @@
                                 <div class="font-medium text-gray-900">Ambiente Natural</div>
                                 <div class="text-sm text-gray-500">Paisagem Exuberante</div>
                             </div>
-                        </div>
+                        </div>        /* A cor personalizada continua a mesma */
                     </div>
                 </div>
             </div>
@@ -539,5 +539,7 @@
             </div>
         </div>
     </section>
+
+    
 
     <?php include_once("footer.php"); ?>
