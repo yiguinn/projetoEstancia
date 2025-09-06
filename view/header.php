@@ -108,7 +108,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <div class="bg-white p-6 rounded shadow-xl relative z-[10000]">
     <p id="modal-text">Mensagem aqui</p>
     <button onclick="closeModal()" 
-            class="mt-4 px-4 py-2 bg-blue-600 text-white rounded">Fechar</button>
+            class="mt-4 px-4 py-2 bg-pink-600 text-white rounded">Fechar</button>
   </div>
 </div>
 

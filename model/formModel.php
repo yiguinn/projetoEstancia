@@ -30,5 +30,55 @@ class formModel {
             return false;
         }
     }
+    // === CRUD admin (adicionar dentro da classe formModel, após inserir) ===
+
+public function listar() {
+    try {
+        $stmt = $this->pdo->query("SELECT * FROM info ORDER BY idUsuario DESC");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Erro listar: " . $e->getMessage());
+        return [];
+    }
+}
+
+public function excluir($idUsuario) {
+    try {
+        $stmt = $this->pdo->prepare("DELETE FROM info WHERE idUsuario = :id");
+        return $stmt->execute([':id' => $idUsuario]);
+    } catch (PDOException $e) {
+        error_log("Erro excluir: " . $e->getMessage());
+        return false;
+    }
+}
+
+public function atualizar($idUsuario, $nome, $telefone, $email, $tipoCerimonia, $dataPref, $qtdConvidados, $mensagemCerimonia) {
+    try {
+        $sql = "UPDATE info SET
+                    nomeUsuario = :nome,
+                    telefoneUsuario = :telefone,
+                    emailUsuario = :email,
+                    tipoCerimonia = :tipoCerimonia,
+                    dataPref = :dataPref,
+                    qtdConvidados = :qtdConvidados,
+                    mensagemCerimonia = :mensagemCerimonia
+                WHERE idUsuario = :id";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([
+            ':id' => $idUsuario,
+            ':nome' => $nome,
+            ':telefone' => $telefone,
+            ':email' => $email,
+            ':tipoCerimonia' => $tipoCerimonia,
+            ':dataPref' => $dataPref,
+            ':qtdConvidados' => $qtdConvidados,
+            ':mensagemCerimonia' => $mensagemCerimonia
+        ]);
+    } catch (PDOException $e) {
+        error_log("Erro atualizar: " . $e->getMessage());
+        return false;
+    }
+}
+
 }
 ?>
