@@ -1,3 +1,37 @@
+<script>
+function openModal(msg) {
+  document.getElementById("modal-text").textContent = msg;
+  document.getElementById("modal").classList.remove("hidden");
+}
+function closeModal() {
+  document.getElementById("modal").classList.add("hidden");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact-form");
+  if (form) {
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault(); // impede o envio normal
+
+      try {
+        const resp = await fetch("../controller/formController.php", {
+          method: "POST",
+          body: new FormData(form),
+          headers: { "X-Requested-With": "XMLHttpRequest" }
+        });
+
+        const json = await resp.json();
+        openModal(json.message);
+
+        if (json.success) form.reset();
+      } catch (err) {
+        openModal("❌ Erro inesperado: " + err);
+      }
+    });
+  }
+});
+</script>
+
 <footer class="bg-gray-900 text-white px-4 md:px-8 py-12">
     <div class="max-w-7xl mx-auto">
         <div class="grid md:grid-cols-4 gap-8 mb-8">
@@ -71,7 +105,13 @@ class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center 
     </div>
 </footer>
 
+
+</body>
+</html>
+
+
 <script src="scriptcelular.js"></script>
 <script src="telefone.js"></script>
+
 </body>
 </html>

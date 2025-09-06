@@ -1,23 +1,28 @@
 <?php
-require_once '../model/formModel.php';
+if (session_status() === PHP_SESSION_NONE) session_start();
+
+require_once __DIR__ . '/../model/formModel.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $model = new formModel();
 
-    $sucesso = $model->inserir(
-        $_POST['nometxt'],
-        $_POST['telefonenum'],
-        $_POST['emailtxt'],
-        $_POST['eventotxt'],
-        $_POST['data_preferencial'], 
-        $_POST['numero_convidados'],
-        $_POST['mensagemtxt']
-    );
+    $n = $_POST['nometxt'] ?? '';
+    $t = $_POST['telefonenum'] ?? '';
+    $e = $_POST['emailtxt'] ?? '';
+    $ev = $_POST['eventotxt'] ?? '';
+    $d = $_POST['data_preferencial'] ?? null;
+    $num = $_POST['numero_convidados'] ?? null;
+    $msg = $_POST['mensagemtxt'] ?? '';
 
-    if ($sucesso) {
-        echo "<script>alert('Sua solicitação foi enviada!'); window.location.href = '../view/index.php';</script>"; 
-    } else {
-        echo "erro";
-    }
+    $sucesso = $model->inserir($n, $t, $e, $ev, $d, $num, $msg);
+
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode([
+        "success" => (bool)$sucesso,
+        "message" => $sucesso
+            ? "✅ Sua solicitação foi enviada!"
+            : "❌ Ocorreu um erro ao enviar."
+    ]);
+    exit();
 }
 ?>

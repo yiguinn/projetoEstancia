@@ -1,3 +1,9 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -85,4 +91,25 @@
 <script src="telefone.js"></script>
 <script src="nav-active.js"></script>
 </body>
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Projeto Estância</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen">
+
+<!-- Modal central -->
+<div id="modal" 
+     class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-[9999]">
+  <div class="bg-white p-6 rounded shadow-xl relative z-[10000]">
+    <p id="modal-text">Mensagem aqui</p>
+    <button onclick="closeModal()" 
+            class="mt-4 px-4 py-2 bg-blue-600 text-white rounded">Fechar</button>
+  </div>
+</div>
+
 </html>
