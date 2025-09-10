@@ -1,3 +1,17 @@
+<?php
+// Proteção da página
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verifica se o usuário está logado E se o cargo dele é 'admin'
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
+    // Se não for admin, redireciona para a página inicial com uma mensagem de erro
+    header('Location: index.php?status=acesso_negado');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -12,17 +26,22 @@
 
 <body class="bg-white font-['SF_Pro_Display',_sans_serif]">
 
-    <header class="bg-white border-b border-gray-100">
-        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <h1 class="text-xl font-medium text-rosa-vibrante">Painel Administrativo</h1>
-                <span class="text-sm text-gray-500">- Estância Ilha da Madeira</span>
-            </div>
+<header class="bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <h1 class="text-xl font-medium text-rosa-vibrante">Painel Administrativo</h1>
+            <span class="text-sm text-gray-500">- Olá, <?= htmlspecialchars($_SESSION['user_nome']) ?>!</span>
+        </div>
+        <div>
+            <a href="../controller/authController.php?action=logout" class="text-sm text-red-600 hover:underline mr-4">
+                Sair
+            </a>
             <a href="../view/index.php" class="text-sm text-rosa-vibrante hover:underline">
                 Voltar ao Site
             </a>
         </div>
-    </header>
+    </div>
+</header>
 
     <?php
     require_once __DIR__ . '/../model/formModel.php';
