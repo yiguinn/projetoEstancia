@@ -1,31 +1,49 @@
 <script>
+// Função para ABRIR a janela modal com uma mensagem
 function openModal(msg) {
   document.getElementById("modal-text").textContent = msg;
   document.getElementById("modal").classList.remove("hidden");
 }
+
+// Função para FECHAR a janela modal
 function closeModal() {
   document.getElementById("modal").classList.add("hidden");
 }
 
+// Lógica principal que é executada quando a página carrega
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
+  
+  // Garante que o código só vai rodar se o formulário existir na página
   if (form) {
     form.addEventListener("submit", async function(e) {
-      e.preventDefault(); // impede o envio normal
+      e.preventDefault(); // Impede o envio tradicional da página
 
       try {
-        const resp = await fetch("../controller/formController.php", {
+        // Envia os dados do formulário para o controller em segundo plano
+        const response = await fetch("../controller/formController.php", {
           method: "POST",
           body: new FormData(form),
-          headers: { "X-Requested-With": "XMLHttpRequest" }
         });
 
-        const json = await resp.json();
+        const json = await response.json();
+
+        // 1. Mostra a mensagem de confirmação (de sucesso ou erro) na janela modal
         openModal(json.message);
 
-        if (json.success) form.reset();
+        // 2. Se o envio teve sucesso, limpa os campos preenchidos pelo usuário
+        if (json.success) {
+          // Limpa apenas os campos que o usuário pode editar
+          form.querySelector('#data').value = '';
+          form.querySelector('#convidados').value = '';
+          form.querySelector('#mensagem').value = '';
+          form.querySelector('#evento').value = '';
+        }
+
       } catch (err) {
-        openModal("❌ Erro inesperado: " + err);
+        // Se houver um erro de conexão ou outro problema, mostra um erro genérico
+        openModal("❌ Ocorreu um erro inesperado. Tente novamente mais tarde.");
+        console.error("Erro no envio do formulário:", err);
       }
     });
   }
@@ -104,11 +122,6 @@ class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center 
         </div>
     </div>
 </footer>
-
-
-</body>
-</html>
-
 
 <script src="scriptcelular.js"></script>
 <script src="telefone.js"></script>

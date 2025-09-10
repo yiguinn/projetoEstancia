@@ -1,6 +1,8 @@
 <?php
 // controller/authController.php
-if (session_status() === PHP_SESSION_NONE) session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 require_once __DIR__ . '/../model/userModel.php';
 
@@ -13,17 +15,21 @@ if (isset($_POST['cadastro'])) {
     $telefone = $_POST['telefonenum'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    if (empty($nome) || empty($email) || empty($password)) {
+    // Validação simples de campos obrigatórios
+    if (empty($nome) || empty($email) || empty($telefone) || empty($password)) {
         header('Location: ../view/cadastro.php?status=erro_campos');
         exit();
     }
 
-    if ($model->cadastrar($nome, $email, $telefone, $password)) {
+    $sucesso = $model->cadastrar($nome, $email, $telefone, $password);
+
+    if ($sucesso) {
         header('Location: ../view/login.php?status=sucesso_cadastro');
+        exit();
     } else {
         header('Location: ../view/cadastro.php?status=erro_existente');
+        exit();
     }
-    exit();
 }
 
 // --- LÓGICA DE LOGIN ---
@@ -33,20 +39,25 @@ if (isset($_POST['login'])) {
 
     $user = $model->buscarPorEmail($email);
 
+    // Verifica se o usuário existe e se a senha está correta
     if ($user && password_verify($password, $user['password'])) {
-        // Login bem-sucedido: armazena dados na sessão
+        // Login bem-sucedido: armazena todos os dados importantes na sessão
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_nome'] = $user['nome'];
-        $_SESSION['user_role'] = $user['role']; // GUARDA O CARGO!
+        $_SESSION['user_role'] = $user['role'];
+        $_SESSION['user_email'] = $user['email'];       // <-- Adicionado
+        $_SESSION['user_telefone'] = $user['telefone']; // <-- Adicionado
 
-        // Redireciona com base no cargo (role)
+        // Redireciona com base no cargo (role) do usuário
         if ($user['role'] === 'admin') {
-            header('Location: ../view/telaAdmin.php');
+            header('Location: ../view/painelAdmin.php'); // Admin vai para o painel principal
         } else {
             header('Location: ../view/index.php'); // Usuário comum volta para o site
         }
         exit();
+
     } else {
+        // Falha no login
         header('Location: ../view/login.php?status=erro_login');
         exit();
     }
@@ -55,10 +66,10 @@ if (isset($_POST['login'])) {
 // --- LÓGICA DE LOGOUT ---
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     session_destroy();
-    header('Location: ../view/index.php'); // Ao sair, volta para a home
+    header('Location: ../view/index.php'); // Ao sair, volta para a home do site
     exit();
 }
 
+// Se nenhuma ação válida for encontrada, redireciona para a página de login por segurança
 header('Location: ../view/login.php');
 exit();
-?>

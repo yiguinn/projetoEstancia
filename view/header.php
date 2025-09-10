@@ -32,7 +32,7 @@ $is_admin = $is_logged_in && $_SESSION['user_role'] === 'admin';
                 <a href="index.php#galeria" class="nav-link text-gray-700 hover:text-rosa-vibrante">Galeria</a>
                 
                 <?php if ($is_admin): ?>
-                    <a href="telaAdmin.php" class="nav-link font-bold text-blue-600 hover:text-blue-800">Painel Admin</a>
+                    <a href="painelAdmin.php" class="nav-link font-bold text-blue-600 hover:text-blue-800">Painel Admin</a>
                 <?php endif; ?>
             </nav>
 

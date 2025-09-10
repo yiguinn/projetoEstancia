@@ -58,34 +58,6 @@
             }
         });
 
-        // Contact form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Simple validation
-            if (!data.nome_noiva || !data.nome_noivo || !data.telefone || !data.email) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
-                return;
-            }
-            
-            // Simulate form submission
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.innerHTML;
-            
-            submitButton.innerHTML = '<div class="animate-pulse">Enviando...</div>';
-            submitButton.disabled = true;
-            
-            setTimeout(() => {
-                alert('Solicitação enviada com sucesso! Entraremos em contato em breve.');
-                this.reset();
-                submitButton.innerHTML = originalText;
-                submitButton.disabled = false;
-            }, 2000);
-        });
 
         // Form input animations
         document.querySelectorAll('input, textarea, select').forEach(input => {

@@ -2,7 +2,18 @@
 include_once("header.php");
 ?>
 
+<div id="modal" 
+     class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-[9999]">
+  <div class="bg-white p-6 rounded-lg shadow-xl text-center">
+    <p id="modal-text" class="text-lg text-gray-800"></p>
+    <button onclick="closeModal()" 
+            class="mt-4 px-6 py-2 bg-rosa-vibrante text-white rounded-lg hover:opacity-90">
+        OK
+    </button>
+  </div>
+</div>
 <?php /* Hero Section */ ?>
+
 <section id="inicio" class="gradient-bg px-4 md:px-8 py-16">
     <div class="max-w-7xl mx-auto">
         <?php /* Rating */ ?>
@@ -349,9 +360,6 @@ include_once("header.php");
         <div class="grid lg:grid-cols-2 gap-12">
             <?php /* Left Content */ ?>
             <div class="space-y-8">
-                <div class="inline-block bg-rosa-vibrante text-white px-4 py-2 rounded-full text-sm font-medium">
-                    Entre em Contato
-                </div>
 
                 <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante">
                     Vamos Realizar Seu Sonho
@@ -427,15 +435,19 @@ include_once("header.php");
 
                 <form method="post" id="contact-form" class="space-y-6">
                     <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Nome do(a) contratante </label>
+                    <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nome do(a) contratante</label>
                             <input
                                 type="text"
                                 name="nometxt"
                                 id="nome"
                                 required
-                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
-                                placeholder="Digite seu nome">
+                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante outline-none 
+                                    <?php if (isset($_SESSION['user_id'])): ?> bg-gray-100 cursor-not-allowed <?php endif; ?>"
+                                placeholder="Digite seu nome"
+                                value="<?= isset($_SESSION['user_nome']) ? htmlspecialchars($_SESSION['user_nome']) : '' ?>"
+                                <?php if (isset($_SESSION['user_id'])): ?> readonly <?php endif; ?>
+                            >
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Comemoração</label>
@@ -456,26 +468,36 @@ include_once("header.php");
 
                     <div class="grid md:grid-cols-2 gap-4">
 
-                        <div>
-                            <label for="telefone" class="block text-sm font-medium text-gray-700 mb-2">Telefone</label>
-                            <input
-                                type="tel"
-                                name="telefonenum"
-                                id="telefone" required
-                                maxlength="15" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
-                                placeholder="(XX) XXXXX-XXXX">
-                            <span id="telefone-error" class="text-red-500 text-sm mt-1" style="display: none;"></span>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">E-mail</label>
-                            <input
-                                type="email"
-                                name="emailtxt"
-                                id="email"
-                                required
-                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
-                                placeholder="seu@email.com">
-                        </div>
+                    <div>
+                        <label for="telefone" class="block text-sm font-medium text-gray-700 mb-2">Telefone</label>
+                        <input
+                            type="tel"
+                            name="telefonenum"
+                            id="telefone" required
+                            maxlength="15" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante outline-none
+                                <?php if (isset($_SESSION['user_id'])): ?> bg-gray-100 cursor-not-allowed <?php endif; ?>"
+                            placeholder="(XX) XXXXX-XXXX"
+                            value="<?= isset($_SESSION['user_telefone']) ? htmlspecialchars($_SESSION['user_telefone']) : '' ?>"
+                            <?php if (isset($_SESSION['user_id'])): ?> readonly <?php endif; ?>
+                        >
+                        <span id="telefone-error" class="text-red-500 text-sm mt-1" style="display: none;"></span>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">E-mail</label>
+                        <input
+                            type="email"
+                            name="emailtxt"
+                            id="email"
+                            required
+                            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante outline-none
+                                <?php if (isset($_SESSION['user_id'])): ?> bg-gray-100 cursor-not-allowed <?php endif; ?>"
+                            placeholder="seu@email.com"
+                            value="<?= isset($_SESSION['user_email']) ? htmlspecialchars($_SESSION['user_email']) : '' ?>"
+                            <?php if (isset($_SESSION['user_id'])): ?> readonly <?php endif; ?>
+                        >
+                    </div>
+
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-4">

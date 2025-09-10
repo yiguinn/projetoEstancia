@@ -36,8 +36,9 @@
                 <input type="email" name="emailtxt" id="emailtxt" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rosa-vibrante focus:border-rosa-vibrante sm:text-sm">
             </div>
             <div>
-                <label for="telefonenum" class="block text-sm font-medium text-gray-700">Telefone (Opcional)</label>
-                <input type="tel" name="telefonenum" id="telefonenum" placeholder="(XX) XXXXX-XXXX" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rosa-vibrante focus:border-rosa-vibrante sm:text-sm">
+                <label for="telefone" class="block text-sm font-medium text-gray-700">Telefone</label>
+                <input type="tel" name="telefonenum" id="telefone" required placeholder="(XX) XXXXX-XXXX" maxlength="15" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rosa-vibrante focus:border-rosa-vibrante sm:text-sm">
+                <span id="telefone-error" class="text-red-500 text-sm mt-1" style="display: none;"></span>
             </div>
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
@@ -53,5 +54,7 @@
             Já tem uma conta? <a href="login.php" class="font-medium text-rosa-vibrante hover:underline">Faça login</a>
         </p>
     </div>
+    
+    <script src="telefone.js"></script>
 </body>
 </html>

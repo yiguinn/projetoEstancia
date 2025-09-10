@@ -29,10 +29,12 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
 <header class="bg-white border-b border-gray-100">
     <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         <div class="flex items-center space-x-3">
-            <h1 class="text-xl font-medium text-rosa-vibrante">Painel Administrativo</h1>
-            <span class="text-sm text-gray-500">- Olá, <?= htmlspecialchars($_SESSION['user_nome']) ?>!</span>
+             <h1 class="text-xl font-medium text-gray-800">Gerenciar Solicitações</h1>
         </div>
         <div>
+             <a href="painelAdmin.php" class="text-sm text-blue-600 hover:underline mr-4">
+                &larr; Voltar ao Painel
+            </a>
             <a href="../controller/authController.php?action=logout" class="text-sm text-red-600 hover:underline mr-4">
                 Sair
             </a>

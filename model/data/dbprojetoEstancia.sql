@@ -24,6 +24,14 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE galeria_imagens (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    caminho_arquivo VARCHAR(255) NOT NULL,
+    categoria ENUM('casamento', 'cerimonia', 'decoracao', 'espaco', 'evento', 'recepcao') NOT NULL,
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+ALTER TABLE info ADD COLUMN user_id INT NULL AFTER idUsuario;
 select * from info;
-
+select * from galeria_imagens;
 drop database dbprojetoEstancia;
