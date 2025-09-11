@@ -125,6 +125,21 @@ class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center 
 
 <script src="scriptcelular.js"></script>
 <script src="telefone.js"></script>
+<script src="accessibility.js"></script>
+
+<script src="accessibility.js"></script>
+
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
 
 </body>
 </html>
+
