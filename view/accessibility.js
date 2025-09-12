@@ -9,15 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnContrast = document.getElementById('btn-contrast');
     const btnIncreaseFont = document.getElementById('btn-increase-font');
     const btnDecreaseFont = document.getElementById('btn-decrease-font');
-    const btnVlibras = document.getElementById('btn-vlibras'); // <-- NOVO
-    const btnVlibrasText = document.getElementById('btn-vlibras-text'); // <-- NOVO
+    const selectColorFilter = document.getElementById('select-color-filter'); // <-- NOVO
     const btnReset = document.getElementById('btn-reset-accessibility');
 
     // --- Configurações Padrão ---
     const defaultSettings = {
         contrast: false,
         fontScale: 1.0,
-        vlibras: false // <-- NOVO
+        colorFilter: 'none' // <-- NOVO
     };
 
     // --- Carrega configurações salvas ou usa o padrão ---
@@ -41,9 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Aplica escala da fonte
         html.setAttribute('data-font-scale', settings.fontScale);
 
-        // Aplica ativação do VLibras <-- NOVO
-        html.setAttribute('data-vlibras', settings.vlibras);
-        btnVlibrasText.textContent = settings.vlibras ? 'Desativar Libras' : 'Ativar Libras';
+        // Aplica filtro de cor <-- NOVO
+        html.setAttribute('data-color-filter', settings.colorFilter);
+        selectColorFilter.value = settings.colorFilter; // Atualiza o select
     };
 
     const saveSettings = () => {
@@ -74,9 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Evento para o botão VLibras <-- NOVO
-    btnVlibras.addEventListener('click', () => {
-        settings.vlibras = !settings.vlibras;
+    // Evento para o select de filtro de cor <-- NOVO
+    selectColorFilter.addEventListener('change', () => {
+        settings.colorFilter = selectColorFilter.value;
         applyAndSave();
     });
     
