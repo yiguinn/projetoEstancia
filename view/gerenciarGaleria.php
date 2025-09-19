@@ -11,7 +11,7 @@ require_once __DIR__ . '/../model/galeriaModel.php';
 // Pega a categoria da URL (ex: ?categoria=casamento)
 $categoria = $_GET['categoria'] ?? 'casamento';
 $model = new GaleriaModel();
-$imagens = $model->listarPorCategoria($categoria);
+$imagens = $model->listarPorCategoria($categoria, false); // O "false" diz para buscar TODAS, não apenas as visíveis
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -64,13 +64,27 @@ $imagens = $model->listarPorCategoria($categoria);
                     <p class="text-gray-500 col-span-full">Nenhuma imagem encontrada para esta categoria.</p>
                 <?php else: ?>
                     <?php foreach ($imagens as $img): ?>
-                        <div class="relative group">
+                        <div class="relative group <?= $img['visivel'] ? '' : 'opacity-40' ?>">
                             <img src="uploads/galeria/<?= htmlspecialchars($img['caminho_arquivo']) ?>" alt="<?= htmlspecialchars($img['titulo']) ?>" class="w-full h-40 object-cover rounded-md">
-                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                <form action="../controller/galeriaController.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esta imagem?');">
+                            
+                            <span class="absolute top-2 left-2 text-xs font-bold text-white px-2 py-1 rounded-full <?= $img['visivel'] ? 'bg-green-600' : 'bg-gray-700' ?>">
+                                <?= $img['visivel'] ? 'Visível' : 'Oculto' ?>
+                            </span>
+
+                            <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <form action="../controller/galeriaController.php" method="POST">
                                     <input type="hidden" name="id" value="<?= $img['id'] ?>">
                                     <input type="hidden" name="categoria" value="<?= $categoria ?>">
-                                    <button type="submit" name="delete_image" class="text-white text-sm bg-red-600 px-3 py-1 rounded-md">Excluir</button>
+                                    <input type="hidden" name="status_atual" value="<?= $img['visivel'] ?>">
+                                    <button type="submit" name="toggle_visibility" class="text-white text-sm px-3 py-1 rounded-md <?= $img['visivel'] ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-green-500 hover:bg-green-600' ?>">
+                                        <?= $img['visivel'] ? 'Ocultar' : 'Mostrar' ?>
+                                    </button>
+                                </form>
+
+                                <form action="../controller/galeriaController.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esta imagem PERMANENTEMENTE?');">
+                                    <input type="hidden" name="id" value="<?= $img['id'] ?>">
+                                    <input type="hidden" name="categoria" value="<?= $categoria ?>">
+                                    <button type="submit" name="delete_image" class="text-white text-sm bg-red-600 px-3 py-1 rounded-md hover:bg-red-700">Excluir</button>
                                 </form>
                             </div>
                             <p class="text-xs text-gray-600 mt-1 truncate" title="<?= htmlspecialchars($img['titulo']) ?>"><?= htmlspecialchars($img['titulo']) ?></p>
