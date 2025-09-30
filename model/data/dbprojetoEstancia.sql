@@ -59,7 +59,40 @@ CREATE TABLE IF NOT EXISTS `galeria_imagens` (
   `uploaded_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
+-- Seleciona o banco de dados correto
 
+-- Tabela para armazenar os serviços parceiros (DJ, Fotógrafo, etc.)
+CREATE TABLE IF NOT EXISTS `parceiros` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `chave` VARCHAR(50) NOT NULL COMMENT 'Identificador único, ex: "dj", "fotografo"',
+  `titulo` VARCHAR(255) NOT NULL,
+  `descricao` TEXT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `chave_UNIQUE` (`chave` ASC))
+ENGINE = InnoDB;
+
+-- Tabela para armazenar as imagens de cada parceiro
+CREATE TABLE IF NOT EXISTS `parceiros_imagens` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `parceiro_id` INT NOT NULL COMMENT 'Chave estrangeira para a tabela `parceiros`',
+  `caminho_arquivo` VARCHAR(255) NOT NULL,
+  `titulo_alt` VARCHAR(255) NULL,
+  `visivel` TINYINT(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`),
+  INDEX `fk_imagens_parceiro_idx` (`parceiro_id` ASC),
+  CONSTRAINT `fk_imagens_parceiro`
+    FOREIGN KEY (`parceiro_id`)
+    REFERENCES `parceiros` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+-- Vamos pré-popular a tabela de parceiros com os serviços que você já tem
+INSERT INTO `parceiros` (`chave`, `titulo`, `descricao`) VALUES
+('fotografo', 'Fotografia Profissional', 'Nossa equipe de fotógrafos parceiros é especialista em casamentos, capturando a emoção e a beleza do seu grande dia com um olhar artístico e sensível.'),
+('dj', 'Som & DJ', 'A trilha sonora do seu evento é fundamental. Nossos DJs parceiros criam o clima perfeito para cada momento, com playlists personalizadas e equipamentos de ponta.'),
+('bartender', 'Serviço de Bar', 'Surpreenda seus convidados com um serviço de bar premium. Nossos parceiros oferecem desde drinks clássicos a criações exclusivas.'),
+('cerimonialista', 'Cerimonialista', 'Para que você possa relaxar e aproveitar cada segundo, nossos cerimonialistas cuidam de todo o planejamento, organização e coordenação do evento.');
 
 -- Mensagem de sucesso
 SELECT 'Banco de dados e tabelas criados com sucesso!' AS `status`;

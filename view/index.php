@@ -1,4 +1,24 @@
 <?php
+// Carrega os dados de todos os parceiros para passar ao JavaScript
+require_once __DIR__ . '/../model/parceiroModel.php';
+$parceiroModel = new ParceiroModel();
+
+$chaves_parceiros = ['fotografo', 'dj', 'bartender', 'cerimonialista'];
+$dados_parceiros_para_js = [];
+
+foreach ($chaves_parceiros as $chave) {
+    $parceiro = $parceiroModel->buscarPorChave($chave);
+    if ($parceiro) {
+        $imagens = $parceiroModel->listarImagens($parceiro['id'], true); // true = apenas visíveis
+        $dados_parceiros_para_js[$chave] = [
+            'titulo' => $parceiro['titulo'],
+            'descricao' => $parceiro['descricao'],
+            'imagens' => $imagens
+        ];
+    }
+}
+
+// O include do header vem DEPOIS de carregar os dados
 include_once("header.php");
 ?>
 
@@ -95,92 +115,59 @@ include_once("header.php");
         </div>
 
         <?php /* Services Grid */ ?>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            <?php /* Service 1 */ ?>
-            <div class="text-center">
-                <div class="w-16 h-16 bg-rosa-vibrante rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732L14.146 12.8l-1.179 4.456a1 1 0 01-1.934 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732L9.854 7.2l1.179-4.456A1 1 0 0112 2z" clip-rule="evenodd" />
-                    </svg>
-                </div>
-                <h3 class="text-xl font-medium text-gray-900 mb-3">Decoração Floral Premium</h3>
-                <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                    Arranjos florais únicos e personalizados para cada espaço da cerimônia
-                </p>
-                <div class="space-y-1 mb-6 text-sm text-gray-500">
-                    <div>• Flores frescas</div>
-                    <div>• Arranjos personalizados</div>
-                    <div>• Decoração completa</div>
-                </div>
-                <button class="border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
-                    Saiba Mais
-                </button>
-            </div>
-
-            <?php /* Service 2 */ ?>
-            <div class="text-center">
-                <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
-                    </svg>
-                </div>
-                <h3 class="text-xl font-medium text-gray-900 mb-3">Fotografia Profissional</h3>
-                <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                    Cobertura completa do casamento com fotógrafo especializado em cerimônias
-                </p>
-                <div class="space-y-1 mb-6 text-sm text-gray-500">
-                    <div>• Sessão de fotos</div>
-                    <div>• Álbum premium</div>
-                    <div>• Fotos digitais</div>
-                </div>
-                <button class="border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
-                    Saiba Mais
-                </button>
-            </div>
-
-            <?php /* Service 3 */ ?>
-            <div class="text-center">
-                <div class="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
-                    </svg>
-                </div>
-                <h3 class="text-xl font-medium text-gray-900 mb-3">Som & Música Ambiente</h3>
-                <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                    Sistema de som profissional com playlist personalizada e DJ especializado
-                </p>
-                <div class="space-y-1 mb-6 text-sm text-gray-500">
-                    <div>• DJ profissional</div>
-                    <div>• Sistema de som</div>
-                    <div>• Playlist personalizada</div>
-                </div>
-                <button class="border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
-                    Saiba Mais
-                </button>
-            </div>
-
-            <?php /* Service 4 */ ?>
-            <div class="text-center">
-                <div class="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
-                    </svg>
-                </div>
-                <h3 class="text-xl font-medium text-gray-900 mb-3">Gastronomia Especial</h3>
-                <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                    Menu exclusivo preparado por chef especializado em eventos especiais
-                </p>
-                <div class="space-y-1 mb-6 text-sm text-gray-500">
-                    <div>• Menu degustação</div>
-                    <div>• Pratos principais</div>
-                    <div>• Sobremesas especiais</div>
-                </div>
-                <button class="border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
-                    Saiba Mais
-                </button>
-            </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="text-center p-6 border border-gray-200 rounded-lg">
+        <div class="w-16 h-16 bg-blue-100 text-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-camera-retro fa-2x"></i>
         </div>
+        <h3 class="text-xl font-medium text-gray-900 mb-3">Fotografia Profissional</h3>
+        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+            Parceiros especializados em capturar cada momento inesquecível do seu evento.
+        </p>
+        <button data-service="fotografo" class="open-service-modal border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
+            Saiba Mais
+        </button>
     </div>
+
+    <div class="text-center p-6 border border-gray-200 rounded-lg">
+        <div class="w-16 h-16 bg-purple-100 text-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-compact-disc fa-2x"></i>
+        </div>
+        <h3 class="text-xl font-medium text-gray-900 mb-3">Som & DJ</h3>
+        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+            Equipamentos de ponta e os melhores DJs para garantir a trilha sonora perfeita.
+        </p>
+        <button data-service="dj" class="open-service-modal border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
+            Saiba Mais
+        </button>
+    </div>
+
+    <div class="text-center p-6 border border-gray-200 rounded-lg">
+        <div class="w-16 h-16 bg-orange-100 text-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-martini-glass-citrus fa-2x"></i>
+        </div>
+        <h3 class="text-xl font-medium text-gray-900 mb-3">Serviço de Bar</h3>
+        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+            Bartenders experientes e um cardápio de drinks criativo para seus convidados.
+        </p>
+        <button data-service="bartender" class="open-service-modal border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
+            Saiba Mais
+        </button>
+    </div>
+
+    <div class="text-center p-6 border border-gray-200 rounded-lg">
+        <div class="w-16 h-16 bg-green-100 text-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-clipboard-list fa-2x"></i>
+        </div>
+        <h3 class="text-xl font-medium text-gray-900 mb-3">Cerimonialista</h3>
+        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+            Organização e planejamento impecáveis para que seu único trabalho seja aproveitar o dia.
+        </p>
+        <button data-service="cerimonialista" class="open-service-modal border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
+            Saiba Mais
+        </button>
+    </div>
+</div>
 </section>
 
 <?php /* Gallery Section */ ?>
@@ -552,5 +539,11 @@ include_once("header.php");
         </div>
     </div>
 </section>
+
+</section>
+
+<script>
+    const serviceData = <?= json_encode($dados_parceiros_para_js); ?>;
+</script>
 
 <?php include_once("footer.php"); ?>

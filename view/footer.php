@@ -50,6 +50,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<div id="service-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-[9999] hidden">
+    <div class="absolute inset-0"></div>
+
+    <div class="relative bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
+        <div class="p-6 md:p-8">
+            <button id="close-service-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800">
+                <i class="fas fa-times fa-2x"></i>
+            </button>
+
+            <h2 id="modal-service-title" class="text-3xl font-bold text-rosa-vibrante mb-4"></h2>
+            
+            <p id="modal-service-description" class="text-gray-600 leading-relaxed mb-6"></p>
+
+            <div id="modal-service-gallery" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                </div>
+        </div>
+    </div>
+</div>
+
 <footer class="bg-gray-900 text-white px-4 md:px-8 py-12">
     <div class="max-w-7xl mx-auto">
         <div class="grid md:grid-cols-4 gap-8 mb-8">
@@ -126,6 +145,7 @@ class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center 
 <script src="scriptcelular.js"></script>
 <script src="telefone.js"></script>
 <script src="accessibility.js"></script>
+<script src="service-modal.js"></script>
 
 <script src="accessibility.js"></script>
 

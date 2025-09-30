@@ -58,8 +58,15 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
                     <a href="gerenciarGaleria.php?categoria=recepcao" class="text-center bg-gray-50 p-3 rounded-md hover:bg-gray-100">Recepção</a>
                 </div>
             </div>
-
+     <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+    <i class="fas fa-handshake fa-2x text-teal-500 mb-4"></i>
+    <h2 class="text-xl font-semibold text-gray-800 mb-2">Serviços Parceiros</h2>
+    <p class="text-gray-600 mb-4">Edite as descrições e as fotos dos serviços parceiros que aparecem nos modais.</p>
+    <a href="gerenciarParceiros.php" class="font-medium text-teal-600 hover:underline">Gerenciar Parceiros &rarr;</a>
+</div>
         </div>
+
+   
     </main>
 </body>
 </html>
