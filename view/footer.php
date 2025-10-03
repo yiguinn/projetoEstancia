@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <h3 class="text-xl font-medium">Estância Ilha da Madeira</h3>
                     </div>
                 </div>
-                <p class="text-gray-400 mb-6 max-w-md">Transformando sonhos em realidade há mais de 15 anos. Seu casamento perfeito nos espera em meio à natureza exuberante de São Paulo.</p>
+                <p class="text-gray-400 mb-6 max-w-md">Transformando sonhos em realidade há mais de 25 anos. Seu casamento perfeito nos espera em meio à natureza exuberante de São Paulo.</p>
                 <div class="flex space-x-4">
                     <a href="#" class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
                         <span class="text-sm font-bold">f</span>
@@ -146,7 +146,7 @@ class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center 
 <script src="telefone.js"></script>
 <script src="accessibility.js"></script>
 <script src="service-modal.js"></script>
-
+<script src="read-more.js"></script>
 <script src="accessibility.js"></script>
 
 <div vw class="enabled">

@@ -86,11 +86,11 @@ include_once("header.php");
         <?php /* Statistics */ ?>
         <div class="grid grid-cols-3 gap-8 pt-16 mt-16 border-t border-gray-200">
             <div class="text-center">
-                <div class="text-4xl font-medium text-rosa-vibrante mb-2">300+</div>
-                <div class="text-gray-600">Casamentos Realizados</div>
+                <div class="text-4xl font-medium text-rosa-vibrante mb-2">Centenas</div>
+                <div class="text-gray-600">De Casamentos Realizados</div>
             </div>
             <div class="text-center">
-                <div class="text-4xl font-medium text-rosa-vibrante mb-2">15+</div>
+                <div class="text-4xl font-medium text-rosa-vibrante mb-2">25+</div>
                 <div class="text-gray-600">Anos de Experiência</div>
             </div>
             <div class="text-center">
@@ -266,16 +266,16 @@ include_once("header.php");
                 </h2>
 
                 <div class="space-y-6 text-gray-600 leading-relaxed">
-                    <p>
-                        Há mais de 15 anos, transformamos sonhos em realidade, criando cenários únicos para os momentos mais especiais da vida de nossos casais.
-                    </p>
-                    <p>
-                        A Estância Ilha da Madeira nasceu do sonho de criar um espaço onde a natureza e a elegância se encontram para celebrar o amor. O que começou como uma simples loja de madeira evoluiu para um dos mais belos espaços de casamento de São Paulo.
-                    </p>
-                    <p>
-                        Nossa paixão está em cada detalhe: desde a escolha das flores até a disposição das mesas, tudo é pensado para tornar seu dia único e inesquecível.
-                    </p>
-                </div>
+    <p class="text-lg">
+        Há <strong>25 anos</strong>, nossa paixão é transformar o sonho do casamento perfeito em realidade. Uma jornada dedicada a construir histórias de amor, lapidadas com a confiança de centenas de casais que nos escolheram para o seu grande dia.
+    </p>
+    <p>
+        Acreditamos que a excelência está nos detalhes. Por isso, estamos em uma busca constante por aperfeiçoamento, desde a curadoria de nossas decorações até a qualidade de nossos materiais. Nosso objetivo vai além de realizar o sonho dos noivos; buscamos emocionar cada convidado, fazendo com que se sintam bem-vindos e percebam a organização impecável como a assinatura de nosso serviço.
+    </p>
+    <p>
+        Cada evento é uma promessa de que a dedicação, o cuidado e a busca pela perfeição farão do seu casamento um momento autêntico e inesquecível para todos.
+    </p>
+</div>
 
                 <div class="bg-rosa-suave/30 p-6 rounded-xl">
                     <div class="flex items-start space-x-4">
@@ -291,35 +291,37 @@ include_once("header.php");
 
                 <div class="grid grid-cols-2 gap-6">
                     <div class="text-center p-4 bg-gray-50 rounded-lg">
-                        <div class="text-2xl font-medium text-rosa-vibrante mb-1">Maria Silva</div>
+                        <div class="text-2xl font-medium text-rosa-vibrante mb-1">Michelle Mendonça</div>
                         <div class="text-sm text-gray-600">Fundadora & CEO</div>
                     </div>
-                    <div class="text-center p-4 bg-gray-50 rounded-lg">
-                        <div class="text-2xl font-medium text-rosa-vibrante mb-1">João Santos</div>
-                        <div class="text-sm text-gray-600">Diretor Criativo</div>
-                    </div>
+                    
                 </div>
             </div>
 
             <?php /* Right Content */ ?>
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    alt="Nossa história" class="w-full h-[500px] object-cover rounded-2xl shadow-2xl">
+<div class="relative">
+    <img src="imagens/img8.png" alt="Nossa história" class="w-full h-[500px] object-cover rounded-2xl shadow-2xl">
 
-                <?php /* Testimonial Card */ ?>
-                <div class="absolute bottom-8 right-8 bg-white rounded-xl p-6 shadow-lg max-w-sm">
-                    <div class="flex items-center space-x-1 mb-3">
-                        <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
-                    </div>
-                    <p class="text-gray-700 text-sm mb-3 italic">
-                        "Foi exatamente como sonhávamos. Cada detalhe perfeito!"
-                    </p>
-                    <div class="text-sm font-medium text-gray-900">- Marina & Carlos</div>
+    <?php /* Testimonial Card com "Ler Mais" */ ?>
+    <div class="absolute bottom-8 right-8 bg-white rounded-xl p-6 shadow-lg max-w-sm">
+        <div class="flex items-center mb-4">
+            <img src="https://placehold.co/48x48/EED0E0/C53366?text=I" alt="Avatar da cliente" class="w-10 h-10 rounded-full mr-3">
+            <div>
+                <p class="font-semibold text-gray-800 text-sm">Isabelly</p>
+                <div class="text-yellow-400">
+                    <i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i>
                 </div>
             </div>
         </div>
+        
+        <p class="text-gray-600 text-sm italic review-text" data-full-text="Não podia ter escolhido melhor, o lugar é incrível!!! A Michelle e sua equipe é mais ainda. Tudo muito bem organizado, no dia não precisei me preocupar com nada, somente aproveitei cada detalhe. Foi como eu sempre sonhei, a decoração estava maravilhosa, tanto da cerimônia como do salão e a comida muito gostosa! Todos os convidados saíram maravilhados, elogiando muitooo. Foi simplesmente perfeito, realmente não tem nada que saiu do conformes ou que eu não tenha gostado, estou encantada com a experiência incrível que tivemos. Recomendo de olhos fechados, e desejo que todos os noivos tenham uma experiência tão especial quanto a que tivemos nesse momento tão sonhado de nossas vidas">
+            </p>
+        <button class="ler-mais-btn text-rosa-vibrante font-semibold mt-2 text-sm text-left hover:underline">Ler mais</button>
+    </div>
+</div>
+        </div>
 
-        <?php /* Statistics Row */ ?>
+       <?php  /* Statistics Row 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-gray-200">
             <div class="text-center">
                 <div class="text-3xl font-medium text-rosa-vibrante mb-2">Top 1</div>
@@ -337,7 +339,7 @@ include_once("header.php");
                 <div class="text-3xl font-medium text-rosa-vibrante mb-2">ISO</div>
                 <div class="text-gray-600 text-sm">Certificado<br>Qualidade Garantida</div>
             </div>
-        </div>
+        </div>*/ ?>
     </div>
 </section>
 
