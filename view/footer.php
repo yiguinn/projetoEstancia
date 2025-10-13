@@ -133,9 +133,9 @@ class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center 
                     <p>&copy; 2025 Estância Ilha da Madeira. Todos os direitos reservados.</p>
                 </div>
                 <div class="text-gray-400 text-sm md:text-right">
-                    <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
+                    <a href="../view/PRIVACY_POLICY.php" class="hover:text-white transition-colors">Política de Privacidade</a>
                     <span class="mx-2">|</span>
-                    <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
+                    <a href="../view/TERMS_AND_CONDITIONS.php" class="hover:text-white transition-colors">Termos de Uso</a>
                 </div>
             </div>
         </div>
