@@ -98,4 +98,4 @@ INSERT INTO `parceiros` (`chave`, `titulo`, `descricao`) VALUES
 SELECT 'Banco de dados e tabelas criados com sucesso!' AS `status`;
 select * from info;
 select * from galeria_imagens;
-drop database dbprojetoEstancia;
+

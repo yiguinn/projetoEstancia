@@ -13,7 +13,7 @@ $is_admin = $is_logged_in && $_SESSION['user_role'] === 'admin';
     <title>Estancia Ilha da Madeira - Casamentos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="view/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
@@ -80,7 +80,7 @@ $is_admin = $is_logged_in && $_SESSION['user_role'] === 'admin';
             </button>
 
             <a href="index.php" class="flex items-center space-x-3 pl-12">
-                <img src="imagens/logo.png" width="50" alt="Logo Estância">
+                <img src="view/imagens/logo.png" width="50" alt="Logo Estância">
                 <div>
                     <h1 class="text-xl font-medium text-rosa-vibrante">Estância</h1>
                     <p class="text-sm text-gray-600 -mt-1">Ilha da Madeira</p>
@@ -93,19 +93,19 @@ $is_admin = $is_logged_in && $_SESSION['user_role'] === 'admin';
                 <a href="index.php#galeria" class="nav-link text-gray-700 hover:text-rosa-vibrante">Galeria</a>
                 
                 <?php if ($is_admin): ?>
-                    <a href="painelAdmin.php" class="nav-link font-bold text-blue-600 hover:text-blue-800">Painel Admin</a>
+                    <a href="view/painelAdmin.php" class="nav-link font-bold text-blue-600 hover:text-blue-800">Painel Admin</a>
                 <?php endif; ?>
             </nav>
 
             <div class="hidden md:flex items-center space-x-4">
                 <?php if ($is_logged_in): ?>
                     <span class="text-sm text-gray-600">Olá, <?= htmlspecialchars($_SESSION['user_nome']) ?>!</span>
-                    <a href="../controller/authController.php?action=logout" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm">
+                    <a href="controller/authController.php?action=logout" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm">
                         Sair
                     </a>
                 <?php else: ?>
-                    <a href="login.php" class="text-gray-700 hover:text-rosa-vibrante text-sm">Login</a>
-                    <a href="cadastro.php" class="bg-rosa-vibrante hover:opacity-90 text-white px-4 py-2 rounded-lg text-sm">
+                    <a href="view/login.php" class="text-gray-700 hover:text-rosa-vibrante text-sm">Login</a>
+                    <a href="view/cadastro.php" class="bg-rosa-vibrante hover:opacity-90 text-white px-4 py-2 rounded-lg text-sm">
                         Cadastre-se
                     </a>
                 <?php endif; ?>
@@ -176,3 +176,4 @@ $is_admin = $is_logged_in && $_SESSION['user_role'] === 'admin';
             <filter id="achromatopsia"><feColorMatrix type="matrix" values="0.299, 0.587, 0.114, 0, 0, 0.299, 0.587, 0.114, 0, 0, 0.299, 0.587, 0.114, 0, 0, 0, 0, 0, 1, 0"/></filter>
         </defs>
     </svg>
+</body>

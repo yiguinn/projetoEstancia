@@ -63,7 +63,7 @@ include_once("header.php");
             <?php /* Right Content */ ?>
             <div class="relative">
                 <img
-                    src="imagens/img7.png"
+                    src="view/imagens/img7.png"
                     alt="Cerimônia de casamento"
                     class="w-full h-[500px] object-cover rounded-2xl shadow-2xl" />
 
@@ -187,8 +187,8 @@ include_once("header.php");
         <?php /* Gallery Grid */ ?>
         <div class="grid md:grid-cols-3 gap-6">
             <?php /* Gallery Item 1 */ ?>
-            <a href="galeriaCerimonia.php" class="relative group overflow-hidden rounded-2xl">
-                <img src="imagens/img2.png" alt="Cerimônia" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+            <a href="view/galeriaCerimonia.php" class="relative group overflow-hidden rounded-2xl">
+                <img src="view/imagens/img2.png" alt="Cerimônia" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Cerimônia</span>
                 </div>
@@ -198,8 +198,8 @@ include_once("header.php");
             </a>
 
             <?php /* Gallery Item 2 */ ?>
-            <a href="galeriaEvento.php" class="relative group overflow-hidden rounded-2xl">
-                <img src="imagens/img4.png" alt="Evento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+            <a href="view/galeriaEvento.php" class="relative group overflow-hidden rounded-2xl">
+                <img src="view/imagens/img4.png" alt="Evento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Evento</span>
                 </div>
@@ -209,8 +209,8 @@ include_once("header.php");
             </a>
 
             <?php /* Gallery Item 3 */ ?>
-            <a href="galeriaCasamento.php" class="relative group overflow-hidden rounded-2xl">
-                <img src="imagens/img3.png" alt="Casamento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+            <a href="view/galeriaCasamento.php" class="relative group overflow-hidden rounded-2xl">
+                <img src="view/imagens/img3.png" alt="Casamento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Casamento</span>
                 </div>
@@ -220,8 +220,8 @@ include_once("header.php");
             </a>
 
             <?php /* Gallery Item 4 */ ?>
-            <a href="galeriaRecepcao.php" class="relative group overflow-hidden rounded-2xl">
-                <img src="imagens/img6.png" alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+            <a href="view/galeriaRecepcao.php" class="relative group overflow-hidden rounded-2xl">
+                <img src="view/imagens/img6.png" alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Recepção</span>
                 </div>
@@ -231,8 +231,8 @@ include_once("header.php");
             </a>
 
             <?php /* Gallery Item 5 */ ?>
-            <a href="galeriaDecoracao.php" class="relative group overflow-hidden rounded-2xl">
-                <img src="imagens/img1.png" alt="Decoração" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+            <a href="view/galeriaDecoracao.php" class="relative group overflow-hidden rounded-2xl">
+                <img src="view/imagens/img1.png" alt="Decoração" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Decoração</span>
                 </div>
@@ -242,8 +242,8 @@ include_once("header.php");
             </a>
 
             <?php /* Gallery Item 6 */ ?>
-            <a href="galeriaEspaco.php" class="relative group overflow-hidden rounded-2xl">
-                <img src="imagens/img5.png" alt="Espaço" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
+            <a href="view/galeriaEspaco.php" class="relative group overflow-hidden rounded-2xl">
+                <img src="view/imagens/img5.png" alt="Espaço" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Espaço</span>
                 </div>
@@ -300,7 +300,7 @@ include_once("header.php");
 
             <?php /* Right Content */ ?>
 <div class="relative">
-    <img src="imagens/img8.png" alt="Nossa história" class="w-full h-[500px] object-cover rounded-2xl shadow-2xl">
+    <img src="view/imagens/img8.png" alt="Nossa história" class="w-full h-[500px] object-cover rounded-2xl shadow-2xl">
 
     <?php /* Testimonial Card com "Ler Mais" */ ?>
     <div class="absolute bottom-8 right-8 bg-white rounded-xl p-6 shadow-lg max-w-sm">

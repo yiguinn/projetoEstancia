@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         // Envia os dados do formulário para o controller em segundo plano
-        const response = await fetch("../controller/formController.php", {
+        const response = await fetch("controller/formController.php", {
           method: "POST",
           body: new FormData(form),
         });
@@ -98,7 +98,7 @@ class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center 
                     </a>
                     <a href="https://api.whatsapp.com/send/?phone=5511961006060&text=Olá%21+Gostaria+de+saber+mais+sobre+os+serviços+da+Estância+Ilha+da+Madeira+para+casamentos.&type=phone_number&app_absent=0" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
                         </svg>
                     </a>
                 </div>
@@ -133,21 +133,20 @@ class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center 
                     <p>&copy; 2025 Estância Ilha da Madeira. Todos os direitos reservados.</p>
                 </div>
                 <div class="text-gray-400 text-sm md:text-right">
-                    <a href="../view/PRIVACY_POLICY.php" class="hover:text-white transition-colors">Política de Privacidade</a>
+                    <a href="view/PRIVACY_POLICY.php" class="hover:text-white transition-colors">Política de Privacidade</a>
                     <span class="mx-2">|</span>
-                    <a href="../view/TERMS_AND_CONDITIONS.php" class="hover:text-white transition-colors">Termos de Uso</a>
+                    <a href="view/TERMS_AND_CONDITIONS.php" class="hover:text-white transition-colors">Termos de Uso</a>
                 </div>
             </div>
         </div>
     </div>
 </footer>
 
-<script src="scriptcelular.js"></script>
-<script src="telefone.js"></script>
-<script src="accessibility.js"></script>
-<script src="service-modal.js"></script>
-<script src="read-more.js"></script>
-<script src="accessibility.js"></script>
+<script src="view/scriptcelular.js"></script>
+<script src="view/telefone.js"></script>
+<script src="view/accessibility.js"></script>
+<script src="view/service-modal.js"></script>
+<script src="view/read-more.js"></script>
 
 <div vw class="enabled">
   <div vw-access-button class="active"></div>
@@ -162,4 +161,3 @@ class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center 
 
 </body>
 </html>
-
