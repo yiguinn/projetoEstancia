@@ -66,7 +66,7 @@ if (isset($_POST['login'])) {
 // --- LÓGICA DE LOGOUT ---
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     session_destroy();
-    header('Location: ../view/index.php'); // Ao sair, volta para a home do site
+    header('Location: ../index.php'); // Ao sair, volta para a home do site
     exit();
 }
 
