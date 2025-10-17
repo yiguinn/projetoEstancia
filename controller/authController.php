@@ -45,14 +45,16 @@ if (isset($_POST['login'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_nome'] = $user['nome'];
         $_SESSION['user_role'] = $user['role'];
-        $_SESSION['user_email'] = $user['email'];       // <-- Adicionado
-        $_SESSION['user_telefone'] = $user['telefone']; // <-- Adicionado
+        $_SESSION['user_email'] = $user['email'];
+        $_SESSION['user_telefone'] = $user['telefone'];
 
         // Redireciona com base no cargo (role) do usuário
         if ($user['role'] === 'admin') {
-            header('Location: ../view/painelAdmin.php'); // Admin vai para o painel principal
+            // Admin vai para o painel principal (dentro de /view)
+            header('Location: ../view/painelAdmin.php'); 
         } else {
-            header('Location: ../view/index.php'); // Usuário comum volta para o site
+            // CORRIGIDO: Usuário comum volta para a raiz do site
+            header('Location: ../index.php'); 
         }
         exit();
 
@@ -66,7 +68,8 @@ if (isset($_POST['login'])) {
 // --- LÓGICA DE LOGOUT ---
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     session_destroy();
-    header('Location: ../index.php'); // Ao sair, volta para a home do site
+    // CORRIGIDO: Ao sair, volta para a raiz do site
+    header('Location: ../index.php');
     exit();
 }
 
