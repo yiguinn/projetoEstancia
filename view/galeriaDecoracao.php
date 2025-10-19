@@ -22,7 +22,7 @@ $imagens = $model->listarPorCategoria($categoria);
     <section class="min-h-screen px-4 md:px-8 py-16">
         <div class="max-w-7xl mx-auto">
             <div class="flex items-center space-x-4 mb-8">
-                <a href="index.php#galeria" class="text-gray-700 hover:text-rosa-vibrante transition-colors">
+                <a href="../index.php#galeria" class="text-gray-700 hover:text-rosa-vibrante transition-colors">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>
                 </a>
                 <h1 class="text-3xl md:text-4xl font-normal text-rosa-vibrante">Galeria de Decoração</h1>
