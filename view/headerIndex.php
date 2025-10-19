@@ -88,9 +88,9 @@ $is_admin = $is_logged_in && $_SESSION['user_role'] === 'admin';
             </a>
 
             <nav class="hidden md:flex items-center space-x-8">
-    <a href="/#inicio" class="nav-link text-gray-700 hover:text-rosa-vibrante">Início</a> {/* CORRIGIDO */}
-    <a href="/#servicos" class="nav-link text-gray-700 hover:text-rosa-vibrante">Serviços</a> {/* CORRIGIDO */}
-    <a href="/#galeria" class="nav-link text-gray-700 hover:text-rosa-vibrante">Galeria</a> {/* CORRIGIDO */}
+    <a href="/#inicio" class="nav-link text-gray-700 hover:text-rosa-vibrante">Início</a> 
+    <a href="/#servicos" class="nav-link text-gray-700 hover:text-rosa-vibrante">Serviços</a> 
+    <a href="/#galeria" class="nav-link text-gray-700 hover:text-rosa-vibrante">Galeria</a> 
     
     <?php if ($is_admin): ?>
         <a href="/view/painelAdmin.php" class="nav-link font-bold text-blue-600 hover:text-blue-800">Painel Admin</a> 
