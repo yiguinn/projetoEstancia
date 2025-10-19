@@ -61,40 +61,20 @@ include_once("headerIndex.php");
             </div>
 
             <?php /* Right Content */ ?>
-            <div class="relative">
-                <img
-                    src="view/imagens/img7.png"
-                    alt="Cerimônia de casamento"
-                    class="w-full h-[500px] object-cover rounded-2xl shadow-2xl" />
-
-                <div class="absolute bottom-8 left-8 bg-white rounded-xl p-4 shadow-lg">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-full bg-rosa-suave flex items-center justify-center">
-                            <svg class="w-5 h-5 text-rosa-vibrante" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="font-medium text-gray-900">Ambiente Natural</div>
-                            <div class="text-sm text-gray-500">Paisagem Exuberante</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <?php /* Statistics */ ?>
-        <div class="grid grid-cols-3 gap-8 pt-16 mt-16 border-t border-gray-200">
+           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 pt-12 md:pt-16 mt-12 md:mt-16 border-t border-gray-200"> {/* CORRIGIDO: grid-cols-1 md:grid-cols-3 e ajuste nos espaçamentos/gaps */}
             <div class="text-center">
-                <div class="text-4xl font-medium text-rosa-vibrante mb-2">Centenas</div>
+          
+                <div class="text-3xl md:text-4xl font-medium text-rosa-vibrante mb-2">Centenas</div> 
                 <div class="text-gray-600">De Casamentos Realizados</div>
             </div>
             <div class="text-center">
-                <div class="text-4xl font-medium text-rosa-vibrante mb-2">25+</div>
+           
+                <div class="text-3xl md:text-4xl font-medium text-rosa-vibrante mb-2">25+</div>
                 <div class="text-gray-600">Anos de Experiência</div>
             </div>
             <div class="text-center">
-                <div class="text-4xl font-medium text-rosa-vibrante mb-2">100%</div>
+           
+                <div class="text-3xl md:text-4xl font-medium text-rosa-vibrante mb-2">100%</div>
                 <div class="text-gray-600">Sonhos Realizados</div>
             </div>
         </div>
