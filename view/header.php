@@ -80,7 +80,7 @@ $is_admin = $is_logged_in && $_SESSION['user_role'] === 'admin';
             </button>
 
             <a href="index.php" class="flex items-center space-x-3 pl-12">
-                <img src="imagens/logo.png" width="50" alt="Logo Estância">
+                <img src="../view/imagens/logo.png" width="50" alt="Logo Estância">
                 <div>
                     <h1 class="text-xl font-medium text-rosa-vibrante">Estância</h1>
                     <p class="text-sm text-gray-600 -mt-1">Ilha da Madeira</p>
