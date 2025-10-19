@@ -548,4 +548,4 @@ include_once("headerIndex.php");
     const serviceData = <?= json_encode($dados_parceiros_para_js); ?>;
 </script>
 
-<?php include_once("footer.php"); ?>
+<?php include_once("footerIndex.php"); ?>

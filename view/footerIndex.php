@@ -144,7 +144,7 @@ class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center 
 
 <script src="view/scriptcelular.js"></script>
 <script src="view/telefone.js"></script>
-<script src="../view/accessibility.js"></script>
+<script src="view/accessibility.js"></script>
 <script src="view/service-modal.js"></script>
 <script src="view/read-more.js"></script>
 
