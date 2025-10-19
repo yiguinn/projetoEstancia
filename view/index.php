@@ -84,7 +84,7 @@ include_once("headerIndex.php");
         </div>
 
         <?php /* Statistics */ ?>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 pt-12 md:pt-16 mt-12 md:mt-16 border-t border-gray-200"> {/* CORRIGIDO: grid-cols-1 md:grid-cols-3 e ajuste nos espaçamentos/gaps */}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 pt-12 md:pt-16 mt-12 md:mt-16 border-t border-gray-200"> 
             <div class="text-center">
                 
                 <div class="text-3xl md:text-4xl font-medium text-rosa-vibrante mb-2">Centenas</div> 
