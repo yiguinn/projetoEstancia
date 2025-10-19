@@ -187,7 +187,7 @@ include_once("headerIndex.php");
         <?php /* Gallery Grid */ ?>
         <div class="grid md:grid-cols-3 gap-6">
             <?php /* Gallery Item 1 */ ?>
-            <a href="view/galeriaCerimonia.php" class="relative group overflow-hidden rounded-2xl">
+            <a href="/galeria/cerimonia" class="relative group overflow-hidden rounded-2xl"> {/* CORRIGIDO */}
                 <img src="view/imagens/img2.png" alt="Cerimônia" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Cerimônia</span>
@@ -198,7 +198,7 @@ include_once("headerIndex.php");
             </a>
 
             <?php /* Gallery Item 2 */ ?>
-            <a href="view/galeriaEvento.php" class="relative group overflow-hidden rounded-2xl">
+            <a href="/galeria/evento" class="relative group overflow-hidden rounded-2xl"> {/* CORRIGIDO */}
                 <img src="view/imagens/img4.png" alt="Evento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Evento</span>
@@ -209,7 +209,7 @@ include_once("headerIndex.php");
             </a>
 
             <?php /* Gallery Item 3 */ ?>
-            <a href="view/galeriaCasamento.php" class="relative group overflow-hidden rounded-2xl">
+            <a href="/galeria/casamento" class="relative group overflow-hidden rounded-2xl"> {/* CORRIGIDO */}
                 <img src="view/imagens/img3.png" alt="Casamento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Casamento</span>
@@ -220,7 +220,7 @@ include_once("headerIndex.php");
             </a>
 
             <?php /* Gallery Item 4 */ ?>
-            <a href="view/galeriaRecepcao.php" class="relative group overflow-hidden rounded-2xl">
+            <a href="/galeria/recepcao" class="relative group overflow-hidden rounded-2xl"> {/* CORRIGIDO */}
                 <img src="view/imagens/img6.png" alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Recepção</span>
@@ -231,7 +231,7 @@ include_once("headerIndex.php");
             </a>
 
             <?php /* Gallery Item 5 */ ?>
-            <a href="view/galeriaDecoracao.php" class="relative group overflow-hidden rounded-2xl">
+            <a href="/galeria/decoracao" class="relative group overflow-hidden rounded-2xl"> {/* CORRIGIDO */}
                 <img src="view/imagens/img1.png" alt="Decoração" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Decoração</span>
@@ -242,7 +242,7 @@ include_once("headerIndex.php");
             </a>
 
             <?php /* Gallery Item 6 */ ?>
-            <a href="view/galeriaEspaco.php" class="relative group overflow-hidden rounded-2xl">
+            <a href="/galeria/espaco" class="relative group overflow-hidden rounded-2xl"> {/* CORRIGIDO */}
                 <img src="view/imagens/img5.png" alt="Espaço" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Espaço</span>
