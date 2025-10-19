@@ -15,7 +15,8 @@ $is_admin = $is_logged_in && $_SESSION['user_role'] === 'admin';
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../view/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
+    <link rel="icon" type="image/png" href="/view/imagens/logo.png">
+    <link rel="apple-touch-icon" href="/view/imagens/logo.png">
     <style>
         /* Estilos para o modo de Alto Contraste */
         html[data-theme='high-contrast'] {
