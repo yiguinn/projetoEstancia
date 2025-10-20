@@ -13,7 +13,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Administrativo - Estância</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="   style.css">
+    <link rel="stylesheet" href="view/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body class="bg-gray-100">
@@ -25,7 +25,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
             <p class="text-sm text-gray-500">Bem-vindo, <?= htmlspecialchars($_SESSION['user_nome']) ?>!</p>
         </div>
         <div class="flex items-center space-x-4">
-            <a href="index.php" class="text-sm text-rosa-vibrante hover:underline">
+            <a href="../" class="text-sm text-rosa-vibrante hover:underline">
                 Voltar ao Site
             </a>
             <a href="../controller/authController.php?action=logout" class="text-sm text-red-600 hover:underline">
