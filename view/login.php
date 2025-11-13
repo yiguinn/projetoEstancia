@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Estância Ilha da Madeira</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../view/style.css">
+    <link rel="icon" type="image/png" href="/view/imagens/logo.png">
+    <link rel="apple-touch-icon" href="/view/imagens/logo.png">
+    
 </head>
 <body class="bg-gray-100 flex items-center justify-center h-screen">
     <div class="w-full max-w-sm bg-white p-8 rounded-lg shadow-md">
         <a href="index.php" class="flex justify-center mb-6">
-            <img src="imagens/logo.png" width="60" alt="Logo Estância">
+            <img src="../view/imagens/logo.png" width="60" alt="Logo Estância">
         </a>
         <h1 class="text-2xl font-bold text-center text-rosa-vibrante mb-6">Acessar sua Conta</h1>
 
