@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.imagens && data.imagens.length > 0) {
             data.imagens.forEach(img => {
                 const imgElement = document.createElement('img');
-                imgElement.src = `../view/uploads/parceiros/${img.caminho_arquivo}`;
+                imgElement.src = `view/uploads/parceiros/${img.caminho_arquivo}`;
                 imgElement.alt = img.titulo_alt;
                 imgElement.className = 'w-full h-40 object-cover rounded-lg';
                 modalGallery.appendChild(imgElement);
