@@ -65,7 +65,7 @@ $imagens = $model->listarPorCategoria($categoria, false); // O "false" diz para 
                 <?php else: ?>
                     <?php foreach ($imagens as $img): ?>
                         <div class="relative group <?= $img['visivel'] ? '' : 'opacity-40' ?>">
-                            <img src="view/uploads/galeria/<?= htmlspecialchars($img['caminho_arquivo']) ?>" alt="<?= htmlspecialchars($img['titulo']) ?>" class="w-full h-40 object-cover rounded-md">
+                            <img src="uploads/galeria/<?= htmlspecialchars($img['caminho_arquivo']) ?>" alt="<?= htmlspecialchars($img['titulo']) ?>" class="w-full h-40 object-cover rounded-md">
                             
                             <span class="absolute top-2 left-2 text-xs font-bold text-white px-2 py-1 rounded-full <?= $img['visivel'] ? 'bg-green-600' : 'bg-gray-700' ?>">
                                 <?= $img['visivel'] ? 'Visível' : 'Oculto' ?>
