@@ -117,7 +117,7 @@ $message = $messages[$status] ?? null;
                         <?php else: ?>
                             <?php foreach ($imagens as $img): ?>
                                 <div class="relative group <?= $img['visivel'] ? '' : 'opacity-40' ?>">
-                                    <img src="uploads/parceiros/<?= htmlspecialchars($img['caminho_arquivo']) ?>" alt="<?= htmlspecialchars($img['titulo_alt']) ?>" class="w-full h-40 object-cover rounded-md">
+                                    <img src="../view/uploads/parceiros/<?= htmlspecialchars($img['caminho_arquivo']) ?>" alt="<?= htmlspecialchars($img['titulo_alt']) ?>" class="w-full h-40 object-cover rounded-md">
                                     <span class="absolute top-2 left-2 text-xs font-bold text-white px-2 py-1 rounded-full <?= $img['visivel'] ? 'bg-green-600' : 'bg-gray-700' ?>"><?= $img['visivel'] ? 'Visível' : 'Oculto' ?></span>
                                     <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                         <form action="../controller/parceiroController.php" method="POST">
