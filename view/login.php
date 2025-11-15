@@ -6,8 +6,8 @@
     <title>Login - Estância Ilha da Madeira</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../view/style.css">
-    <link rel="icon" type="image/png" href="/view/imagens/logo.png">
-    <link rel="apple-touch-icon" href="/view/imagens/logo.png">
+    <link rel="icon" type="image/png" href="../view/imagens/logo.png">
+    <link rel="apple-touch-icon" href="../view/imagens/logo.png">
     
 </head>
 <body class="bg-gray-100 flex items-center justify-center h-screen">
