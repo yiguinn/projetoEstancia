@@ -120,7 +120,7 @@ class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center 
                 <div class="space-y-2 text-gray-400">
                     <p>(11) 96100-6060</p>
                     <p>sitio_ilhadamadeira@hotmail.com</p>
-                    <p>Estrada da Vargem Grande, 3151</p>
+                    <p>Estrada da Vargem Grande, 3261</p>
                     <p>São Paulo, SP</p>
                     <p class="pt-2 text-sm">Segunda a Sexta: 8h às 18h</p>
                 </div>

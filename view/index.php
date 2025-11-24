@@ -399,7 +399,7 @@ include_once("view/headerIndex.php");
                         </div>
                         <div>
                             <h3 class="font-medium text-gray-900 mb-1">Localização</h3>
-                            <p class="text-rosa-vibrante font-medium">Estrada da Vargem Grande, 3151 - São Paulo, SP</p>
+                            <p class="text-rosa-vibrante font-medium">Estrada da Vargem Grande, 3261 - São Paulo, SP</p>
                             <p class="text-sm text-gray-600">Fácil acesso e estacionamento</p>
                         </div>
                     </div>
