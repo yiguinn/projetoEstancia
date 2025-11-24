@@ -15,6 +15,9 @@
                 <p class="text-gray-400 mb-6 max-w-md">Transformando sonhos em realidade há mais de 25 anos.</p>
                 
                 <div class="flex space-x-4">
+                <a href="https://www.facebook.com/ilha.madeira.1/?locale=pt_BR" class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+                        <span class="text-sm font-bold">f</span>
+                    </a>
                     <a href="https://www.instagram.com/estanciailhadamadeira" target="_blank" class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center hover:opacity-80 transition-opacity text-white">
                         <i class="fa-brands fa-instagram text-xl"></i>
                     </a>
