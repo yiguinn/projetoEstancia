@@ -110,6 +110,46 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
             
             <button id="mobile-menu-btn" class="md:hidden text-gray-700"><i class="fas fa-bars fa-lg"></i></button>
         </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute top-full left-0 w-full shadow-lg z-40">
+            <nav class="flex flex-col p-4 space-y-3">
+                <a href="#inicio" class="text-gray-700 hover:text-rosa-vibrante py-2 border-b border-gray-50">Início</a> 
+                <a href="#servicos" class="text-gray-700 hover:text-rosa-vibrante py-2 border-b border-gray-50">Serviços</a> 
+                <a href="#galeria" class="text-gray-700 hover:text-rosa-vibrante py-2 border-b border-gray-50">Galeria</a> 
+                <a href="#contato" class="text-gray-700 hover:text-rosa-vibrante py-2 border-b border-gray-50">Contato</a>
+                
+                <?php if ($is_admin): ?>
+                    <a href="view/painelAdmin.php" class="text-blue-600 font-bold py-2 border-b border-gray-50">Painel Admin</a>
+                <?php endif; ?>
+
+                <?php if ($is_logged_in): ?>
+                    <div class="mt-4 pt-4 border-t border-gray-100 bg-gray-50 rounded-lg p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <?php 
+                                $avatarFile = isset($_SESSION['user_avatar']) && !empty($_SESSION['user_avatar']) ? $_SESSION['user_avatar'] : null;
+                                $avatarUrl = $avatarFile ? 'view/uploads/avatars/' . $avatarFile : "https://ui-avatars.com/api/?name=" . urlencode($_SESSION['user_nome']) . "&background=C53366&color=fff";
+                            ?>
+                            <img src="<?= $avatarUrl ?>" alt="Avatar" class="w-10 h-10 rounded-full object-cover border border-gray-200">
+                            <div>
+                                <p class="text-sm font-bold text-gray-800"><?= htmlspecialchars($_SESSION['user_nome']) ?></p>
+                                <p class="text-xs text-gray-500"><?= htmlspecialchars($_SESSION['user_email']) ?></p>
+                            </div>
+                        </div>
+                        <a href="view/perfil.php" class="block w-full text-left py-2 text-sm text-gray-700 hover:text-rosa-vibrante">
+                            <i class="fas fa-user-circle mr-2"></i> Meu Perfil
+                        </a>
+                        <a href="controller/authController.php?action=logout" class="block w-full text-left py-2 text-sm text-red-600 hover:text-red-800">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Sair
+                        </a>
+                    </div>
+                <?php else: ?>
+                    <div class="flex flex-col space-y-3 mt-4 pt-4 border-t border-gray-100">
+                        <a href="view/login.php" class="text-center w-full py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Login</a>
+                        <a href="view/cadastro.php" class="text-center w-full py-3 bg-rosa-vibrante text-white rounded-lg hover:opacity-90 font-medium">Cadastre-se</a>
+                    </div>
+                <?php endif; ?>
+            </nav>
+        </div>
     </header>
 
     <script>
@@ -118,7 +158,7 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
             menu.classList.toggle('hidden');
         });
     </script>
-    
+
     <div id="accessibility-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
     <aside id="accessibility-sidebar" class="fixed top-0 left-0 h-full w-72 bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
         <div class="p-4">
