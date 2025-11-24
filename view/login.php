@@ -12,7 +12,7 @@
 </head>
 <body class="bg-gray-100 flex items-center justify-center h-screen">
     <div class="w-full max-w-sm bg-white p-8 rounded-lg shadow-md">
-        <a href="../view/index.php" class="flex justify-center mb-6">
+        <a href="../index.php" class="flex justify-center mb-6">
             <img src="../view/imagens/logo.png" width="60" alt="Logo Estância">
         </a>
         <h1 class="text-2xl font-bold text-center text-rosa-vibrante mb-6">Acessar sua Conta</h1>
