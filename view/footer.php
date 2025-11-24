@@ -43,7 +43,7 @@
                 <div class="space-y-2 text-gray-400">
                     <p>(11) 96100-6060</p>
                     <p>sitio_ilhadamadeira@hotmail.com</p>
-                    <p>Estrada da Vargem Grande, 3151</p>
+                    <p>Estrada da Vargem Grande, 3261</p>
                     <p>São Paulo, SP</p>
                 </div>
             </div>
