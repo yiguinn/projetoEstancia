@@ -4,23 +4,23 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // --- CONFIGURAÇÃO DE CAMINHOS (COM ../) ---
-$path_css = "../view/style.css";
-$path_img = "../view/imagens/logo.png";
-$path_avatar_dir = "../view/uploads/avatars/";
-$path_js_acc = "../view/accessibility.js"; 
+$path_css = "view/style.css";
+$path_img = "view/imagens/logo.png";
+$path_avatar_dir = "view/uploads/avatars/";
+$path_js_acc = "view/accessibility.js"; 
 
 // Links de Navegação
-$link_home = "../index.php";
-$link_servicos = "../index.php#servicos";
-$link_galeria = "../index.php#galeria";
-$link_contato = "../index.php#contato"; 
+$link_home = "index.php";
+$link_servicos = "index.php#servicos";
+$link_galeria = "index.php#galeria";
+$link_contato = "index.php#contato"; 
 
 // Links do Usuário
-$link_painel = "../view/painelAdmin.php";
-$link_perfil = "../view/perfil.php";
-$link_login = "../view/login.php";
-$link_cadastro = "../view/cadastro.php";
-$link_logout = "../controller/authController.php?action=logout";
+$link_painel = "view/painelAdmin.php";
+$link_perfil = "view/perfil.php";
+$link_login = "view/login.php";
+$link_cadastro = "view/cadastro.php";
+$link_logout = "controller/authController.php?action=logout";
 
 $is_logged_in = isset($_SESSION['user_id']);
 $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
