@@ -12,8 +12,8 @@ require_once __DIR__ . '/../model/userModel.php';
 $model = new UserModel();
 
 // --- CONFIGURAÇÃO DO SUPER ADMIN ---
-$superAdminEmail = 'Mi15sud@gmail.com'; // Mude aqui também se for um email completo
-$isSuperAdmin = (trim($_SESSION['user_email']) === $superAdminEmail);
+$superAdminEmail = 'Mi15sud@gmail.com'; 
+$isSuperAdmin = (isset($_SESSION['user_email']) && trim($_SESSION['user_email']) === $superAdminEmail);
 
 // Função auxiliar para negar acesso se não for Super Admin
 function verificarSuperAdmin($isSuperAdmin) {
@@ -25,10 +25,11 @@ function verificarSuperAdmin($isSuperAdmin) {
 
 // --- EXCLUIR USUÁRIO ---
 if (isset($_POST['delete_user'])) {
-    verificarSuperAdmin($isSuperAdmin); // Bloqueia quem não é o mi15sud
+    verificarSuperAdmin($isSuperAdmin); // Bloqueia quem não é o Mi15sud@gmail.com
 
     $id = (int)$_POST['id'];
     
+    // Evita excluir a própria conta (redundância de segurança)
     if ($id === $_SESSION['user_id']) {
         header("Location: ../view/gerenciarUsuarios.php?status=erro_self");
         exit();
@@ -44,7 +45,7 @@ if (isset($_POST['delete_user'])) {
 
 // --- ALTERAR CARGO (ROLE) ---
 if (isset($_POST['toggle_role'])) {
-    verificarSuperAdmin($isSuperAdmin); // Bloqueia quem não é o mi15sud
+    verificarSuperAdmin($isSuperAdmin); // Bloqueia quem não é o Mi15sud@gmail.com
 
     $id = (int)$_POST['id'];
     $roleAtual = $_POST['current_role'];

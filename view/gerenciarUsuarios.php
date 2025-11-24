@@ -10,12 +10,8 @@ $model = new UserModel();
 $usuarios = $model->listarTodos();
 
 // --- CONFIGURAÇÃO DO SUPER ADMIN ---
-// Coloque aqui exatamente como está o email no banco de dados
 $superAdminEmail = 'Mi15sud@gmail.com'; 
-
-// Verifica se o usuário logado é o Super Admin
-// (Usa trim para evitar erros com espaços vazios)
-$isSuperAdmin = (trim($_SESSION['user_email']) === $superAdminEmail);
+$isSuperAdmin = (isset($_SESSION['user_email']) && trim($_SESSION['user_email']) === $superAdminEmail);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -23,7 +19,7 @@ $isSuperAdmin = (trim($_SESSION['user_email']) === $superAdminEmail);
     <meta charset="UTF-8">
     <title>Gerenciar Usuários - Estância</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../view/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/png" href="../view/imagens/logo.png">
     <link rel="apple-touch-icon" href="../view/imagens/logo.png">
@@ -110,7 +106,7 @@ $isSuperAdmin = (trim($_SESSION['user_email']) === $superAdminEmail);
                             <?php elseif ($u['id'] == $_SESSION['user_id']): ?>
                                 <span class="text-xs text-gray-400 italic">Você</span>
                             <?php else: ?>
-                                <span class="text-xs text-gray-400 italic"><i class="fas fa-lock"></i> Sem permissão</span>
+                                <span class="text-xs text-gray-400 italic"><i class="fas fa-lock"></i> Restrito</span>
                             <?php endif; ?>
 
                         </td>
@@ -120,6 +116,5 @@ $isSuperAdmin = (trim($_SESSION['user_email']) === $superAdminEmail);
         </table>
     </div>
 </main>
-
 </body>
 </html>

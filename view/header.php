@@ -80,7 +80,7 @@ $is_admin = $is_logged_in && $_SESSION['user_role'] === 'admin';
                 <i class="fas fa-universal-access fa-xl"></i>
             </button>
 
-            <a href="../ " class="flex items-center space-x-3 pl-12">
+            <a href="../index.php" class="flex items-center space-x-3 pl-12">
                 <img src="../view/imagens/logo.png" width="50" alt="Logo Estância">
                 <div>
                     <h1 class="text-xl font-medium text-rosa-vibrante">Estância</h1>
