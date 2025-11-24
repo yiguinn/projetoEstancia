@@ -15,7 +15,7 @@ $imagens = $model->listarPorCategoria($categoria);
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../view/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body class="bg-white font-['SF_Pro_Display',_sans_serif]">
@@ -46,7 +46,7 @@ $imagens = $model->listarPorCategoria($categoria);
                     <?php foreach ($imagens as $img): ?>
                         <div class="overflow-hidden rounded-xl shadow-lg bg-gray-100 relative group">
                              
-                             <img src="uploads/galeria/<?= htmlspecialchars($img['caminho_arquivo']) ?>" 
+                             <img src="../view/uploads/galeria/<?= htmlspecialchars($img['caminho_arquivo']) ?>" 
                                   alt="<?= htmlspecialchars($img['titulo']) ?>" 
                                   class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500 cursor-pointer zoomable"
                                   loading="lazy">
