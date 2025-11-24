@@ -94,6 +94,7 @@ INSERT INTO `parceiros` (`chave`, `titulo`, `descricao`) VALUES
 ('bartender', 'Serviço de Bar', 'Surpreenda seus convidados com um serviço de bar premium. Nossos parceiros oferecem desde drinks clássicos a criações exclusivas.'),
 ('cerimonialista', 'Cerimonialista', 'Para que você possa relaxar e aproveitar cada segundo, nossos cerimonialistas cuidam de todo o planejamento, organização e coordenação do evento.');
 
+ALTER TABLE users ADD COLUMN avatar VARCHAR(255) DEFAULT NULL;
 -- Mensagem de sucesso
 SELECT 'Banco de dados e tabelas criados com sucesso!' AS `status`;
 select * from info;

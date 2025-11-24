@@ -4,6 +4,17 @@ require_once '../model/conexaoModel.php';
 class formModel {
     private $pdo;
 
+    // Listar solicitações de um usuário específico
+    public function listarPorUsuario($userId) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM info WHERE user_id = :id ORDER BY idUsuario DESC");
+            $stmt->execute([':id' => $userId]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return [];
+        }
+    }
+    
     public function __construct(){
         $conexao = new conexaoDb();
         $this->pdo = $conexao->conectar();

@@ -98,20 +98,51 @@ $is_admin = $is_logged_in && $_SESSION['user_role'] === 'admin';
     <?php endif; ?>
 </nav>
 
-            <div class="hidden md:flex items-center space-x-4">
-                <?php if ($is_logged_in): ?>
-                    <span class="text-sm text-gray-600">Olá, <?= htmlspecialchars($_SESSION['user_nome']) ?>!</span>
-                    <a href="controller/authController.php?action=logout" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm">
-                        Sair
-                    </a>
+            
+<div class="hidden md:flex items-center space-x-4">
+                <?php if ($is_logged_in): 
+                    // Tenta pegar o avatar da sessão, se não tiver, usa placeholder
+                    $avatar = isset($_SESSION['user_avatar']) && !empty($_SESSION['user_avatar']) 
+                        ? (strpos($_SERVER['REQUEST_URI'], 'view/') !== false ? 'uploads/avatars/' : 'view/uploads/avatars/') . $_SESSION['user_avatar']
+                        : "https://ui-avatars.com/api/?name=" . urlencode($_SESSION['user_nome']) . "&background=C53366&color=fff";
+                    
+                    // Ajuste de caminho para link do perfil
+                    $perfilLink = (strpos($_SERVER['REQUEST_URI'], 'view/') !== false) ? 'perfil.php' : 'view/perfil.php';
+                    $logoutLink = (strpos($_SERVER['REQUEST_URI'], 'view/') !== false) ? '../controller/authController.php?action=logout' : 'controller/authController.php?action=logout';
+                ?>
+                    
+                    <div class="relative group">
+                        <button class="flex items-center space-x-2 focus:outline-none">
+                            <span class="text-sm font-medium text-gray-700"><?= htmlspecialchars($_SESSION['user_nome']) ?></span>
+                            <img src="<?= $avatar ?>" alt="Avatar" class="w-9 h-9 rounded-full object-cover border border-gray-200">
+                            <i class="fas fa-chevron-down text-xs text-gray-400"></i>
+                        </button>
+
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden group-hover:block hover:block border border-gray-100">
+                            <a href="<?= $perfilLink ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-rosa-vibrante">
+                                <i class="fas fa-user-circle mr-2 w-4"></i> Meu Perfil
+                            </a>
+                            <a href="<?= $perfilLink ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-rosa-vibrante">
+                                <i class="fas fa-history mr-2 w-4"></i> Minhas Solicitações
+                            </a>
+                            <div class="border-t border-gray-100 my-1"></div>
+                            <a href="<?= $logoutLink ?>" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+                                <i class="fas fa-sign-out-alt mr-2 w-4"></i> Sair
+                            </a>
+                        </div>
+                    </div>
+
                 <?php else: ?>
-                    <a href="view/login.php" class="text-gray-700 hover:text-rosa-vibrante text-sm">Login</a>
-                    <a href="view/cadastro.php" class="bg-rosa-vibrante hover:opacity-90 text-white px-4 py-2 rounded-lg text-sm">
+                    <?php 
+                        $loginLink = (strpos($_SERVER['REQUEST_URI'], 'view/') !== false) ? 'login.php' : 'view/login.php';
+                        $cadastroLink = (strpos($_SERVER['REQUEST_URI'], 'view/') !== false) ? 'cadastro.php' : 'view/cadastro.php';
+                    ?>
+                    <a href="<?= $loginLink ?>" class="text-gray-700 hover:text-rosa-vibrante text-sm">Login</a>
+                    <a href="<?= $cadastroLink ?>" class="bg-rosa-vibrante hover:opacity-90 text-white px-4 py-2 rounded-lg text-sm">
                         Cadastre-se
                     </a>
                 <?php endif; ?>
             </div>
-            
             <button id="mobile-menu-btn" class="md:hidden">...</button>
         </div>
     </header>
