@@ -3,19 +3,17 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// --- SEUS CAMINHOS ORIGINAIS (MANTIDOS) ---
+// --- SEUS CAMINHOS ORIGINAIS ---
 $path_css = "../view/style.css";
 $path_img = "../view/imagens/logo.png";
 $path_avatar_dir = "../view/uploads/avatars/";
 $path_js_acc = "../view/accessibility.js"; 
 
-// Links de Navegação
 $link_home = "../index.php";
 $link_servicos = "../index.php#servicos";
 $link_galeria = "../index.php#galeria";
 $link_contato = "../index.php#contato"; 
 
-// Links do Usuário
 $link_painel = "../view/painelAdmin.php";
 $link_perfil = "../view/perfil.php";
 $link_login = "../view/login.php";
@@ -38,7 +36,7 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
     <link rel="icon" type="image/png" href="<?= $path_img ?>">
     
     <style>
-        /* Seus estilos de acessibilidade */
+        /* Estilos de Acessibilidade */
         html[data-theme='high-contrast'] { --rosa-vibrante: #FFFF00; --texto-principal: #FFFFFF; --texto-secundario: #DDDDDD; --fundo-principal: #000000; --fundo-secundario: #1a1a1a; --borda: #FFFF00; }
         html[data-theme='high-contrast'] body, html[data-theme='high-contrast'] header { background-color: var(--fundo-principal) !important; color: var(--texto-principal) !important; }
         html[data-theme='high-contrast'] .text-rosa-vibrante { color: var(--rosa-vibrante) !important; }
@@ -112,7 +110,6 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
         <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden transition-opacity duration-300"></div>
 
         <aside id="mobile-sidebar" class="fixed top-0 right-0 h-full w-72 bg-white shadow-2xl z-[70] transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
-            
             <div class="p-4 flex justify-between items-center border-b border-gray-100">
                 <span class="font-bold text-gray-800 text-lg">Menu</span>
                 <button id="mobile-menu-close" class="text-gray-500 hover:text-rosa-vibrante p-2 focus:outline-none">
@@ -122,16 +119,16 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
 
             <nav class="flex flex-col p-4 space-y-1">
                 <a href="<?= $link_home ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors">
-                    <i class="fas fa-home w-5 text-center mr-3 text-gray-400"></i> Início
+                    <i class="fas fa-home w-5 text-center mr-3 text-gray-700"></i> Início
                 </a> 
                 <a href="<?= $link_servicos ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors">
-                    <i class="fas fa-concierge-bell w-5 text-center mr-3 text-gray-400"></i> Serviços
+                    <i class="fas fa-concierge-bell w-5 text-center mr-3 text-gray-700"></i> Serviços
                 </a> 
                 <a href="<?= $link_galeria ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors">
-                    <i class="fas fa-images w-5 text-center mr-3 text-gray-400"></i> Galeria
+                    <i class="fas fa-images w-5 text-center mr-3 text-gray-700"></i> Galeria
                 </a> 
                 <a href="<?= $link_contato ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors">
-                    <i class="fas fa-envelope w-5 text-center mr-3 text-gray-400"></i> Contato
+                    <i class="fas fa-envelope w-5 text-center mr-3 text-gray-700"></i> Contato
                 </a>
                 
                 <?php if ($is_admin): ?>
@@ -156,7 +153,7 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
                             </div>
                         </div>
                         <a href="<?= $link_perfil ?>" class="block w-full text-left py-2 text-sm text-gray-700 hover:text-rosa-vibrante">
-                            <i class="fas fa-user-circle mr-2"></i> Meu Perfil
+                            <i class="fas fa-user-circle mr-2 text-gray-700"></i> Meu Perfil
                         </a>
                         <a href="<?= $link_logout ?>" class="block w-full text-left py-2 text-sm text-red-600 hover:text-red-800">
                             <i class="fas fa-sign-out-alt mr-2"></i> Sair
@@ -181,19 +178,25 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
         const sidebar = document.getElementById('mobile-sidebar');
         const overlay = document.getElementById('mobile-overlay');
         const closeBtn = document.getElementById('mobile-menu-close');
+        const accSidebar = document.getElementById('accessibility-sidebar'); // Pega a sidebar da acessibilidade
 
         function toggleMenu() {
+            // AQUI ESTÁ A TRAVA:
+            // Se a sidebar de acessibilidade NÃO tiver a classe '-translate-x-full', ela está aberta.
+            // Nesse caso, não fazemos nada (return).
+            if (!accSidebar.classList.contains('-translate-x-full')) {
+                return;
+            }
+
             const isClosed = sidebar.classList.contains('translate-x-full');
             if (isClosed) {
-                // Abrir
                 sidebar.classList.remove('translate-x-full');
                 overlay.classList.remove('hidden');
-                document.body.style.overflow = 'hidden'; // Trava o scroll da página
+                document.body.style.overflow = 'hidden';
             } else {
-                // Fechar
                 sidebar.classList.add('translate-x-full');
                 overlay.classList.add('hidden');
-                document.body.style.overflow = 'auto'; // Destrava o scroll
+                document.body.style.overflow = 'auto';
             }
         }
 
@@ -211,7 +214,18 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
             </div>
             <ul class="space-y-3">
                 <li><button id="btn-contrast" class="w-full text-left p-3 rounded-md hover:bg-gray-100 flex items-center space-x-3"><i class="fas fa-adjust w-5 text-center"></i><span>Alternar Alto Contraste</span></button></li>
-                <li><div class="p-3"><label for="select-color-filter" class="block text-sm font-medium text-gray-700 mb-2">Filtro de Cor</label><select id="select-color-filter" class="w-full border-gray-300 rounded-md shadow-sm focus:border-rosa-vibrante focus:ring-rosa-vibrante"><option value="none">Desativado</option><option value="protanopia">Protanopia</option><option value="deuteranopia">Deuteranopia</option><option value="tritanopia">Tritanopia</option><option value="achromatopsia">Acromatopsia</option></select></div></li>
+                <li>
+                    <div class="p-3">
+                        <label for="select-color-filter" class="block text-sm font-medium text-gray-700 mb-2">Filtro de Cor (Daltonismo)</label>
+                        <select id="select-color-filter" class="w-full border-gray-300 rounded-md shadow-sm focus:border-rosa-vibrante focus:ring-rosa-vibrante">
+                            <option value="none">Desativado</option>
+                            <option value="protanopia">Protanopia (Não vê Vermelho)</option>
+                            <option value="deuteranopia">Deuteranopia (Não vê Verde)</option>
+                            <option value="tritanopia">Tritanopia (Não vê Azul)</option>
+                            <option value="achromatopsia">Acromatopsia (Preto e Branco)</option>
+                        </select>
+                    </div>
+                </li>
                 <li><button id="btn-increase-font" class="w-full text-left p-3 rounded-md hover:bg-gray-100 flex items-center space-x-3"><i class="fas fa-font w-5 text-center"></i><span>Aumentar Fonte</span></button></li>
                 <li><button id="btn-decrease-font" class="w-full text-left p-3 rounded-md hover:bg-gray-100 flex items-center space-x-3"><i class="fas fa-font w-5 text-center text-xs"></i><span>Diminuir Fonte</span></button></li>
             </ul>
