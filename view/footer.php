@@ -34,7 +34,7 @@
                     <a href="../index.php#inicio" class="block hover:text-white transition-colors">Início</a>
                     <a href="../index.php#servicos" class="block hover:text-white transition-colors">Serviços</a>
                     <a href="../index.php#galeria" class="block hover:text-white transition-colors">Galeria</a>
-                    <a href="#sobre" class="block hover:text-white transition-colors">Sobre</a>
+                    <a href="../index.php#sobre" class="block hover:text-white transition-colors">Sobre</a>
                     <a href="../index.php#contato" class="block hover:text-white transition-colors">Contato</a>
                 </div>
             </div>
