@@ -15,13 +15,11 @@
                 <p class="text-gray-400 mb-6 max-w-md">Transformando sonhos em realidade há mais de 25 anos.</p>
                 
                 <div class="flex space-x-4">
-                    <a href="https://www.facebook.com/ilha.madeira.1/?locale=pt_BR" class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
-                        <span class="text-sm font-bold">f</span>
-                    </a>
                     <a href="https://www.instagram.com/estanciailhadamadeira" target="_blank" class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center hover:opacity-80 transition-opacity text-white">
                         <i class="fa-brands fa-instagram text-xl"></i>
                     </a>
-                    <a href="https://api.whatsapp.com/send/?phone=5511961006060" target="_blank" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+                    
+                    <a href="https://api.whatsapp.com/send?phone=5511961006060&text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20Est%C3%A2ncia%20Ilha%20da%20Madeira." target="_blank" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
                         <i class="fa-brands fa-whatsapp text-xl"></i>
                     </a>
                 </div>
@@ -42,7 +40,7 @@
                 <div class="space-y-2 text-gray-400">
                     <p>(11) 96100-6060</p>
                     <p>sitio_ilhadamadeira@hotmail.com</p>
-                    <p>Estrada da Vargem Grande, 3261</p>
+                    <p>Estrada da Vargem Grande, 3151</p>
                     <p>São Paulo, SP</p>
                 </div>
             </div>
@@ -89,22 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('lightbox-next');
     const prevBtn = document.getElementById('lightbox-prev');
     
-    // Estado Global da Galeria Atual
     let currentGalleryImages = [];
     let currentIndex = 0;
 
-    // --- DETECTA CLIQUE DINÂMICO (Para imagens carregadas depois) ---
+    // DETECTA CLIQUE DINÂMICO
     document.addEventListener('click', (e) => {
         if (e.target.classList.contains('zoomable')) {
             e.preventDefault();
-            
-            // Atualiza a lista de imagens baseada no que está visível AGORA na tela
-            // (Isso resolve o problema dos modais de serviço)
             currentGalleryImages = Array.from(document.querySelectorAll('.zoomable'));
-            
-            // Acha o índice da imagem clicada nesta lista
             currentIndex = currentGalleryImages.indexOf(e.target);
-            
             updateImage();
             openModal();
         }
@@ -120,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function nextImage(e) {
         if(e) e.stopPropagation();
         if (currentGalleryImages.length === 0) return;
-        
         currentIndex++;
         if (currentIndex >= currentGalleryImages.length) currentIndex = 0;
         updateImage();
@@ -129,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function prevImage(e) {
         if(e) e.stopPropagation();
         if (currentGalleryImages.length === 0) return;
-
         currentIndex--;
         if (currentIndex < 0) currentIndex = currentGalleryImages.length - 1;
         updateImage();
