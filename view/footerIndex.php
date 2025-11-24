@@ -93,9 +93,7 @@ class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center 
 >
 <i class="fa-brands fa-instagram text-xl"></i>
 </a>
-                    <a href="#" class="w-10 h-10 bg-rosa-vibrante rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
-                        <span class="text-sm font-bold">in</span>
-                    </a>
+            
                     <a href="https://api.whatsapp.com/send/?phone=5511961006060&text=Olá%21+Gostaria+de+saber+mais+sobre+os+serviços+da+Estância+Ilha+da+Madeira+para+casamentos.&type=phone_number&app_absent=0" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
                         <svg class="fa-brands fa-whatsapp text-xl" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
