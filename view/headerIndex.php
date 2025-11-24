@@ -3,8 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// --- CAMINHOS CONFIGURADOS PARA A RAIZ (index.php) ---
-// Como este arquivo é chamado pelo index.php, todos os links entram nas pastas.
+// --- CONFIGURAÇÃO PARA A RAIZ (index.php) ---
+// Este header é usado EXCLUSIVAMENTE pelo arquivo index.php que está fora da pasta view.
 
 $is_logged_in = isset($_SESSION['user_id']);
 $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
@@ -23,14 +23,13 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
     <link rel="icon" type="image/png" href="view/imagens/logo.png">
     
     <style>
-        /* Estilos Essenciais de Acessibilidade e Cores */
+        /* Estilos de Acessibilidade */
         html[data-theme='high-contrast'] { --rosa-vibrante: #FFFF00; --texto-principal: #FFFFFF; --texto-secundario: #DDDDDD; --fundo-principal: #000000; --fundo-secundario: #1a1a1a; --borda: #FFFF00; }
         html[data-theme='high-contrast'] body, html[data-theme='high-contrast'] header { background-color: var(--fundo-principal) !important; color: var(--texto-principal) !important; }
         html[data-theme='high-contrast'] .text-rosa-vibrante { color: var(--rosa-vibrante) !important; }
         html[data-theme='high-contrast'] .text-gray-600, html[data-theme='high-contrast'] .text-gray-700 { color: var(--texto-secundario) !important; }
         html[data-theme='high-contrast'] .bg-white { background: var(--fundo-secundario) !important; border: 1px solid var(--borda); }
         
-        /* Filtros de Daltonismo */
         html[data-color-filter="protanopia"] { filter: url('#protanopia'); }
         html[data-color-filter="deuteranopia"] { filter: url('#deuteranopia'); }
         html[data-color-filter="tritanopia"] { filter: url('#tritanopia'); }
@@ -57,6 +56,7 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
                 <a href="#inicio" class="nav-link text-gray-700 hover:text-rosa-vibrante">Início</a> 
                 <a href="#servicos" class="nav-link text-gray-700 hover:text-rosa-vibrante">Serviços</a> 
                 <a href="#galeria" class="nav-link text-gray-700 hover:text-rosa-vibrante">Galeria</a> 
+                <a href="#contato" class="nav-link text-gray-700 hover:text-rosa-vibrante">Contato</a>
                 
                 <?php if ($is_admin): ?>
                     <a href="view/painelAdmin.php" class="nav-link font-bold text-blue-600 hover:text-blue-800">Painel Admin</a> 
@@ -65,7 +65,7 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
 
             <div class="hidden md:flex items-center space-x-4">
                 <?php if ($is_logged_in): 
-                    // Lógica do Avatar (Caminho para view/uploads)
+                    // Avatar
                     $avatarFile = isset($_SESSION['user_avatar']) && !empty($_SESSION['user_avatar']) 
                         ? $_SESSION['user_avatar'] 
                         : null;
@@ -140,5 +140,7 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
         </div>
     </aside>
     <svg id="svg-color-filters" style="position: absolute; height: 0; width: 0; visibility: hidden;" xmlns="http://www.w3.org/2000/svg"><defs><filter id="protanopia"><feColorMatrix type="matrix" values="0.567, 0.433, 0, 0, 0, 0.558, 0.442, 0, 0, 0, 0, 0.242, 0.758, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="deuteranopia"><feColorMatrix type="matrix" values="0.625, 0.375, 0, 0, 0, 0.700, 0.300, 0, 0, 0, 0, 0.300, 0.7, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="tritanopia"><feColorMatrix type="matrix" values="0.95, 0.05, 0, 0, 0, 0, 0.433, 0.567, 0, 0, 0, 0.475, 0.525, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="achromatopsia"><feColorMatrix type="matrix" values="0.299, 0.587, 0.114, 0, 0, 0.299, 0.587, 0.114, 0, 0, 0, 0.299, 0.587, 0.114, 0, 0, 0, 0, 0, 1, 0"/></filter></defs></svg>
+
+    <script src="view/accessibility.js"></script>
 </body>
 </html>
