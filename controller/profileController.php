@@ -2,7 +2,6 @@
 // controller/profileController.php
 if (session_status() === PHP_SESSION_NONE) session_start();
 
-// Verifica se está logado
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../view/login.php');
     exit();
@@ -15,7 +14,7 @@ $userModel = new UserModel();
 $formModel = new formModel();
 $userId = $_SESSION['user_id'];
 
-// --- 1. ATUALIZAR DADOS PESSOAIS ---
+// --- 1. ATUALIZAR DADOS PESSOAIS (NOME/TELEFONE) ---
 if (isset($_POST['update_profile'])) {
     $nome = $_POST['nome'] ?? '';
     $telefone = $_POST['telefone'] ?? '';
@@ -30,7 +29,24 @@ if (isset($_POST['update_profile'])) {
     exit();
 }
 
-// --- 2. UPLOAD DE FOTO DE PERFIL ---
+// --- 2. ATUALIZAR EMAIL ---
+if (isset($_POST['update_email'])) {
+    $novoEmail = $_POST['email'] ?? '';
+
+    if (filter_var($novoEmail, FILTER_VALIDATE_EMAIL)) {
+        if ($userModel->atualizarEmail($userId, $novoEmail)) {
+            $_SESSION['user_email'] = $novoEmail; // Atualiza sessão
+            header("Location: ../view/perfil.php?status=sucesso_email");
+        } else {
+            header("Location: ../view/perfil.php?status=erro_email_existente");
+        }
+    } else {
+        header("Location: ../view/perfil.php?status=erro_email_invalido");
+    }
+    exit();
+}
+
+// --- 3. UPLOAD DE FOTO DE PERFIL ---
 if (isset($_POST['upload_avatar'])) {
     $imagem = $_FILES['avatar'] ?? null;
 
@@ -39,21 +55,21 @@ if (isset($_POST['upload_avatar'])) {
         $permitidas = ['jpg', 'jpeg', 'png', 'webp'];
 
         if (in_array($extensao, $permitidas)) {
-            // Cria nome único para evitar cache
             $novoNome = "avatar_" . $userId . "_" . uniqid() . "." . $extensao;
-            $destino = __DIR__ . '/../view/uploads/avatars/' . $novoNome;
-
-            // Cria a pasta se não existir
-            if (!is_dir(__DIR__ . '/../view/uploads/avatars/')) {
-                mkdir(__DIR__ . '/../view/uploads/avatars/', 0777, true);
+            $dirDestino = __DIR__ . '/../view/uploads/avatars/';
+            
+            if (!is_dir($dirDestino)) {
+                mkdir($dirDestino, 0777, true);
             }
 
-            if (move_uploaded_file($imagem['tmp_name'], $destino)) {
+            $destinoCompleto = $dirDestino . $novoNome;
+
+            if (move_uploaded_file($imagem['tmp_name'], $destinoCompleto)) {
                 $userModel->atualizarAvatar($userId, $novoNome);
-                $_SESSION['user_avatar'] = $novoNome; // Atualiza sessão
+                $_SESSION['user_avatar'] = $novoNome; 
                 header("Location: ../view/perfil.php?status=sucesso_avatar");
             } else {
-                header("Location: ../view/perfil.php?status=erro_upload");
+                header("Location: ../view/perfil.php?status=erro_upload_move");
             }
         } else {
             header("Location: ../view/perfil.php?status=erro_formato");
@@ -64,7 +80,7 @@ if (isset($_POST['upload_avatar'])) {
     exit();
 }
 
-// --- 3. ALTERAR SENHA ---
+// --- 4. ALTERAR SENHA ---
 if (isset($_POST['update_password'])) {
     $senhaAtual = $_POST['senha_atual'] ?? '';
     $novaSenha = $_POST['nova_senha'] ?? '';
@@ -80,25 +96,16 @@ if (isset($_POST['update_password'])) {
         exit();
     }
 
-    // Validação de força da senha
-    $senhaSegura = true;
-    if (strlen($novaSenha) < 8 || 
-        !preg_match('/[A-Z]/', $novaSenha) || 
-        !preg_match('/[a-z]/', $novaSenha) || 
-        !preg_match('/[0-9]/', $novaSenha) || 
-        !preg_match('/[!@#$%^&*(),.?":{}|<>]/', $novaSenha)) {
-        
+    if (strlen($novaSenha) < 8 || !preg_match('/[A-Z]/', $novaSenha) || !preg_match('/[0-9]/', $novaSenha)) {
         header("Location: ../view/perfil.php?status=erro_senha_fraca");
         exit();
     }
 
-    // Verifica senha antiga
     if (!$userModel->verificarSenha($userId, $senhaAtual)) {
         header("Location: ../view/perfil.php?status=erro_senha_atual");
         exit();
     }
 
-    // Atualiza
     if ($userModel->atualizarSenha($userId, $novaSenha)) {
         header("Location: ../view/perfil.php?status=sucesso_senha");
     } else {
@@ -107,11 +114,10 @@ if (isset($_POST['update_password'])) {
     exit();
 }
 
-// --- 4. EXCLUIR SOLICITAÇÃO ---
+// --- 5. EXCLUIR SOLICITAÇÃO ---
 if (isset($_POST['delete_request'])) {
     $requestId = $_POST['request_id'];
     
-    // Verifica se a solicitação pertence ao usuário logado
     $requests = $formModel->listarPorUsuario($userId);
     $pertence = false;
     foreach($requests as $req) {
