@@ -3,8 +3,50 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// --- CONFIGURAÇÃO FIXA PARA ARQUIVOS DENTRO DA PASTA VIEW ---
-// Este header só deve ser incluído por arquivos que estão em /view/
+// --- LÓGICA BLINDADA DE CAMINHOS ---
+// Verifica se o arquivo atual está dentro da pasta '/view/'
+$in_view_folder = strpos($_SERVER['SCRIPT_NAME'], '/view/') !== false;
+
+if ($in_view_folder) {
+    // ESTOU DENTRO DA PASTA VIEW (Ex: Galeria, Perfil, Login)
+    $path_css = "style.css";
+    $path_img = "imagens/logo.png";
+    $path_avatar_dir = "uploads/avatars/";
+    $path_js_acc = "accessibility.js"; // Script na mesma pasta
+    
+    // Links de Navegação
+    $link_home = "../index.php";
+    $link_servicos = "../index.php#servicos";
+    $link_galeria = "../index.php#galeria";
+    $link_contato = "../index.php#contato"; // NOVO LINK
+    
+    // Links do Usuário
+    $link_painel = "painelAdmin.php";
+    $link_perfil = "perfil.php";
+    $link_login = "login.php";
+    $link_cadastro = "cadastro.php";
+    $link_logout = "../controller/authController.php?action=logout";
+
+} else {
+    // ESTOU NA RAIZ (index.php)
+    $path_css = "view/style.css";
+    $path_img = "view/imagens/logo.png";
+    $path_avatar_dir = "view/uploads/avatars/";
+    $path_js_acc = "view/accessibility.js"; // Script dentro da view
+    
+    // Links de Navegação
+    $link_home = "index.php";
+    $link_servicos = "#servicos";
+    $link_galeria = "#galeria";
+    $link_contato = "#contato"; // NOVO LINK
+    
+    // Links do Usuário
+    $link_painel = "view/painelAdmin.php";
+    $link_perfil = "view/perfil.php";
+    $link_login = "view/login.php";
+    $link_cadastro = "view/cadastro.php";
+    $link_logout = "controller/authController.php?action=logout";
+}
 
 $is_logged_in = isset($_SESSION['user_id']);
 $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
@@ -17,13 +59,12 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
     <title>Estancia Ilha da Madeira</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="../view/style.css">
+    <link rel="stylesheet" href="<?= $path_css ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="icon" type="image/png" href="imagens/logo.png">
+    <link rel="icon" type="image/png" href="<?= $path_img ?>">
     
     <style>
-        /* Estilos de Acessibilidade */
+        /* Estilos de Acessibilidade e Cores */
         html[data-theme='high-contrast'] { --rosa-vibrante: #FFFF00; --texto-principal: #FFFFFF; --texto-secundario: #DDDDDD; --fundo-principal: #000000; --fundo-secundario: #1a1a1a; --borda: #FFFF00; }
         html[data-theme='high-contrast'] body, html[data-theme='high-contrast'] header { background-color: var(--fundo-principal) !important; color: var(--texto-principal) !important; }
         html[data-theme='high-contrast'] .text-rosa-vibrante { color: var(--rosa-vibrante) !important; }
@@ -45,8 +86,8 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
                 <i class="fas fa-universal-access fa-xl"></i>
             </button>
 
-            <a href="../index.php" class="flex items-center space-x-3 pl-12">
-                <img src="../view/imagens/logo.png" width="50" alt="Logo">
+            <a href="<?= $link_home ?>" class="flex items-center space-x-3 pl-12">
+                <img src="<?= $path_img ?>" width="50" alt="Logo">
                 <div>
                     <h1 class="text-xl font-medium text-rosa-vibrante">Estância</h1>
                     <p class="text-sm text-gray-600 -mt-1">Ilha da Madeira</p>
@@ -54,24 +95,25 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
             </a>
 
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="../index.php#inicio" class="nav-link text-gray-700 hover:text-rosa-vibrante">Início</a> 
-                <a href="../index.php#servicos" class="nav-link text-gray-700 hover:text-rosa-vibrante">Serviços</a> 
-                <a href="../index.php#galeria" class="nav-link text-gray-700 hover:text-rosa-vibrante">Galeria</a> 
+                <a href="<?= $link_home ?>" class="nav-link text-gray-700 hover:text-rosa-vibrante">Início</a> 
+                <a href="<?= $link_servicos ?>" class="nav-link text-gray-700 hover:text-rosa-vibrante">Serviços</a> 
+                <a href="<?= $link_galeria ?>" class="nav-link text-gray-700 hover:text-rosa-vibrante">Galeria</a> 
+                <a href="<?= $link_contato ?>" class="nav-link text-gray-700 hover:text-rosa-vibrante">Contato</a>
                 
                 <?php if ($is_admin): ?>
-                    <a href="painelAdmin.php" class="nav-link font-bold text-blue-600 hover:text-blue-800">Painel Admin</a> 
+                    <a href="<?= $link_painel ?>" class="nav-link font-bold text-blue-600 hover:text-blue-800">Painel Admin</a> 
                 <?php endif; ?>
             </nav>
 
             <div class="hidden md:flex items-center space-x-4">
                 <?php if ($is_logged_in): 
-                    // Avatar: Já estamos na view, então acessa uploads direto
+                    // Lógica do Avatar
                     $avatarFile = isset($_SESSION['user_avatar']) && !empty($_SESSION['user_avatar']) 
                         ? $_SESSION['user_avatar'] 
                         : null;
                     
                     $avatarUrl = $avatarFile 
-                        ? '../view/uploads/avatars/' . $avatarFile 
+                        ? $path_avatar_dir . $avatarFile 
                         : "https://ui-avatars.com/api/?name=" . urlencode($_SESSION['user_nome']) . "&background=C53366&color=fff";
                 ?>
                     
@@ -88,21 +130,21 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
                                 <p class="text-sm font-bold text-gray-800 truncate"><?= htmlspecialchars($_SESSION['user_email']) ?></p>
                             </div>
                             
-                            <a href="../view/perfil.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante transition-colors">
+                            <a href="<?= $link_perfil ?>" class="block px-4 py-2 text-sm text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante transition-colors">
                                 <i class="fas fa-user-circle mr-2 w-4 text-center"></i> Meu Perfil
                             </a>
                             
                             <div class="border-t border-gray-100 my-1"></div>
                             
-                            <a href="../controller/authController.php?action=logout" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors">
+                            <a href="<?= $link_logout ?>" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors">
                                 <i class="fas fa-sign-out-alt mr-2 w-4 text-center"></i> Sair
                             </a>
                         </div>
                     </div>
 
                 <?php else: ?>
-                    <a href="../view/login.php" class="text-gray-700 hover:text-rosa-vibrante text-sm">Login</a>
-                    <a href="../view/cadastro.php" class="bg-rosa-vibrante hover:opacity-90 text-white px-4 py-2 rounded-lg text-sm">
+                    <a href="<?= $link_login ?>" class="text-gray-700 hover:text-rosa-vibrante text-sm">Login</a>
+                    <a href="<?= $link_cadastro ?>" class="bg-rosa-vibrante hover:opacity-90 text-white px-4 py-2 rounded-lg text-sm">
                         Cadastre-se
                     </a>
                 <?php endif; ?>
@@ -140,5 +182,7 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
         </div>
     </aside>
     <svg id="svg-color-filters" style="position: absolute; height: 0; width: 0; visibility: hidden;" xmlns="http://www.w3.org/2000/svg"><defs><filter id="protanopia"><feColorMatrix type="matrix" values="0.567, 0.433, 0, 0, 0, 0.558, 0.442, 0, 0, 0, 0, 0.242, 0.758, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="deuteranopia"><feColorMatrix type="matrix" values="0.625, 0.375, 0, 0, 0, 0.700, 0.300, 0, 0, 0, 0, 0.300, 0.7, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="tritanopia"><feColorMatrix type="matrix" values="0.95, 0.05, 0, 0, 0, 0, 0.433, 0.567, 0, 0, 0, 0.475, 0.525, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="achromatopsia"><feColorMatrix type="matrix" values="0.299, 0.587, 0.114, 0, 0, 0.299, 0.587, 0.114, 0, 0, 0, 0.299, 0.587, 0.114, 0, 0, 0, 0, 0, 1, 0"/></filter></defs></svg>
+
+    <script src="<?= $path_js_acc ?>"></script>
 </body>
 </html>
