@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="../view/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     </head>
-    <?php include_once ("header.php")?>
+    <?php include_once ("headerIndex.php")?>
     <body class="bg-white">
 
         <section class="min-h-screen px-4 md:px-8 py-16">
