@@ -24,4 +24,4 @@ class conexaoDb {
                 return $this->pdo;
             }
 }
-?>
+?>  

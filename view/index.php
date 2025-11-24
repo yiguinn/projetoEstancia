@@ -19,7 +19,7 @@ foreach ($chaves_parceiros as $chave) {
 }
 
 // O include do header vem DEPOIS de carregar os dados
-include_once("view/headerIndex.php");
+include_once("view/header.php");
 ?>
 
 <div id="modal" 
