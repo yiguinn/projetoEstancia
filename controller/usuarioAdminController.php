@@ -12,7 +12,7 @@ require_once __DIR__ . '/../model/userModel.php';
 $model = new UserModel();
 
 // --- CONFIGURAÇÃO DO SUPER ADMIN ---
-$superAdminEmail = 'mi15sud'; // Mude aqui também se for um email completo
+$superAdminEmail = 'Mi15sud@gmail.com'; // Mude aqui também se for um email completo
 $isSuperAdmin = (trim($_SESSION['user_email']) === $superAdminEmail);
 
 // Função auxiliar para negar acesso se não for Super Admin
