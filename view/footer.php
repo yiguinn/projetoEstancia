@@ -86,56 +86,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('lightbox-next');
     const prevBtn = document.getElementById('lightbox-prev');
     
-    // Pega todas as imagens da galeria atual
     const images = Array.from(document.querySelectorAll('.zoomable'));
     let currentIndex = 0;
 
     if(images.length > 0) {
-        // Adiciona clique em cada imagem da galeria
         images.forEach((img, index) => {
             img.addEventListener('click', function() {
-                currentIndex = index; // Salva qual foto foi clicada
+                currentIndex = index;
                 updateImage();
                 openModal();
             });
         });
     }
 
-    // Função para atualizar a foto no modal
     function updateImage() {
         const img = images[currentIndex];
         modalImg.src = img.src;
         modalImg.alt = img.alt;
     }
 
-    // Função Próxima
     function nextImage(e) {
-        if(e) e.stopPropagation(); // Evita fechar o modal ao clicar na seta
+        if(e) e.stopPropagation();
         currentIndex++;
-        if (currentIndex >= images.length) {
-            currentIndex = 0; // Loop infinito (volta pro começo)
-        }
+        if (currentIndex >= images.length) currentIndex = 0;
         updateImage();
     }
 
-    // Função Anterior
     function prevImage(e) {
         if(e) e.stopPropagation();
         currentIndex--;
-        if (currentIndex < 0) {
-            currentIndex = images.length - 1; // Loop infinito (vai pro final)
-        }
+        if (currentIndex < 0) currentIndex = images.length - 1;
         updateImage();
     }
 
-    // Abrir Modal
     function openModal() {
         modal.classList.remove('hidden');
         modal.classList.add('flex');
         document.body.style.overflow = 'hidden';
     }
 
-    // Fechar Modal
     function closeModal() {
         modal.classList.add('hidden');
         modal.classList.remove('flex');
@@ -143,26 +132,32 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'auto';
     }
 
-    // --- Event Listeners ---
     closeBtn.addEventListener('click', closeModal);
     nextBtn.addEventListener('click', nextImage);
     prevBtn.addEventListener('click', prevImage);
 
-    // Fechar clicando no fundo (mas não na imagem)
     modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
     });
 
-    // Navegação por Teclado (Setas e ESC)
     document.addEventListener('keydown', (e) => {
-        if (modal.classList.contains('hidden')) return; // Só funciona se modal aberto
-
+        if (modal.classList.contains('hidden')) return;
         if (e.key === 'Escape') closeModal();
         if (e.key === 'ArrowRight') nextImage();
         if (e.key === 'ArrowLeft') prevImage();
     });
 });
 </script>
+
+<style>
+    /* CSS para forçar o posicionamento */
+    div[vw] {
+        left: auto !important;
+        right: 20px !important;
+        top: auto !important;
+        bottom: 20px !important;
+    }
+</style>
 
 <div vw class="enabled">
   <div vw-access-button class="active"></div>
