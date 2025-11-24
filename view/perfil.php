@@ -1,7 +1,6 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) session_start();
 
-// Verifica Login
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
@@ -17,7 +16,6 @@ $userId = $_SESSION['user_id'];
 $user = $userModel->buscarPorId($userId);
 $minhasSolicitacoes = $formModel->listarPorUsuario($userId);
 
-// Avatar Logic
 $avatarPath = !empty($user['avatar']) ? "uploads/avatars/" . $user['avatar'] : "https://ui-avatars.com/api/?name=" . urlencode($user['nome']) . "&background=C53366&color=fff";
 ?>
 <!DOCTYPE html>
@@ -28,8 +26,6 @@ $avatarPath = !empty($user['avatar']) ? "uploads/avatars/" . $user['avatar'] : "
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="/view/imagens/logo.png">
 </head>
 <body class="bg-gray-100 font-['SF_Pro_Display',_sans_serif]">
 
@@ -47,9 +43,9 @@ $avatarPath = !empty($user['avatar']) ? "uploads/avatars/" . $user['avatar'] : "
                         case 'sucesso_email': echo "E-mail alterado com sucesso!"; break;
                         case 'sucesso_avatar': echo "Sua foto foi atualizada!"; break;
                         case 'sucesso_senha': echo "Senha alterada com segurança."; break;
-                        case 'sucesso_delete': echo "Solicitação cancelada."; break;
+                        case 'sucesso_delete': echo "Solicitação removida."; break;
                         case 'erro_email_existente': echo "Este e-mail já está em uso."; break;
-                        case 'erro_senha_atual': echo "A senha atual informada está incorreta."; break;
+                        case 'erro_senha_atual': echo "A senha atual está incorreta."; break;
                         case 'erro_senha_diferente': echo "As novas senhas não coincidem."; break;
                         case 'erro_senha_fraca': echo "A nova senha é muito fraca."; break;
                         default: echo "Operação realizada.";
@@ -70,30 +66,33 @@ $avatarPath = !empty($user['avatar']) ? "uploads/avatars/" . $user['avatar'] : "
                         <i class="fas fa-camera mr-2"></i> Alterar
                     </label>
                 </div>
-                
                 <form action="../controller/profileController.php" method="POST" enctype="multipart/form-data" id="avatarForm">
                     <input type="file" name="avatar" id="avatarInput" class="hidden" accept="image/*" onchange="document.getElementById('avatarForm').submit()">
                     <input type="hidden" name="upload_avatar" value="1">
                 </form>
-
                 <h2 class="mt-4 text-xl font-bold text-gray-800"><?= htmlspecialchars($user['nome']) ?></h2>
                 <p class="text-sm text-gray-500"><?= htmlspecialchars($user['email']) ?></p>
+                <div class="mt-2">
+                    <?php if($user['role'] === 'admin'): ?>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-bold uppercase">Administrador</span>
+                    <?php else: ?>
+                        <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold uppercase">Cliente</span>
+                    <?php endif; ?>
+                </div>
             </div>
 
             <div class="bg-white p-6 rounded-lg shadow">
                 <h3 class="font-semibold text-gray-800 mb-4 border-b pb-2">Meus Dados</h3>
                 <form action="../controller/profileController.php" method="POST" class="space-y-4">
                     <div>
-                        <label class="text-xs text-gray-500 uppercase font-bold">Nome Completo</label>
-                        <input type="text" name="nome" value="<?= htmlspecialchars($user['nome']) ?>" class="w-full border p-2 rounded focus:border-rosa-vibrante outline-none text-sm">
+                        <label class="text-xs text-gray-500 uppercase font-bold">Nome</label>
+                        <input type="text" name="nome" value="<?= htmlspecialchars($user['nome']) ?>" class="w-full border p-2 rounded text-sm outline-none focus:border-rosa-vibrante">
                     </div>
                     <div>
                         <label class="text-xs text-gray-500 uppercase font-bold">Telefone</label>
-                        <input type="text" name="telefone" id="telefone" value="<?= htmlspecialchars($user['telefone']) ?>" class="w-full border p-2 rounded focus:border-rosa-vibrante outline-none text-sm">
+                        <input type="text" name="telefone" id="telefone" value="<?= htmlspecialchars($user['telefone']) ?>" class="w-full border p-2 rounded text-sm outline-none focus:border-rosa-vibrante">
                     </div>
-                    <button type="submit" name="update_profile" class="w-full bg-rosa-vibrante text-white py-2 rounded hover:opacity-90 transition text-sm font-medium">
-                        Salvar Alterações
-                    </button>
+                    <button type="submit" name="update_profile" class="w-full bg-rosa-vibrante text-white py-2 rounded hover:opacity-90 text-sm">Salvar</button>
                 </form>
             </div>
 
@@ -104,11 +103,9 @@ $avatarPath = !empty($user['avatar']) ? "uploads/avatars/" . $user['avatar'] : "
                 <form action="../controller/profileController.php" method="POST" class="space-y-4">
                     <div>
                         <label class="text-xs text-gray-500 uppercase font-bold">Novo E-mail</label>
-                        <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required class="w-full border p-2 rounded focus:border-rosa-vibrante outline-none text-sm">
+                        <input type="email" name="email" value="<?= htmlspecialchars($user['email']) ?>" required class="w-full border p-2 rounded text-sm outline-none focus:border-rosa-vibrante">
                     </div>
-                    <button type="submit" name="update_email" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition text-sm font-medium">
-                        Atualizar E-mail
-                    </button>
+                    <button type="submit" name="update_email" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 text-sm">Atualizar</button>
                 </form>
             </div>
 
@@ -119,19 +116,26 @@ $avatarPath = !empty($user['avatar']) ? "uploads/avatars/" . $user['avatar'] : "
                 <form action="../controller/profileController.php" method="POST" class="space-y-3">
                     <div>
                         <label class="text-xs text-gray-500 uppercase font-bold">Senha Atual</label>
-                        <input type="password" name="senha_atual" required class="w-full border p-2 rounded text-sm focus:border-yellow-400 outline-none">
+                        <div class="relative">
+                            <input type="password" name="senha_atual" required class="w-full border p-2 pr-10 rounded text-sm outline-none focus:border-yellow-400">
+                            <button type="button" onclick="togglePasswordVisibility(this)" class="absolute inset-y-0 right-0 px-3 text-gray-500 hover:text-gray-700"><i class="fas fa-eye"></i></button>
+                        </div>
                     </div>
                     <div>
                         <label class="text-xs text-gray-500 uppercase font-bold">Nova Senha</label>
-                        <input type="password" name="nova_senha" required class="w-full border p-2 rounded text-sm focus:border-yellow-400 outline-none" placeholder="Mín. 8 caracteres">
+                        <div class="relative">
+                            <input type="password" name="nova_senha" required class="w-full border p-2 pr-10 rounded text-sm outline-none focus:border-yellow-400" placeholder="Mín. 8 caracteres">
+                            <button type="button" onclick="togglePasswordVisibility(this)" class="absolute inset-y-0 right-0 px-3 text-gray-500 hover:text-gray-700"><i class="fas fa-eye"></i></button>
+                        </div>
                     </div>
                     <div>
                         <label class="text-xs text-gray-500 uppercase font-bold">Confirmar</label>
-                        <input type="password" name="confirma_senha" required class="w-full border p-2 rounded text-sm focus:border-yellow-400 outline-none">
+                        <div class="relative">
+                            <input type="password" name="confirma_senha" required class="w-full border p-2 pr-10 rounded text-sm outline-none focus:border-yellow-400">
+                            <button type="button" onclick="togglePasswordVisibility(this)" class="absolute inset-y-0 right-0 px-3 text-gray-500 hover:text-gray-700"><i class="fas fa-eye"></i></button>
+                        </div>
                     </div>
-                    <button type="submit" name="update_password" class="w-full bg-gray-800 text-white py-2 rounded hover:bg-black transition text-sm font-medium">
-                        Alterar Senha
-                    </button>
+                    <button type="submit" name="update_password" class="w-full bg-gray-800 text-white py-2 rounded hover:bg-black text-sm">Alterar Senha</button>
                 </form>
             </div>
 
@@ -147,10 +151,8 @@ $avatarPath = !empty($user['avatar']) ? "uploads/avatars/" . $user['avatar'] : "
                     <div class="text-center py-12 text-gray-500 bg-gray-50 rounded-lg border border-dashed border-gray-300">
                         <i class="far fa-folder-open fa-3x mb-3 text-gray-300"></i>
                         <p class="text-lg font-medium">Nenhuma solicitação encontrada</p>
-                        <p class="text-sm mb-4">Você ainda não pediu nenhum orçamento enquanto logado.</p>
-                        <a href="../index.php#contato" class="text-white bg-rosa-vibrante px-4 py-2 rounded hover:opacity-90 inline-block transition">
-                            Fazer solicitação agora
-                        </a>
+                        <p class="text-sm mb-4">Você ainda não pediu nenhum orçamento.</p>
+                        <a href="../index.php#contato" class="text-white bg-rosa-vibrante px-4 py-2 rounded hover:opacity-90 inline-block transition">Fazer solicitação agora</a>
                     </div>
                 <?php else: ?>
                     <div class="space-y-4">
@@ -173,9 +175,9 @@ $avatarPath = !empty($user['avatar']) ? "uploads/avatars/" . $user['avatar'] : "
                                     <?php endif; ?>
                                 </div>
                                 
-                                <form action="../controller/profileController.php" method="POST" onsubmit="return confirm('Tem certeza que deseja cancelar esta solicitação?');" class="mt-4 sm:mt-0 sm:ml-4">
+                                <form action="../controller/profileController.php" method="POST" onsubmit="return confirm('Tem certeza que deseja cancelar?');" class="mt-4 sm:mt-0 sm:ml-4">
                                     <input type="hidden" name="request_id" value="<?= $req['idUsuario'] ?>">
-                                    <button type="submit" name="delete_request" class="text-red-500 hover:text-white border border-red-200 hover:bg-red-50 text-sm font-medium px-4 py-2 rounded transition flex items-center whitespace-nowrap">
+                                    <button type="submit" name="delete_request" class="text-red-500 hover:text-white border border-red-200 hover:bg-red-500 text-sm font-medium px-4 py-2 rounded transition flex items-center whitespace-nowrap">
                                         <i class="fas fa-trash-alt mr-2"></i> Cancelar
                                     </button>
                                 </form>
@@ -190,5 +192,6 @@ $avatarPath = !empty($user['avatar']) ? "uploads/avatars/" . $user['avatar'] : "
 </main>
 
 <script src="telefone.js"></script>
+<script src="password-toggle.js"></script>
 </body>
 </html>

@@ -6,14 +6,13 @@
     <title>Login - Estância Ilha da Madeira</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../view/style.css">
-    <link rel="icon" type="image/png" href="../view/imagens/logo.png">
-    <link rel="apple-touch-icon" href="../view/imagens/logo.png">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="imagens/logo.png">
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
+<body class="bg-gray-100 flex items-center justify-center min-h-screen py-12">
     <div class="w-full max-w-sm bg-white p-8 rounded-lg shadow-md">
         <a href="../index.php" class="flex justify-center mb-6">
-            <img src="../view/imagens/logo.png" width="60" alt="Logo Estância">
+            <img src="imagens/logo.png" width="60" alt="Logo Estância">
         </a>
         <h1 class="text-2xl font-bold text-center text-rosa-vibrante mb-6">Acessar sua Conta</h1>
 
@@ -23,8 +22,8 @@
                 <?php if ($_GET['status'] === 'erro_login'): ?> bg-red-100 text-red-700 <?php endif; ?>
             ">
                 <?php
-                    if ($_GET['status'] === 'sucesso_cadastro') echo "Cadastro realizado com sucesso! Faça o login para continuar.";
-                    if ($_GET['status'] === 'erro_login') echo "Email ou senha inválidos. Tente novamente.";
+                    if ($_GET['status'] === 'sucesso_cadastro') echo "Cadastro realizado! Faça login.";
+                    if ($_GET['status'] === 'erro_login') echo "Email ou senha inválidos.";
                 ?>
             </div>
         <?php endif; ?>
@@ -34,19 +33,27 @@
                 <label for="emailtxt" class="block text-sm font-medium text-gray-700">Email</label>
                 <input type="email" name="emailtxt" id="emailtxt" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rosa-vibrante focus:border-rosa-vibrante sm:text-sm">
             </div>
+            
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
-                <input type="password" name="password" id="password" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rosa-vibrante focus:border-rosa-vibrante sm:text-sm">
+                <div class="relative mt-1">
+                    <input type="password" name="password" id="password" required class="block w-full px-3 py-2 pr-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-rosa-vibrante focus:border-rosa-vibrante sm:text-sm">
+                    <button type="button" onclick="togglePasswordVisibility(this)" class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-500 hover:text-gray-700 focus:outline-none">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
             </div>
+
             <div>
                 <button type="submit" name="login" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-rosa-vibrante hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rosa-vibrante">
                     Entrar
                 </button>
             </div>
         </form>
-         <p class="text-center text-sm text-gray-600 mt-6">
+        <p class="text-center text-sm text-gray-600 mt-6">
             Não tem uma conta? <a href="cadastro.php" class="font-medium text-rosa-vibrante hover:underline">Cadastre-se</a>
         </p>
     </div>
+    <script src="password-toggle.js"></script>
 </body>
 </html>

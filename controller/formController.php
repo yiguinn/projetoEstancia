@@ -6,6 +6,7 @@ require_once __DIR__ . '/../model/formModel.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $model = new formModel();
 
+    // Dados do form
     $n = $_POST['nometxt'] ?? '';
     $t = $_POST['telefonenum'] ?? '';
     $e = $_POST['emailtxt'] ?? '';
@@ -14,18 +15,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $num = $_POST['numero_convidados'] ?? null;
     $msg = $_POST['mensagemtxt'] ?? '';
     
-    // CAPTURA O ID DO USUÁRIO SE ESTIVER LOGADO
+    // AQUI ESTÁ O SEGREDO: Se estiver logado (mesmo como admin), pega o ID
     $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-    // Passa o ID para o model
+    // Salva no banco com o ID
     $sucesso = $model->inserir($n, $t, $e, $ev, $d, $num, $msg, $userId);
 
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode([
         "success" => (bool)$sucesso,
         "message" => $sucesso 
-            ? "✅ Sua solicitação foi enviada com sucesso! Verifique seu histórico no perfil." 
-            : "❌ Ocorreu um erro ao enviar."
+            ? "✅ Solicitação enviada! Verifique seu histórico." 
+            : "❌ Erro ao enviar."
     ]);
     exit();
 }
