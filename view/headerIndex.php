@@ -3,19 +3,17 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// --- CONFIGURAÇÃO DE CAMINHOS (MANTIDA) ---
+// --- SEUS CAMINHOS ORIGINAIS ---
 $path_css = "../view/style.css";
 $path_img = "../view/imagens/logo.png";
 $path_avatar_dir = "../view/uploads/avatars/";
 $path_js_acc = "../view/accessibility.js"; 
 
-// Links
 $link_home = "../index.php";
 $link_servicos = "../index.php#servicos";
 $link_galeria = "../index.php#galeria";
 $link_contato = "../index.php#contato"; 
 
-// Links do Usuário
 $link_painel = "../view/painelAdmin.php";
 $link_perfil = "../view/perfil.php";
 $link_login = "../view/login.php";
@@ -38,13 +36,11 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
     <link rel="icon" type="image/png" href="<?= $path_img ?>">
     
     <style>
-        /* Estilos de Acessibilidade */
         html[data-theme='high-contrast'] { --rosa-vibrante: #FFFF00; --texto-principal: #FFFFFF; --texto-secundario: #DDDDDD; --fundo-principal: #000000; --fundo-secundario: #1a1a1a; --borda: #FFFF00; }
         html[data-theme='high-contrast'] body, html[data-theme='high-contrast'] header { background-color: var(--fundo-principal) !important; color: var(--texto-principal) !important; }
         html[data-theme='high-contrast'] .text-rosa-vibrante { color: var(--rosa-vibrante) !important; }
         html[data-theme='high-contrast'] .text-gray-600, html[data-theme='high-contrast'] .text-gray-700 { color: var(--texto-secundario) !important; }
         html[data-theme='high-contrast'] .bg-white { background: var(--fundo-secundario) !important; border: 1px solid var(--borda); }
-        
         html[data-color-filter="protanopia"] { filter: url('#protanopia'); }
         html[data-color-filter="deuteranopia"] { filter: url('#deuteranopia'); }
         html[data-color-filter="tritanopia"] { filter: url('#tritanopia'); }
@@ -113,7 +109,6 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
         <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden transition-opacity duration-300"></div>
 
         <aside id="mobile-sidebar" class="fixed top-0 right-0 h-full w-72 bg-white shadow-2xl z-[70] transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
-            
             <div class="p-4 flex justify-between items-center border-b border-gray-100">
                 <span class="font-bold text-gray-800 text-lg">Menu</span>
                 <button id="mobile-menu-close" class="text-gray-500 hover:text-rosa-vibrante p-2 focus:outline-none">
@@ -123,21 +118,21 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
 
             <nav class="flex flex-col p-4 space-y-1">
                 <a href="<?= $link_home ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors">
-                    <i class="fas fa-home w-6 text-center mr-2"></i> Início
+                    <i class="fas fa-home w-5 text-center mr-3 text-gray-700"></i> Início
                 </a> 
                 <a href="<?= $link_servicos ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors">
-                    <i class="fas fa-concierge-bell w-6 text-center mr-2"></i> Serviços
+                    <i class="fas fa-concierge-bell w-5 text-center mr-3 text-gray-700"></i> Serviços
                 </a> 
                 <a href="<?= $link_galeria ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors">
-                    <i class="fas fa-images w-6 text-center mr-2"></i> Galeria
+                    <i class="fas fa-images w-5 text-center mr-3 text-gray-700"></i> Galeria
                 </a> 
                 <a href="<?= $link_contato ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors">
-                    <i class="fas fa-envelope w-6 text-center mr-2"></i> Contato
+                    <i class="fas fa-envelope w-5 text-center mr-3 text-gray-700"></i> Contato
                 </a>
                 
                 <?php if ($is_admin): ?>
                     <a href="<?= $link_painel ?>" class="block px-4 py-3 text-blue-600 font-bold bg-blue-50 rounded-lg mt-2">
-                        <i class="fas fa-cogs w-6 text-center mr-2"></i> Painel Admin
+                        <i class="fas fa-cogs w-5 text-center mr-3"></i> Painel Admin
                     </a>
                 <?php endif; ?>
 
@@ -157,7 +152,7 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
                             </div>
                         </div>
                         <a href="<?= $link_perfil ?>" class="block w-full text-left py-2 text-sm text-gray-700 hover:text-rosa-vibrante">
-                            <i class="fas fa-user-circle mr-2"></i> Meu Perfil
+                            <i class="fas fa-user-circle mr-2 text-gray-700"></i> Meu Perfil
                         </a>
                         <a href="<?= $link_logout ?>" class="block w-full text-left py-2 text-sm text-red-600 hover:text-red-800">
                             <i class="fas fa-sign-out-alt mr-2"></i> Sair
@@ -176,32 +171,6 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
             </nav>
         </aside>
     </header>
-
-    <script>
-        const btn = document.getElementById('mobile-menu-btn');
-        const sidebar = document.getElementById('mobile-sidebar');
-        const overlay = document.getElementById('mobile-overlay');
-        const closeBtn = document.getElementById('mobile-menu-close');
-
-        function toggleMenu() {
-            const isClosed = sidebar.classList.contains('translate-x-full');
-            if (isClosed) {
-                // Abrir
-                sidebar.classList.remove('translate-x-full');
-                overlay.classList.remove('hidden');
-                document.body.style.overflow = 'hidden'; // Trava rolagem
-            } else {
-                // Fechar
-                sidebar.classList.add('translate-x-full');
-                overlay.classList.add('hidden');
-                document.body.style.overflow = 'auto'; // Libera rolagem
-            }
-        }
-
-        btn.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
-    </script>
 
     <div id="accessibility-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
     <aside id="accessibility-sidebar" class="fixed top-0 left-0 h-full w-72 bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
@@ -231,6 +200,37 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
         </div>
     </aside>
     <svg id="svg-color-filters" style="position: absolute; height: 0; width: 0; visibility: hidden;" xmlns="http://www.w3.org/2000/svg"><defs><filter id="protanopia"><feColorMatrix type="matrix" values="0.567, 0.433, 0, 0, 0, 0.558, 0.442, 0, 0, 0, 0, 0.242, 0.758, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="deuteranopia"><feColorMatrix type="matrix" values="0.625, 0.375, 0, 0, 0, 0.700, 0.300, 0, 0, 0, 0, 0.300, 0.7, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="tritanopia"><feColorMatrix type="matrix" values="0.95, 0.05, 0, 0, 0, 0, 0.433, 0.567, 0, 0, 0, 0.475, 0.525, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="achromatopsia"><feColorMatrix type="matrix" values="0.299, 0.587, 0.114, 0, 0, 0.299, 0.587, 0.114, 0, 0, 0, 0.299, 0.587, 0.114, 0, 0, 0, 0, 0, 1, 0"/></filter></defs></svg>
+
+    <script>
+        // Script da Sidebar (Mobile)
+        const btn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('mobile-sidebar');
+        const overlay = document.getElementById('mobile-overlay');
+        const closeBtn = document.getElementById('mobile-menu-close');
+        const accSidebar = document.getElementById('accessibility-sidebar');
+
+        function toggleMenu() {
+            // TRAVA: Se acessibilidade aberta, não abre o menu mobile
+            if (!accSidebar.classList.contains('-translate-x-full')) {
+                return;
+            }
+
+            const isClosed = sidebar.classList.contains('translate-x-full');
+            if (isClosed) {
+                sidebar.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Trava rolagem
+            } else {
+                sidebar.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        btn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+    </script>
 
     <script src="<?= $path_js_acc ?>"></script>
 </body>
