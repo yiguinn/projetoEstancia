@@ -9,11 +9,13 @@ $path_img = "../view/imagens/logo.png";
 $path_avatar_dir = "../view/uploads/avatars/";
 $path_js_acc = "../view/accessibility.js"; 
 
+// Links
 $link_home = "../index.php";
 $link_servicos = "../index.php#servicos";
 $link_galeria = "../index.php#galeria";
 $link_contato = "../index.php#contato"; 
 
+// Links do Usuário
 $link_painel = "../view/painelAdmin.php";
 $link_perfil = "../view/perfil.php";
 $link_login = "../view/login.php";
@@ -36,6 +38,7 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
     <link rel="icon" type="image/png" href="<?= $path_img ?>">
     
     <style>
+        /* Estilos de Acessibilidade */
         html[data-theme='high-contrast'] { --rosa-vibrante: #FFFF00; --texto-principal: #FFFFFF; --texto-secundario: #DDDDDD; --fundo-principal: #000000; --fundo-secundario: #1a1a1a; --borda: #FFFF00; }
         html[data-theme='high-contrast'] body, html[data-theme='high-contrast'] header { background-color: var(--fundo-principal) !important; color: var(--texto-principal) !important; }
         html[data-theme='high-contrast'] .text-rosa-vibrante { color: var(--rosa-vibrante) !important; }
@@ -107,7 +110,6 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
         </div>
 
         <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden transition-opacity duration-300"></div>
-
         <aside id="mobile-sidebar" class="fixed top-0 right-0 h-full w-72 bg-white shadow-2xl z-[70] transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
             <div class="p-4 flex justify-between items-center border-b border-gray-100">
                 <span class="font-bold text-gray-800 text-lg">Menu</span>
@@ -115,7 +117,6 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
                     <i class="fas fa-times fa-lg"></i>
                 </button>
             </div>
-
             <nav class="flex flex-col p-4 space-y-1">
                 <a href="<?= $link_home ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors">
                     <i class="fas fa-home w-5 text-center mr-3 text-gray-700"></i> Início
@@ -160,36 +161,33 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
                     </div>
                 <?php else: ?>
                     <div class="flex flex-col space-y-3">
-                        <a href="<?= $link_login ?>" class="text-center w-full py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">
-                            Login
-                        </a>
-                        <a href="<?= $link_cadastro ?>" class="text-center w-full py-3 bg-rosa-vibrante text-white rounded-lg hover:opacity-90 font-medium">
-                            Cadastre-se
-                        </a>
+                        <a href="<?= $link_login ?>" class="text-center w-full py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Login</a>
+                        <a href="<?= $link_cadastro ?>" class="text-center w-full py-3 bg-rosa-vibrante text-white rounded-lg hover:opacity-90 font-medium">Cadastre-se</a>
                     </div>
                 <?php endif; ?>
             </nav>
         </aside>
     </header>
 
-    <div id="accessibility-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
-    <aside id="accessibility-sidebar" class="fixed top-0 left-0 h-full w-72 bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <div id="accessibility-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[80] hidden transition-opacity duration-300"></div>
+    
+    <aside id="accessibility-sidebar" class="fixed top-0 left-0 h-full w-72 bg-white shadow-2xl z-[90] transform -translate-x-full transition-transform duration-300 ease-in-out">
         <div class="p-4">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-lg font-semibold text-gray-800">Acessibilidade</h2>
-                <button id="accessibility-close" aria-label="Fechar menu de acessibilidade" class="p-2 -mr-2 text-gray-500 hover:text-black"><i class="fas fa-times fa-lg"></i></button>
+                <button id="accessibility-close" aria-label="Fechar menu" class="p-2 -mr-2 text-gray-500 hover:text-black"><i class="fas fa-times fa-lg"></i></button>
             </div>
             <ul class="space-y-3">
                 <li><button id="btn-contrast" class="w-full text-left p-3 rounded-md hover:bg-gray-100 flex items-center space-x-3"><i class="fas fa-adjust w-5 text-center"></i><span>Alternar Alto Contraste</span></button></li>
                 <li>
                     <div class="p-3">
-                        <label for="select-color-filter" class="block text-sm font-medium text-gray-700 mb-2">Filtro de Cor (Daltonismo)</label>
+                        <label for="select-color-filter" class="block text-sm font-medium text-gray-700 mb-2">Filtro de Cor</label>
                         <select id="select-color-filter" class="w-full border-gray-300 rounded-md shadow-sm focus:border-rosa-vibrante focus:ring-rosa-vibrante">
                             <option value="none">Desativado</option>
-                            <option value="protanopia">Protanopia (Não vê Vermelho)</option>
-                            <option value="deuteranopia">Deuteranopia (Não vê Verde)</option>
-                            <option value="tritanopia">Tritanopia (Não vê Azul)</option>
-                            <option value="achromatopsia">Acromatopsia (Preto e Branco)</option>
+                            <option value="protanopia">Protanopia</option>
+                            <option value="deuteranopia">Deuteranopia</option>
+                            <option value="tritanopia">Tritanopia</option>
+                            <option value="achromatopsia">Acromatopsia</option>
                         </select>
                     </div>
                 </li>
@@ -199,37 +197,63 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
             <div class="border-t mt-6 pt-4"><button id="btn-reset-accessibility" class="w-full flex items-center justify-center py-2 px-4 rounded-md border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white transition-colors duration-200 text-sm"><i class="fas fa-undo mr-2"></i><span>Redefinir Opções</span></button></div>
         </div>
     </aside>
+    
     <svg id="svg-color-filters" style="position: absolute; height: 0; width: 0; visibility: hidden;" xmlns="http://www.w3.org/2000/svg"><defs><filter id="protanopia"><feColorMatrix type="matrix" values="0.567, 0.433, 0, 0, 0, 0.558, 0.442, 0, 0, 0, 0, 0.242, 0.758, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="deuteranopia"><feColorMatrix type="matrix" values="0.625, 0.375, 0, 0, 0, 0.700, 0.300, 0, 0, 0, 0, 0.300, 0.7, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="tritanopia"><feColorMatrix type="matrix" values="0.95, 0.05, 0, 0, 0, 0, 0.433, 0.567, 0, 0, 0, 0.475, 0.525, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="achromatopsia"><feColorMatrix type="matrix" values="0.299, 0.587, 0.114, 0, 0, 0.299, 0.587, 0.114, 0, 0, 0, 0.299, 0.587, 0.114, 0, 0, 0, 0, 0, 1, 0"/></filter></defs></svg>
 
     <script>
-        // Script da Sidebar (Mobile)
-        const btn = document.getElementById('mobile-menu-btn');
-        const sidebar = document.getElementById('mobile-sidebar');
-        const overlay = document.getElementById('mobile-overlay');
-        const closeBtn = document.getElementById('mobile-menu-close');
+        // --- CONTROLE MENU MOBILE (DIREITA) ---
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const mobileCloseBtn = document.getElementById('mobile-menu-close');
+
+        // --- CONTROLE ACESSIBILIDADE (ESQUERDA) ---
+        const accBtn = document.getElementById('accessibility-toggle');
         const accSidebar = document.getElementById('accessibility-sidebar');
+        const accOverlay = document.getElementById('accessibility-overlay');
+        const accCloseBtn = document.getElementById('accessibility-close');
 
-        function toggleMenu() {
-            // TRAVA: Se acessibilidade aberta, não abre o menu mobile
-            if (!accSidebar.classList.contains('-translate-x-full')) {
-                return;
-            }
+        function toggleMobileMenu() {
+            // Bloqueia se a acessibilidade estiver aberta
+            if (!accSidebar.classList.contains('-translate-x-full')) return;
 
-            const isClosed = sidebar.classList.contains('translate-x-full');
+            const isClosed = mobileSidebar.classList.contains('translate-x-full');
             if (isClosed) {
-                sidebar.classList.remove('translate-x-full');
-                overlay.classList.remove('hidden');
-                document.body.style.overflow = 'hidden'; // Trava rolagem
+                mobileSidebar.classList.remove('translate-x-full');
+                mobileOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
             } else {
-                sidebar.classList.add('translate-x-full');
-                overlay.classList.add('hidden');
+                mobileSidebar.classList.add('translate-x-full');
+                mobileOverlay.classList.add('hidden');
                 document.body.style.overflow = 'auto';
             }
         }
 
-        btn.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
+        function toggleAccMenu() {
+            // Bloqueia se o menu mobile estiver aberto
+            if (!mobileSidebar.classList.contains('translate-x-full')) return;
+
+            const isClosed = accSidebar.classList.contains('-translate-x-full');
+            if (isClosed) {
+                accSidebar.classList.remove('-translate-x-full');
+                accOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                accSidebar.classList.add('-translate-x-full');
+                accOverlay.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Eventos Mobile
+        mobileBtn.addEventListener('click', toggleMobileMenu);
+        mobileCloseBtn.addEventListener('click', toggleMobileMenu);
+        mobileOverlay.addEventListener('click', toggleMobileMenu);
+
+        // Eventos Acessibilidade (Substituindo a necessidade do arquivo externo para abrir/fechar)
+        accBtn.addEventListener('click', toggleAccMenu);
+        accCloseBtn.addEventListener('click', toggleAccMenu);
+        accOverlay.addEventListener('click', toggleAccMenu);
     </script>
 
     <script src="<?= $path_js_acc ?>"></script>
