@@ -88,7 +88,7 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
                                 <p class="text-sm font-bold text-gray-800 truncate"><?= htmlspecialchars($_SESSION['user_email']) ?></p>
                             </div>
                             
-                            <a href="perfil.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante transition-colors">
+                            <a href="../view/perfil.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante transition-colors">
                                 <i class="fas fa-user-circle mr-2 w-4 text-center"></i> Meu Perfil
                             </a>
                             
