@@ -7,16 +7,7 @@ include_once("header.php");
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Termos e Condições - Estância Ilha da Madeira</title>
-  <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;padding:24px;max-width:900px;margin:auto;color:#111}
-    header{border-bottom:1px solid #eee;padding-bottom:12px;margin-bottom:20px}
-    h1{font-size:1.6rem;margin:0}
-    small{color:#666}
-    section{margin-bottom:18px}
-    pre.placeholder{background:#f7f7f7;padding:10px;border-left:3px solid #ddd;color:#333;overflow:auto}
-    footer{border-top:1px solid #eee;padding-top:12px;color:#666;font-size:0.9rem;margin-top:24px}
-    ul{margin-left:1.2rem}
-  </style>
+<link rel="stylesheet" href="../view/style.css">
 </head>
 <body>
   <header>
