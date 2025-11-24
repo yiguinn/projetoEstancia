@@ -8,7 +8,7 @@ include_once("header.php");
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Política de Privacidade - Estância Ilha da Madeira</title>
-<link rel="stylesheet" href="../view/style.css">
+<link rel="stylesheet" href="../view/'style.css">
 </head>
 <body>
   <header>
