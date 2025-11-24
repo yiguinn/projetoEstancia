@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 // Verifica se o arquivo atual está dentro da pasta '/view/'
 $in_view_folder = strpos($_SERVER['SCRIPT_NAME'], '/view/') !== false;
 
-if ($in_view_folder) {
+
     // ESTOU DENTRO DA PASTA VIEW (Ex: Galeria, Perfil, Login)
     $path_css = "../view/style.css";
     $path_img = "../view/imagens/logo.png";
@@ -27,26 +27,6 @@ if ($in_view_folder) {
     $link_cadastro = "../view/cadastro.php";
     $link_logout = "../controller/authController.php?action=logout";
 
-} else {
-    // ESTOU NA RAIZ (index.php)
-    $path_css = "view/style.css";
-    $path_img = "view/imagens/logo.png";
-    $path_avatar_dir = "view/uploads/avatars/";
-    $path_js_acc = "view/accessibility.js"; // Script dentro da view
-    
-    // Links de Navegação
-    $link_home = "index.php";
-    $link_servicos = "#servicos";
-    $link_galeria = "#galeria";
-    $link_contato = "#contato"; // NOVO LINK
-    
-    // Links do Usuário
-    $link_painel = "view/painelAdmin.php";
-    $link_perfil = "view/perfil.php";
-    $link_login = "view/login.php";
-    $link_cadastro = "view/cadastro.php";
-    $link_logout = "controller/authController.php?action=logout";
-}
 
 $is_logged_in = isset($_SESSION['user_id']);
 $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
