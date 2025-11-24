@@ -101,8 +101,8 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
                     </div>
 
                 <?php else: ?>
-                    <a href="login.php" class="text-gray-700 hover:text-rosa-vibrante text-sm">Login</a>
-                    <a href="cadastro.php" class="bg-rosa-vibrante hover:opacity-90 text-white px-4 py-2 rounded-lg text-sm">
+                    <a href="../view/login.php" class="text-gray-700 hover:text-rosa-vibrante text-sm">Login</a>
+                    <a href="../view/cadastro.php" class="bg-rosa-vibrante hover:opacity-90 text-white px-4 py-2 rounded-lg text-sm">
                         Cadastre-se
                     </a>
                 <?php endif; ?>
