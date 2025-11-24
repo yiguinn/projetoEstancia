@@ -19,7 +19,7 @@ foreach ($chaves_parceiros as $chave) {
 }
 
 // O include do header vem DEPOIS de carregar os dados
-include_once("headerIndex.php");
+include_once("view/headerIndex.php");
 ?>
 
 <div id="modal" 
@@ -551,4 +551,4 @@ include_once("headerIndex.php");
     const serviceData = <?= json_encode($dados_parceiros_para_js); ?>;
 </script>
 
-<?php include_once("footerIndex.php"); ?>
+<?php include_once("view/footerIndex.php"); ?>

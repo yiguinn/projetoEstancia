@@ -1,0 +1,55 @@
+<?php
+// controller/usuarioAdminController.php
+if (session_status() === PHP_SESSION_NONE) session_start();
+
+// Segurança: Apenas Admin
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
+    header('Location: ../index.php');
+    exit();
+}
+
+require_once __DIR__ . '/../model/userModel.php';
+$model = new UserModel();
+
+// --- EXCLUIR USUÁRIO ---
+if (isset($_POST['delete_user'])) {
+    $id = (int)$_POST['id'];
+    
+    // Evita que o admin exclua a si mesmo
+    if ($id === $_SESSION['user_id']) {
+        header("Location: ../view/gerenciarUsuarios.php?status=erro_self");
+        exit();
+    }
+
+    if ($model->excluir($id)) {
+        header("Location: ../view/gerenciarUsuarios.php?status=sucesso_delete");
+    } else {
+        header("Location: ../view/gerenciarUsuarios.php?status=erro_db");
+    }
+    exit();
+}
+
+// --- ALTERAR CARGO (ROLE) ---
+if (isset($_POST['toggle_role'])) {
+    $id = (int)$_POST['id'];
+    $roleAtual = $_POST['current_role'];
+    
+    // Evita que o admin tire seu próprio cargo
+    if ($id === $_SESSION['user_id']) {
+        header("Location: ../view/gerenciarUsuarios.php?status=erro_self");
+        exit();
+    }
+
+    $novoRole = ($roleAtual === 'admin') ? 'user' : 'admin';
+
+    if ($model->alterarRole($id, $novoRole)) {
+        header("Location: ../view/gerenciarUsuarios.php?status=sucesso_role");
+    } else {
+        header("Location: ../view/gerenciarUsuarios.php?status=erro_db");
+    }
+    exit();
+}
+
+header("Location: ../view/gerenciarUsuarios.php");
+exit();
+?>

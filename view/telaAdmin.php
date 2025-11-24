@@ -1,193 +1,82 @@
 <?php
-// Proteção da página
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Verifica se o usuário está logado E se o cargo dele é 'admin'
+// view/telaAdmin.php
+if (session_status() === PHP_SESSION_NONE) session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
-    // Se não for admin, redireciona para a página inicial com uma mensagem de erro
     header('Location: index.php?status=acesso_negado');
     exit();
 }
+require_once __DIR__ . '/../model/formModel.php';
+$model = new formModel();
+$registros = $model->listar();
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Administrativo - Estância Ilha da Madeira</title>
+    <title>Solicitações de Contato - Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+<body class="bg-gray-100 font-['SF_Pro_Display',_sans_serif]">
 
-<body class="bg-white font-['SF_Pro_Display',_sans_serif]">
-
-<header class="bg-white border-b border-gray-100">
-    <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-        <div class="flex items-center space-x-3">
-             <h1 class="text-xl font-medium text-gray-800">Gerenciar Solicitações</h1>
-        </div>
-        <div>
-             <a href="painelAdmin.php" class="text-sm text-blue-600 hover:underline mr-4">
-                &larr; Voltar ao Painel
-            </a>
-            <a href="../controller/authController.php?action=logout" class="text-sm text-red-600 hover:underline mr-4">
-                Sair
-            </a>
-            <a href="../view/index.php" class="text-sm text-rosa-vibrante hover:underline">
-                Voltar ao Site
-            </a>
-        </div>
+<header class="bg-white shadow-sm mb-6">
+    <div class="max-w-7xl mx-auto py-4 px-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-gray-800">Solicitações Recebidas</h1>
+        <a href="painelAdmin.php" class="text-blue-600 hover:underline">&larr; Voltar ao Painel</a>
     </div>
 </header>
 
-    <?php
-    require_once __DIR__ . '/../model/formModel.php';
-    $model = new formModel();
-    $registros = $model->listar();
-    ?>
-
-    <main class="max-w-7xl mx-auto p-6">
-        <h1 class="text-2xl font-bold mb-4">Admin - Solicitações</h1>
-
-        <div class="overflow-x-auto">
-            <table class="table-auto w-full border-collapse border border-gray-300">
-                <thead>
-                    <tr class="bg-gray-100">
-                        <th class="border px-2 py-1 text-left">ID</th>
-                        <th class="border px-2 py-1 text-left">Nome</th>
-                        <th class="border px-2 py-1 text-left">Telefone</th>
-                        <th class="border px-2 py-1 text-left">Email</th>
-                        <th class="border px-2 py-1 text-left">Evento</th>
-                        <th class="border px-2 py-1 text-left">Data Pref.</th>
-                        <th class="border px-2 py-1 text-left">Convidados</th>
-                        <th class="border px-2 py-1 text-left">Mensagem</th>
-                        <th class="border px-2 py-1 text-left">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (!empty($registros)): ?>
-                        <?php foreach ($registros as $r): ?>
-                            <tr>
-                                <td class="border px-2 py-1"><?= htmlspecialchars($r['idUsuario']) ?></td>
-                                <td class="border px-2 py-1"><?= htmlspecialchars($r['nomeUsuario']) ?></td>
-                                <td class="border px-2 py-1"><?= htmlspecialchars($r['telefoneUsuario']) ?></td>
-                                <td class="border px-2 py-1"><?= htmlspecialchars($r['emailUsuario']) ?></td>
-                                <td class="border px-2 py-1"><?= htmlspecialchars($r['tipoCerimonia']) ?></td>
-                                <td class="border px-2 py-1"><?= htmlspecialchars($r['dataPref']) ?></td>
-                                <td class="border px-2 py-1"><?= htmlspecialchars($r['qtdConvidados']) ?></td>
-                                <td class="border px-2 py-1"><?= htmlspecialchars($r['mensagemCerimonia']) ?></td>
-                                <td class="border px-2 py-1">
-
-                                    <!-- Editar (abre modal) -->
-                                    <button
-                                        class="bg-blue-600 text-white px-2 py-1 rounded edit-btn"
-                                        data-id="<?= htmlspecialchars($r['idUsuario']) ?>"
-                                        data-nome="<?= htmlspecialchars($r['nomeUsuario'], ENT_QUOTES) ?>"
-                                        data-telefone="<?= htmlspecialchars($r['telefoneUsuario'], ENT_QUOTES) ?>"
-                                        data-email="<?= htmlspecialchars($r['emailUsuario'], ENT_QUOTES) ?>"
-                                        data-evento="<?= htmlspecialchars($r['tipoCerimonia'], ENT_QUOTES) ?>"
-                                        data-data="<?= htmlspecialchars($r['dataPref'], ENT_QUOTES) ?>"
-                                        data-convidados="<?= htmlspecialchars($r['qtdConvidados'], ENT_QUOTES) ?>"
-                                        data-mensagem="<?= htmlspecialchars($r['mensagemCerimonia'], ENT_QUOTES) ?>">Editar</button>
-
-                                    <!-- Excluir (form POST) -->
-                                    <form method="POST" action="../controller/adminController.php" style="display:inline">
-                                        <input type="hidden" name="id" value="<?= htmlspecialchars($r['idUsuario']) ?>">
-                                        <button type="submit" name="delete" class="bg-red-600 text-white px-2 py-1 rounded">Excluir</button>
-                                    </form>
-
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="9" class="px-6 py-4 text-center text-gray-500">Nenhuma solicitação encontrada.</td>
+<main class="max-w-7xl mx-auto px-4 pb-12">
+    <div class="bg-white rounded-lg shadow overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-gray-50 border-b">
+                    <th class="p-3 font-semibold text-gray-600">ID</th>
+                    <th class="p-3 font-semibold text-gray-600">Nome</th>
+                    <th class="p-3 font-semibold text-gray-600">Contato</th>
+                    <th class="p-3 font-semibold text-gray-600">Evento/Data</th>
+                    <th class="p-3 font-semibold text-gray-600">Qtd.</th>
+                    <th class="p-3 font-semibold text-gray-600 w-1/3">Mensagem</th>
+                    <th class="p-3 font-semibold text-gray-600">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!empty($registros)): ?>
+                    <?php foreach ($registros as $r): ?>
+                        <tr class="border-b hover:bg-gray-50 align-top">
+                            <td class="p-3 text-gray-500">#<?= htmlspecialchars($r['idUsuario']) ?></td>
+                            <td class="p-3 font-medium"><?= htmlspecialchars($r['nomeUsuario']) ?></td>
+                            <td class="p-3 text-sm">
+                                <div><?= htmlspecialchars($r['telefoneUsuario']) ?></div>
+                                <div class="text-gray-500"><?= htmlspecialchars($r['emailUsuario']) ?></div>
+                            </td>
+                            <td class="p-3 text-sm">
+                                <div class="font-medium capitalize"><?= htmlspecialchars($r['tipoCerimonia']) ?></div>
+                                <div class="text-gray-500"><?= htmlspecialchars(date('d/m/Y', strtotime($r['dataPref']))) ?></div>
+                            </td>
+                            <td class="p-3"><?= htmlspecialchars($r['qtdConvidados']) ?></td>
+                            <td class="p-3 text-sm text-gray-600 italic">
+                                "<?= nl2br(htmlspecialchars($r['mensagemCerimonia'])) ?>"
+                            </td>
+                            <td class="p-3">
+                                <form method="POST" action="../controller/adminController.php" onsubmit="return confirm('Apagar esta solicitação permanentemente?');">
+                                    <input type="hidden" name="id" value="<?= htmlspecialchars($r['idUsuario']) ?>">
+                                    <button type="submit" name="delete" class="text-red-600 hover:text-red-800 hover:bg-red-50 p-2 rounded transition" title="Excluir">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
-    </main>
-
-    <!-- Modal de edição -->
-    <div id="edit-modal" class="fixed inset-0 hidden bg-black bg-opacity-50 flex items-center justify-center z-[9999]">
-        <div class="bg-white p-6 rounded shadow-xl w-full max-w-2xl">
-            <h2 class="text-xl font-semibold mb-4">Editar Solicitação</h2>
-            <form method="POST" action="../controller/adminController.php" id="edit-form" class="space-y-3">
-                <input type="hidden" name="id" id="edit-id">
-
-                <label class="block">
-                    <span class="text-sm">Nome</span>
-                    <input type="text" name="nometxt" id="edit-nome" class="border p-2 w-full">
-                </label>
-
-                <label class="block">
-                    <span class="text-sm">Telefone</span>
-                    <input type="text" name="telefonenum" id="edit-telefone" class="border p-2 w-full">
-                </label>
-
-                <label class="block">
-                    <span class="text-sm">E-mail</span>
-                    <input type="email" name="emailtxt" id="edit-email" class="border p-2 w-full">
-                </label>
-
-                <label class="block">
-                    <span class="text-sm">Tipo de Cerimônia</span>
-                    <input type="text" name="eventotxt" id="edit-evento" class="border p-2 w-full">
-                </label>
-
-                <label class="block">
-                    <span class="text-sm">Data Preferencial</span>
-                    <input type="date" name="data_preferencial" id="edit-data" class="border p-2 w-full">
-                </label>
-
-                <label class="block">
-                    <span class="text-sm">Número de Convidados</span>
-                    <input type="number" name="numero_convidados" id="edit-convidados" class="border p-2 w-full">
-                </label>
-
-                <label class="block">
-                    <span class="text-sm">Mensagem</span>
-                    <textarea name="mensagemtxt" id="edit-mensagem" class="border p-2 w-full" rows="4"></textarea>
-                </label>
-
-                <div class="flex items-center justify-end">
-                    <button type="button" onclick="fecharModal()" class="mr-2 bg-gray-600 text-white px-4 py-2 rounded">Cancelar</button>
-                    <button type="submit" name="update" class="bg-green-600 text-white px-4 py-2 rounded">Salvar</button>
-                </div>
-            </form>
-        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="7" class="p-8 text-center text-gray-500">Nenhuma solicitação encontrada no momento.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
     </div>
-
-    <script>
-        // Abre modal preenchendo campos a partir dos data-attributes
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.edit-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const ds = this.dataset;
-                    document.getElementById('edit-id').value = ds.id || '';
-                    document.getElementById('edit-nome').value = ds.nome || '';
-                    document.getElementById('edit-telefone').value = ds.telefone || '';
-                    document.getElementById('edit-email').value = ds.email || '';
-                    document.getElementById('edit-evento').value = ds.evento || '';
-                    document.getElementById('edit-data').value = ds.data || '';
-                    document.getElementById('edit-convidados').value = ds.convidados || '';
-                    document.getElementById('edit-mensagem').value = ds.mensagem || '';
-                    document.getElementById('edit-modal').classList.remove('hidden');
-                });
-            });
-        });
-
-        function fecharModal() {
-            document.getElementById('edit-modal').classList.add('hidden');
-        }
-    </script>
-
+</main>
 </body>
-
 </html>
