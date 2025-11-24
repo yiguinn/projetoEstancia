@@ -68,7 +68,16 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 </div>
+<div id="lightbox-modal" class="fixed inset-0 z-[99999] bg-black bg-opacity-90 hidden items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300">
+    
+    <button id="lightbox-close" class="absolute top-6 right-6 text-white text-5xl hover:text-rosa-vibrante transition-colors focus:outline-none">
+        &times;
+    </button>
 
+    <img id="lightbox-img" src="" alt="Imagem Ampliada" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl transform transition-transform duration-300 object-contain">
+</div>
+
+<script src="lightbox.js"></script>
 <footer class="bg-gray-900 text-white px-4 md:px-8 py-12">
     <div class="max-w-7xl mx-auto">
         <div class="grid md:grid-cols-4 gap-8 mb-8">

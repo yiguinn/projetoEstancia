@@ -38,9 +38,9 @@
                     <?php else: ?>
                         <?php foreach ($imagens as $img): ?>
                             <div class="overflow-hidden rounded-xl shadow-lg">
-                                <img src="../view/uploads/galeria/<?= htmlspecialchars($img['caminho_arquivo']) ?>" 
-                                    alt="<?= htmlspecialchars($img['titulo']) ?>" 
-                                    class="w-full h-64 object-cover hover:scale-110 transition-transform duration-300">
+                            <img src="../view/uploads/galeria/<?= htmlspecialchars($img['caminho_arquivo']) ?>" 
+     alt="<?= htmlspecialchars($img['titulo']) ?>" 
+     class="w-full h-64 object-cover hover:scale-110 transition-transform duration-300 cursor-pointer zoomable">
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
