@@ -1,7 +1,6 @@
 <?php
 // Carrega os dados de todos os parceiros para passar ao JavaScript
-// Ajustei o caminho do require para funcionar na raiz
-require_once __DIR__ . '/model/parceiroModel.php';
+require_once __DIR__ . '/../model/parceiroModel.php';
 $parceiroModel = new ParceiroModel();
 
 $chaves_parceiros = ['fotografo', 'dj', 'bartender', 'cerimonialista'];
@@ -19,9 +18,8 @@ foreach ($chaves_parceiros as $chave) {
     }
 }
 
-// --- AQUI ESTÁ A MUDANÇA ---
-// Agora usamos o header único e inteligente da pasta view
-include_once("view/header.php");
+// O include do header vem DEPOIS de carregar os dados
+include_once("view/headerIndex.php");
 ?>
 
 <div id="modal" 
@@ -34,10 +32,12 @@ include_once("view/header.php");
     </button>
   </div>
 </div>
-
 <?php /* Hero Section */ ?>
+
 <section id="inicio" class="gradient-bg px-4 md:px-8 py-16">
     <div class="max-w-7xl mx-auto">
+        <?php /* Rating */ ?>
+
         <div class="grid lg:grid-cols-2 gap-12 items-center">
             <?php /* Left Content */ ?>
             <div class="space-y-8">
@@ -86,14 +86,17 @@ include_once("view/header.php");
         <?php /* Statistics */ ?>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 pt-12 md:pt-16 mt-12 md:mt-16 border-t border-gray-200"> 
             <div class="text-center">
+                
                 <div class="text-3xl md:text-4xl font-medium text-rosa-vibrante mb-2">Centenas</div> 
                 <div class="text-gray-600">De Casamentos Realizados</div>
             </div>
             <div class="text-center">
+                 
                 <div class="text-3xl md:text-4xl font-medium text-rosa-vibrante mb-2">25+</div>
                 <div class="text-gray-600">Anos de Experiência</div>
             </div>
             <div class="text-center">
+                 
                 <div class="text-3xl md:text-4xl font-medium text-rosa-vibrante mb-2">100%</div>
                 <div class="text-gray-600">Sonhos Realizados</div>
             </div>
@@ -104,6 +107,7 @@ include_once("view/header.php");
 <?php /* Services Section */ ?>
 <section id="servicos" class=" px-4 md:px-8 py-16">
     <div class="max-w-7xl mx-auto">
+        <?php /* Header */ ?>
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante mb-4">
                 Serviços Completos
@@ -113,66 +117,68 @@ include_once("view/header.php");
             </p>
         </div>
 
+        <?php /* Services Grid */ ?>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="text-center p-6 border border-gray-200 rounded-lg">
-                <div class="w-16 h-16 bg-blue-100 text-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <i class="fas fa-camera-retro fa-2x"></i>
-                </div>
-                <h3 class="text-xl font-medium text-gray-900 mb-3">Fotografia Profissional</h3>
-                <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                    Parceiros especializados em capturar cada momento inesquecível do seu evento.
-                </p>
-                <button data-service="fotografo" class="open-service-modal border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
-                    Saiba Mais
-                </button>
-            </div>
-
-            <div class="text-center p-6 border border-gray-200 rounded-lg">
-                <div class="w-16 h-16 bg-purple-100 text-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <i class="fas fa-compact-disc fa-2x"></i>
-                </div>
-                <h3 class="text-xl font-medium text-gray-900 mb-3">Som & DJ</h3>
-                <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                    Equipamentos de ponta e os melhores DJs para garantir a trilha sonora perfeita.
-                </p>
-                <button data-service="dj" class="open-service-modal border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
-                    Saiba Mais
-                </button>
-            </div>
-
-            <div class="text-center p-6 border border-gray-200 rounded-lg">
-                <div class="w-16 h-16 bg-orange-100 text-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <i class="fas fa-martini-glass-citrus fa-2x"></i>
-                </div>
-                <h3 class="text-xl font-medium text-gray-900 mb-3">Serviço de Bar</h3>
-                <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                    Bartenders experientes e um cardápio de drinks criativo para seus convidados.
-                </p>
-                <button data-service="bartender" class="open-service-modal border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
-                    Saiba Mais
-                </button>
-            </div>
-
-            <div class="text-center p-6 border border-gray-200 rounded-lg">
-                <div class="w-16 h-16 bg-green-100 text-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <i class="fas fa-clipboard-list fa-2x"></i>
-                </div>
-                <h3 class="text-xl font-medium text-gray-900 mb-3">Cerimonialista</h3>
-                <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                    Organização e planejamento impecáveis para que seu único trabalho seja aproveitar o dia.
-                </p>
-                <button data-service="cerimonialista" class="open-service-modal border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
-                    Saiba Mais
-                </button>
-            </div>
+    <div class="text-center p-6 border border-gray-200 rounded-lg">
+        <div class="w-16 h-16 bg-blue-100 text-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-camera-retro fa-2x"></i>
         </div>
+        <h3 class="text-xl font-medium text-gray-900 mb-3">Fotografia Profissional</h3>
+        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+            Parceiros especializados em capturar cada momento inesquecível do seu evento.
+        </p>
+        <button data-service="fotografo" class="open-service-modal border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
+            Saiba Mais
+        </button>
     </div>
+
+    <div class="text-center p-6 border border-gray-200 rounded-lg">
+        <div class="w-16 h-16 bg-purple-100 text-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-compact-disc fa-2x"></i>
+        </div>
+        <h3 class="text-xl font-medium text-gray-900 mb-3">Som & DJ</h3>
+        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+            Equipamentos de ponta e os melhores DJs para garantir a trilha sonora perfeita.
+        </p>
+        <button data-service="dj" class="open-service-modal border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
+            Saiba Mais
+        </button>
+    </div>
+
+    <div class="text-center p-6 border border-gray-200 rounded-lg">
+        <div class="w-16 h-16 bg-orange-100 text-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-martini-glass-citrus fa-2x"></i>
+        </div>
+        <h3 class="text-xl font-medium text-gray-900 mb-3">Serviço de Bar</h3>
+        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+            Bartenders experientes e um cardápio de drinks criativo para seus convidados.
+        </p>
+        <button data-service="bartender" class="open-service-modal border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
+            Saiba Mais
+        </button>
+    </div>
+
+    <div class="text-center p-6 border border-gray-200 rounded-lg">
+        <div class="w-16 h-16 bg-green-100 text-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-clipboard-list fa-2x"></i>
+        </div>
+        <h3 class="text-xl font-medium text-gray-900 mb-3">Cerimonialista</h3>
+        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+            Organização e planejamento impecáveis para que seu único trabalho seja aproveitar o dia.
+        </p>
+        <button data-service="cerimonialista" class="open-service-modal border border-rosa-vibrante text-rosa-vibrante hover:bg-rosa-vibrante hover:text-white px-6 py-2 rounded-lg transition-colors">
+            Saiba Mais
+        </button>
+    </div>
+</div>
 </section>
 
 <?php /* Gallery Section */ ?>
 <section id="galeria" class="gradient-bg px-4 md:px-8 py-16">
     <div class="max-w-7xl mx-auto">
+        <?php /* Header */ ?>
         <div class="text-center mb-12">
+
             <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante mb-4">
                 Momentos Únicos, Memórias Eternas
             </h2>
@@ -181,8 +187,10 @@ include_once("view/header.php");
             </p>
         </div>
 
+        <?php /* Gallery Grid */ ?>
         <div class="grid md:grid-cols-3 gap-6">
-            <a href="view/galeriaCerimonia.php" class="relative group overflow-hidden rounded-2xl"> 
+            <?php /* Gallery Item 1 */ ?>
+            <a href="/galeria/cerimonia" class="relative group overflow-hidden rounded-2xl"> 
                 <img src="view/imagens/img2.png" alt="Cerimônia" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Cerimônia</span>
@@ -192,7 +200,8 @@ include_once("view/header.php");
                 </div>
             </a>
 
-            <a href="view/galeriaEvento.php" class="relative group overflow-hidden rounded-2xl"> 
+            <?php /* Gallery Item 2 */ ?>
+            <a href="/galeria/evento" class="relative group overflow-hidden rounded-2xl"> 
                 <img src="view/imagens/img4.png" alt="Evento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Evento</span>
@@ -202,7 +211,8 @@ include_once("view/header.php");
                 </div>
             </a>
 
-            <a href="view/galeriaCasamento.php" class="relative group overflow-hidden rounded-2xl"> 
+            <?php /* Gallery Item 3 */ ?>
+            <a href="/galeria/casamento" class="relative group overflow-hidden rounded-2xl"> 
                 <img src="view/imagens/img3.png" alt="Casamento" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Casamento</span>
@@ -212,7 +222,8 @@ include_once("view/header.php");
                 </div>
             </a>
 
-            <a href="view/galeriaRecepcao.php" class="relative group overflow-hidden rounded-2xl"> 
+            <?php /* Gallery Item 4 */ ?>
+            <a href="/galeria/recepcao" class="relative group overflow-hidden rounded-2xl"> 
                 <img src="view/imagens/img6.png" alt="Recepção" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Recepção</span>
@@ -222,7 +233,8 @@ include_once("view/header.php");
                 </div>
             </a>
 
-            <a href="view/galeriaDecoracao.php" class="relative group overflow-hidden rounded-2xl"> 
+            <?php /* Gallery Item 5 */ ?>
+            <a href="/galeria/decoracao" class="relative group overflow-hidden rounded-2xl"> 
                 <img src="view/imagens/img1.png" alt="Decoração" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Decoração</span>
@@ -232,7 +244,8 @@ include_once("view/header.php");
                 </div>
             </a>
 
-            <a href="view/galeriaEspaco.php" class="relative group overflow-hidden rounded-2xl"> 
+            <?php /* Gallery Item 6 */ ?>
+            <a href="/galeria/espaco" class="relative group overflow-hidden rounded-2xl"> 
                 <img src="view/imagens/img5.png" alt="Espaço" class="w-full h-64 object-cover transition-transform group-hover:scale-110">
                 <div class="gallery-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span class="bg-white text-rosa-vibrante px-3 py-1 rounded-full text-sm font-medium">Espaço</span>
@@ -256,16 +269,16 @@ include_once("view/header.php");
                 </h2>
 
                 <div class="space-y-6 text-gray-600 leading-relaxed">
-                    <p class="text-lg">
-                        Há <strong>25 anos</strong>, nossa paixão é transformar o sonho do casamento perfeito em realidade. Uma jornada dedicada a construir histórias de amor, lapidadas com a confiança de centenas de casais que nos escolheram para o seu grande dia.
-                    </p>
-                    <p>
-                        Acreditamos que a excelência está nos detalhes. Por isso, estamos em uma busca constante por aperfeiçoamento, desde a curadoria de nossas decorações até a qualidade de nossos materiais. Nosso objetivo vai além de realizar o sonho dos noivos; buscamos emocionar cada convidado, fazendo com que se sintam bem-vindos e percebam a organização impecável como a assinatura de nosso serviço.
-                    </p>
-                    <p>
-                        Cada evento é uma promessa de que a dedicação, o cuidado e a busca pela perfeição farão do seu casamento um momento autêntico e inesquecível para todos.
-                    </p>
-                </div>
+    <p class="text-lg">
+        Há <strong>25 anos</strong>, nossa paixão é transformar o sonho do casamento perfeito em realidade. Uma jornada dedicada a construir histórias de amor, lapidadas com a confiança de centenas de casais que nos escolheram para o seu grande dia.
+    </p>
+    <p>
+        Acreditamos que a excelência está nos detalhes. Por isso, estamos em uma busca constante por aperfeiçoamento, desde a curadoria de nossas decorações até a qualidade de nossos materiais. Nosso objetivo vai além de realizar o sonho dos noivos; buscamos emocionar cada convidado, fazendo com que se sintam bem-vindos e percebam a organização impecável como a assinatura de nosso serviço.
+    </p>
+    <p>
+        Cada evento é uma promessa de que a dedicação, o cuidado e a busca pela perfeição farão do seu casamento um momento autêntico e inesquecível para todos.
+    </p>
+</div>
 
                 <div class="bg-rosa-suave/30 p-6 rounded-xl">
                     <div class="flex items-start space-x-4">
@@ -284,31 +297,52 @@ include_once("view/header.php");
                         <div class="text-2xl font-medium text-rosa-vibrante mb-1">Michelle Mendonça</div>
                         <div class="text-sm text-gray-600">Fundadora & CEO</div>
                     </div>
+                    
                 </div>
             </div>
 
             <?php /* Right Content */ ?>
-            <div class="relative">
-                <img src="view/imagens/img8.png" alt="Nossa história" class="w-full h-[500px] object-cover rounded-2xl shadow-2xl">
+<div class="relative">
+    <img src="view/imagens/img8.png" alt="Nossa história" class="w-full h-[500px] object-cover rounded-2xl shadow-2xl">
 
-                <?php /* Testimonial Card com "Ler Mais" */ ?>
-                <div class="absolute bottom-8 right-8 bg-white rounded-xl p-6 shadow-lg max-w-sm">
-                    <div class="flex items-center mb-4">
-                        <img src="https://placehold.co/48x48/EED0E0/C53366?text=I" alt="Avatar da cliente" class="w-10 h-10 rounded-full mr-3">
-                        <div>
-                            <p class="font-semibold text-gray-800 text-sm">Isabelly</p>
-                            <div class="text-yellow-400">
-                                <i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <p class="text-gray-600 text-sm italic review-text" data-full-text="Não podia ter escolhido melhor, o lugar é incrível!!! A Michelle e sua equipe é mais ainda. Tudo muito bem organizado, no dia não precisei me preocupar com nada, somente aproveitei cada detalhe. Foi como eu sempre sonhei, a decoração estava maravilhosa, tanto da cerimônia como do salão e a comida muito gostosa! Todos os convidados saíram maravilhados, elogiando muitooo. Foi simplesmente perfeito, realmente não tem nada que saiu do conformes ou que eu não tenha gostado, estou encantada com a experiência incrível que tivemos. Recomendo de olhos fechados, e desejo que todos os noivos tenham uma experiência tão especial quanto a que tivemos nesse momento tão sonhado de nossas vidas">
-                    </p>
-                    <button class="ler-mais-btn text-rosa-vibrante font-semibold mt-2 text-sm text-left hover:underline">Ler mais</button>
+    <?php /* Testimonial Card com "Ler Mais" */ ?>
+    <div class="absolute bottom-8 right-8 bg-white rounded-xl p-6 shadow-lg max-w-sm">
+        <div class="flex items-center mb-4">
+            <img src="https://placehold.co/48x48/EED0E0/C53366?text=I" alt="Avatar da cliente" class="w-10 h-10 rounded-full mr-3">
+            <div>
+                <p class="font-semibold text-gray-800 text-sm">Isabelly</p>
+                <div class="text-yellow-400">
+                    <i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i><i class="fas fa-star text-xs"></i>
                 </div>
             </div>
         </div>
+        
+        <p class="text-gray-600 text-sm italic review-text" data-full-text="Não podia ter escolhido melhor, o lugar é incrível!!! A Michelle e sua equipe é mais ainda. Tudo muito bem organizado, no dia não precisei me preocupar com nada, somente aproveitei cada detalhe. Foi como eu sempre sonhei, a decoração estava maravilhosa, tanto da cerimônia como do salão e a comida muito gostosa! Todos os convidados saíram maravilhados, elogiando muitooo. Foi simplesmente perfeito, realmente não tem nada que saiu do conformes ou que eu não tenha gostado, estou encantada com a experiência incrível que tivemos. Recomendo de olhos fechados, e desejo que todos os noivos tenham uma experiência tão especial quanto a que tivemos nesse momento tão sonhado de nossas vidas">
+            </p>
+        <button class="ler-mais-btn text-rosa-vibrante font-semibold mt-2 text-sm text-left hover:underline">Ler mais</button>
+    </div>
+</div>
+        </div>
+
+       <?php  /* Statistics Row 
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-gray-200">
+            <div class="text-center">
+                <div class="text-3xl font-medium text-rosa-vibrante mb-2">Top 1</div>
+                <div class="text-gray-600 text-sm">Melhor Espaço<br>Santos Exclusivos</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl font-medium text-rosa-vibrante mb-2">Top 10</div>
+                <div class="text-gray-600 text-sm">Venues<br>São Paulo Wedding</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl font-medium text-rosa-vibrante mb-2">5 Estrelas</div>
+                <div class="text-gray-600 text-sm">Avaliação Clientes</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl font-medium text-rosa-vibrante mb-2">ISO</div>
+                <div class="text-gray-600 text-sm">Certificado<br>Qualidade Garantida</div>
+            </div>
+        </div>*/ ?>
     </div>
 </section>
 
@@ -318,9 +352,11 @@ include_once("view/header.php");
         <div class="grid lg:grid-cols-2 gap-12">
             <?php /* Left Content */ ?>
             <div class="space-y-8">
+
                 <h2 class="text-3xl md:text-4xl font-normal text-rosa-vibrante">
                     Vamos Realizar Seu Sonho
                 </h2>
+
                 <p class="text-lg text-gray-600 leading-relaxed">
                     Entre em contato conosco e vamos começar a planejar o casamento dos seus sonhos. Nossa equipe está pronta para criar uma experiência única e inesquecível.
                 </p>
@@ -391,13 +427,27 @@ include_once("view/header.php");
 
                 <form method="post" id="contact-form" class="space-y-6">
                     <div class="grid md:grid-cols-2 gap-4">
-                        <div>
+                    <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Nome do(a) contratante</label>
-                            <input type="text" name="nometxt" id="nome" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante outline-none <?php if (isset($_SESSION['user_id'])): ?> bg-gray-100 cursor-not-allowed <?php endif; ?>" placeholder="Digite seu nome" value="<?= isset($_SESSION['user_nome']) ? htmlspecialchars($_SESSION['user_nome']) : '' ?>" <?php if (isset($_SESSION['user_id'])): ?> readonly <?php endif; ?>>
+                            <input
+                                type="text"
+                                name="nometxt"
+                                id="nome"
+                                required
+                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante outline-none 
+                                    <?php if (isset($_SESSION['user_id'])): ?> bg-gray-100 cursor-not-allowed <?php endif; ?>"
+                                placeholder="Digite seu nome"
+                                value="<?= isset($_SESSION['user_nome']) ? htmlspecialchars($_SESSION['user_nome']) : '' ?>"
+                                <?php if (isset($_SESSION['user_id'])): ?> readonly <?php endif; ?>
+                            >
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Comemoração</label>
-                            <select name="eventotxt" id="evento" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors">
+                            <select
+                                name="eventotxt"
+                                id="evento"
+                                required
+                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors">
                                 <option value="">Selecione</option>
                                 <option value="aniversario">Aniversário</option>
                                 <option value="casamento">Casamento</option>
@@ -409,25 +459,57 @@ include_once("view/header.php");
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <label for="telefone" class="block text-sm font-medium text-gray-700 mb-2">Telefone</label>
-                            <input type="tel" name="telefonenum" id="telefone" required maxlength="15" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante outline-none <?php if (isset($_SESSION['user_id'])): ?> bg-gray-100 cursor-not-allowed <?php endif; ?>" placeholder="(XX) XXXXX-XXXX" value="<?= isset($_SESSION['user_telefone']) ? htmlspecialchars($_SESSION['user_telefone']) : '' ?>" <?php if (isset($_SESSION['user_id'])): ?> readonly <?php endif; ?>>
-                            <span id="telefone-error" class="text-red-500 text-sm mt-1" style="display: none;"></span>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">E-mail</label>
-                            <input type="email" name="emailtxt" id="email" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante outline-none <?php if (isset($_SESSION['user_id'])): ?> bg-gray-100 cursor-not-allowed <?php endif; ?>" placeholder="seu@email.com" value="<?= isset($_SESSION['user_email']) ? htmlspecialchars($_SESSION['user_email']) : '' ?>" <?php if (isset($_SESSION['user_id'])): ?> readonly <?php endif; ?>>
-                        </div>
+
+                    <div>
+                        <label for="telefone" class="block text-sm font-medium text-gray-700 mb-2">Telefone</label>
+                        <input
+                            type="tel"
+                            name="telefonenum"
+                            id="telefone" required
+                            maxlength="15" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante outline-none
+                                <?php if (isset($_SESSION['user_id'])): ?> bg-gray-100 cursor-not-allowed <?php endif; ?>"
+                            placeholder="(XX) XXXXX-XXXX"
+                            value="<?= isset($_SESSION['user_telefone']) ? htmlspecialchars($_SESSION['user_telefone']) : '' ?>"
+                            <?php if (isset($_SESSION['user_id'])): ?> readonly <?php endif; ?>
+                        >
+                        <span id="telefone-error" class="text-red-500 text-sm mt-1" style="display: none;"></span>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">E-mail</label>
+                        <input
+                            type="email"
+                            name="emailtxt"
+                            id="email"
+                            required
+                            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante outline-none
+                                <?php if (isset($_SESSION['user_id'])): ?> bg-gray-100 cursor-not-allowed <?php endif; ?>"
+                            placeholder="seu@email.com"
+                            value="<?= isset($_SESSION['user_email']) ? htmlspecialchars($_SESSION['user_email']) : '' ?>"
+                            <?php if (isset($_SESSION['user_id'])): ?> readonly <?php endif; ?>
+                        >
+                    </div>
+
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Data Preferencial</label>
-                            <input type="date" id="data" name="data_preferencial" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors" placeholder="mm/dd/yyyy">
+                            <input
+                                type="date"
+                                id="data"
+                                name="data_preferencial"
+                                required
+                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors"
+                                placeholder="mm/dd/yyyy">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Número de Convidados</label>
-                            <select name="numero_convidados" id="convidados" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors">
+                            <select
+                                name="numero_convidados"
+                                id="convidados"
+                                required
+                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors">
                                 <option value="">Selecione</option>
                                 <option value="50">Até 50 pessoas</option>
                                 <option value="100">50 a 100 pessoas</option>
@@ -440,10 +522,17 @@ include_once("view/header.php");
 
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Mensagem (Opcional)</label>
-                        <textarea maxlength="2500" name="mensagemtxt" rows="4" id="mensagem" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors resize-none" placeholder="Conte-nos um pouco sobre o casamento dos seus sonhos..."></textarea>
+                        <textarea maxlength="2500"
+                            name="mensagemtxt"
+                            rows="4"
+                            id="mensagem"
+                            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-rosa-vibrante focus:border-transparent outline-none transition-colors resize-none"
+                            placeholder="Conte-nos um pouco sobre o casamento dos seus sonhos..."></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-rosa-vibrante hover:opacity-90 text-white py-4 rounded-lg font-medium transition-opacity flex items-center justify-center space-x-2">
+                    <button
+                        type="submit"
+                        class="w-full bg-rosa-vibrante hover:opacity-90 text-white py-4 rounded-lg font-medium transition-opacity flex items-center justify-center space-x-2">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
@@ -454,6 +543,8 @@ include_once("view/header.php");
             </div>
         </div>
     </div>
+</section>
+
 </section>
 
 <script>
