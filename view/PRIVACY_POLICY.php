@@ -109,7 +109,6 @@ include_once("header.php");
     <p>Podemos atualizar esta Política periodicamente. As mudanças serão informadas com a data de vigência.</p>
   </section>
 
-  <footer>
-  </footer>
+  <?php include_once ("footer.php")?>
 </body>
 </html>

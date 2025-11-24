@@ -93,5 +93,6 @@ include_once("header.php");
     <h2>11. Lei aplicável e foro</h2>
     <p>Estes Termos são regidos pelas leis do Brasil. Para resolução de conflitos, fica eleito o foro da comarca de <strong>Franco da Rocha</strong>, com renúncia a qualquer outro.</p>
   </section>
+  <?php include_once ("footer.php")?>
 </body>
 </html>
