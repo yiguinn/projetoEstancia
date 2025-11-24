@@ -10,7 +10,7 @@ $in_view_folder = strpos($_SERVER['SCRIPT_NAME'], '/view/') !== false;
 if ($in_view_folder) {
     // ESTOU DENTRO DA PASTA VIEW (Ex: Galeria, Perfil, Login)
     $path_css = "style.css";
-    $path_img = "imagens/logo.png";
+    $path_img = "../view/imagens/logo.png";
     $path_avatar_dir = "uploads/avatars/";
     $path_js_acc = "accessibility.js"; // Script na mesma pasta
     
@@ -184,6 +184,6 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
     <svg id="svg-color-filters" style="position: absolute; height: 0; width: 0; visibility: hidden;" xmlns="http://www.w3.org/2000/svg"><defs><filter id="protanopia"><feColorMatrix type="matrix" values="0.567, 0.433, 0, 0, 0, 0.558, 0.442, 0, 0, 0, 0, 0.242, 0.758, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="deuteranopia"><feColorMatrix type="matrix" values="0.625, 0.375, 0, 0, 0, 0.700, 0.300, 0, 0, 0, 0, 0.300, 0.7, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="tritanopia"><feColorMatrix type="matrix" values="0.95, 0.05, 0, 0, 0, 0, 0.433, 0.567, 0, 0, 0, 0.475, 0.525, 0, 0, 0, 0, 0, 1, 0"/></filter><filter id="achromatopsia"><feColorMatrix type="matrix" values="0.299, 0.587, 0.114, 0, 0, 0.299, 0.587, 0.114, 0, 0, 0, 0.299, 0.587, 0.114, 0, 0, 0, 0, 0, 1, 0"/></filter></defs></svg>
 
     <script src="<?= $path_js_acc ?>"></script>
-    <script src="accessibility.js"></script>
+    <script src="../view/accessibility.js"></script>
 </body>
 </html>
