@@ -55,9 +55,9 @@
                     <p>&copy; 2025 Estância Ilha da Madeira.</p>
                 </div>
                 <div class="text-gray-400 text-sm md:text-right">
-                    <a href="PRIVACY_POLICY.php" class="hover:text-white transition-colors">Privacidade</a>
+                    <a href="../view/PRIVACY_POLICY.php" class="hover:text-white transition-colors">Política de Privacidade</a>
                     <span class="mx-2">|</span>
-                    <a href="TERMS_AND_CONDITIONS.php" class="hover:text-white transition-colors">Termos</a>
+                    <a href="../view/TERMS_AND_CONDITIONS.php" class="hover:text-white transition-colors">Termos de Uso</a>
                 </div>
             </div>
         </div>
