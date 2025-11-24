@@ -21,6 +21,21 @@ if (isset($_POST['cadastro'])) {
         exit();
     }
 
+    // --- VALIDAÇÃO FORTE DE SENHA NO BACKEND ---
+    // Verifica: 8 chars, 1 maiúscula, 1 minúscula, 1 número, 1 especial
+    $senhaSegura = true;
+    if (strlen($password) < 8) $senhaSegura = false;
+    if (!preg_match('/[A-Z]/', $password)) $senhaSegura = false;
+    if (!preg_match('/[a-z]/', $password)) $senhaSegura = false;
+    if (!preg_match('/[0-9]/', $password)) $senhaSegura = false;
+    if (!preg_match('/[!@#$%^&*(),.?":{}|<>]/', $password)) $senhaSegura = false;
+
+    if (!$senhaSegura) {
+        header('Location: ../view/cadastro.php?status=erro_senha_fraca');
+        exit();
+    }
+    // ------------------------------------------
+
     $sucesso = $model->cadastrar($nome, $email, $telefone, $password);
 
     if ($sucesso) {
