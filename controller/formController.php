@@ -1,4 +1,5 @@
 <?php
+// controller/formController.php
 if (session_status() === PHP_SESSION_NONE) session_start();
 
 require_once __DIR__ . '/../model/formModel.php';
@@ -6,7 +7,7 @@ require_once __DIR__ . '/../model/formModel.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $model = new formModel();
 
-    // Dados do form
+    // Coleta dados
     $n = $_POST['nometxt'] ?? '';
     $t = $_POST['telefonenum'] ?? '';
     $e = $_POST['emailtxt'] ?? '';
@@ -15,19 +16,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $num = $_POST['numero_convidados'] ?? null;
     $msg = $_POST['mensagemtxt'] ?? '';
     
-    // AQUI ESTÁ O SEGREDO: Se estiver logado (mesmo como admin), pega o ID
-    $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+    // --- CORREÇÃO PRINCIPAL ---
+    // Verifica se existe usuário logado na sessão para salvar no histórico dele
+    $userId = null;
+    if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) {
+        $userId = $_SESSION['user_id'];
+    }
 
-    // Salva no banco com o ID
+    // Passa o userId para o model
     $sucesso = $model->inserir($n, $t, $e, $ev, $d, $num, $msg, $userId);
 
+    // Retorno JSON para o JavaScript
     header('Content-Type: application/json; charset=utf-8');
-    echo json_encode([
-        "success" => (bool)$sucesso,
-        "message" => $sucesso 
-            ? "✅ Solicitação enviada! Verifique seu histórico." 
-            : "❌ Erro ao enviar."
-    ]);
+    
+    if ($sucesso) {
+        echo json_encode([
+            "success" => true,
+            "message" => "✅ Solicitação enviada com sucesso! Consulte o histórico no seu perfil."
+        ]);
+    } else {
+        echo json_encode([
+            "success" => false,
+            "message" => "❌ Ocorreu um erro ao enviar. Tente novamente."
+        ]);
+    }
     exit();
 }
 ?>
