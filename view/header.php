@@ -46,6 +46,16 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
         html[data-color-filter="deuteranopia"] { filter: url('#deuteranopia'); }
         html[data-color-filter="tritanopia"] { filter: url('#tritanopia'); }
         html[data-color-filter="achromatopsia"] { filter: url('#achromatopsia'); }
+
+        /* Adicione isso dentro da tag <style> do seu header */
+html { font-size: 16px; transition: font-size 0.2s ease; } /* Tamanho Base */
+
+html[data-font-scale='0.8'] { font-size: 13px; }
+html[data-font-scale='0.9'] { font-size: 14.5px; }
+html[data-font-scale='1.0'] { font-size: 16px; }
+html[data-font-scale='1.1'] { font-size: 17.6px; }
+html[data-font-scale='1.2'] { font-size: 19.2px; }
+html[data-font-scale='1.3'] { font-size: 20.8px; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
