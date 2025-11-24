@@ -45,7 +45,7 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
                 <i class="fas fa-universal-access fa-xl"></i>
             </button>
 
-            <a href="../view/index.php" class="flex items-center space-x-3 pl-12">
+            <a href="../index.php" class="flex items-center space-x-3 pl-12">
                 <img src="../view/imagens/logo.png" width="50" alt="Logo">
                 <div>
                     <h1 class="text-xl font-medium text-rosa-vibrante">Estância</h1>
