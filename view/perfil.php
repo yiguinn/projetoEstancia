@@ -193,5 +193,6 @@ $avatarPath = !empty($user['avatar']) ? "uploads/avatars/" . $user['avatar'] : "
 
 <script src="telefone.js"></script>
 <script src="password-toggle.js"></script>
+<?php include_once ("footer.php")?>
 </body>
 </html>
