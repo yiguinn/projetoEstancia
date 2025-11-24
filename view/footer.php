@@ -60,13 +60,22 @@
     </div>
 </footer>
 
-<div id="lightbox-modal" class="fixed inset-0 z-[99999] bg-black bg-opacity-95 hidden items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300">
+<div id="lightbox-modal" class="fixed inset-0 z-[99999] bg-black bg-opacity-95 hidden items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 select-none">
     
-    <button id="lightbox-close" class="absolute top-5 right-5 text-white text-5xl hover:text-rosa-vibrante transition-colors focus:outline-none z-[100000] cursor-pointer">
-        &times;
+    <button id="lightbox-close" class="absolute top-5 right-5 text-gray-400 hover:text-white transition-colors focus:outline-none z-[100000] cursor-pointer p-2">
+        <i class="fas fa-times fa-2x"></i>
     </button>
 
-    <img id="lightbox-img" src="" alt="Zoom" class="max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl select-none">
+    <button id="lightbox-prev" class="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white hover:bg-white/10 rounded-full p-4 transition-all z-[100000]">
+        <i class="fas fa-chevron-left fa-2x"></i>
+    </button>
+
+    <img id="lightbox-img" src="" alt="Zoom" class="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl">
+
+    <button id="lightbox-next" class="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white hover:bg-white/10 rounded-full p-4 transition-all z-[100000]">
+        <i class="fas fa-chevron-right fa-2x"></i>
+    </button>
+
 </div>
 
 <script>
@@ -74,38 +83,83 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('lightbox-modal');
     const modalImg = document.getElementById('lightbox-img');
     const closeBtn = document.getElementById('lightbox-close');
+    const nextBtn = document.getElementById('lightbox-next');
+    const prevBtn = document.getElementById('lightbox-prev');
     
-    // Seleciona todas as imagens que tem a classe 'zoomable'
-    const images = document.querySelectorAll('.zoomable');
+    // Pega todas as imagens da galeria atual
+    const images = Array.from(document.querySelectorAll('.zoomable'));
+    let currentIndex = 0;
 
     if(images.length > 0) {
-        images.forEach(img => {
+        // Adiciona clique em cada imagem da galeria
+        images.forEach((img, index) => {
             img.addEventListener('click', function() {
-                modalImg.src = this.src; // Pega a foto clicada
-                modal.classList.remove('hidden');
-                modal.classList.add('flex'); // Centraliza
-                document.body.style.overflow = 'hidden'; // Trava o scroll do fundo
+                currentIndex = index; // Salva qual foto foi clicada
+                updateImage();
+                openModal();
             });
         });
     }
 
-    // Função Fechar
-    function fecharModal() {
+    // Função para atualizar a foto no modal
+    function updateImage() {
+        const img = images[currentIndex];
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+    }
+
+    // Função Próxima
+    function nextImage(e) {
+        if(e) e.stopPropagation(); // Evita fechar o modal ao clicar na seta
+        currentIndex++;
+        if (currentIndex >= images.length) {
+            currentIndex = 0; // Loop infinito (volta pro começo)
+        }
+        updateImage();
+    }
+
+    // Função Anterior
+    function prevImage(e) {
+        if(e) e.stopPropagation();
+        currentIndex--;
+        if (currentIndex < 0) {
+            currentIndex = images.length - 1; // Loop infinito (vai pro final)
+        }
+        updateImage();
+    }
+
+    // Abrir Modal
+    function openModal() {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Fechar Modal
+    function closeModal() {
         modal.classList.add('hidden');
         modal.classList.remove('flex');
         modalImg.src = '';
-        document.body.style.overflow = 'auto'; // Libera scroll
+        document.body.style.overflow = 'auto';
     }
 
-    // Eventos de Fechamento
-    closeBtn.addEventListener('click', fecharModal);
-    
+    // --- Event Listeners ---
+    closeBtn.addEventListener('click', closeModal);
+    nextBtn.addEventListener('click', nextImage);
+    prevBtn.addEventListener('click', prevImage);
+
+    // Fechar clicando no fundo (mas não na imagem)
     modal.addEventListener('click', (e) => {
-        if (e.target === modal) fecharModal(); // Fecha se clicar no fundo preto
+        if (e.target === modal) closeModal();
     });
 
+    // Navegação por Teclado (Setas e ESC)
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') fecharModal(); // Fecha com ESC
+        if (modal.classList.contains('hidden')) return; // Só funciona se modal aberto
+
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
     });
 });
 </script>
