@@ -3,22 +3,25 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// --- CONFIGURAÇÃO DE CAMINHOS ---
-$path_css = "../view/style.css";
-$path_img = "../view/imagens/logo.png";
-$path_avatar_dir = "../view/uploads/avatars/";
-$path_js = "view/header-script.js"; // Seu arquivo de script externo
+// --- CONFIGURAÇÃO PARA ARQUIVOS DENTRO DA VIEW ---
+// Caminhos locais (sem "view/")
+$path_css = "style.css";
+$path_img = "imagens/logo.png";
+$path_avatar_dir = "uploads/avatars/";
+$path_js = "header-script.js"; // O script está na mesma pasta
 
+// Links de Navegação (Voltando um nível)
 $link_home = "../index.php";
 $link_servicos = "../index.php#servicos";
 $link_galeria = "../index.php#galeria";
 $link_contato = "../index.php#contato"; 
 
-$link_painel = "../view/painelAdmin.php";
-$link_perfil = "../view/perfil.php";
-$link_login = "../view/login.php";
-$link_cadastro = "../view/cadastro.php";
-$link_logout = "../controller/authController.php?action=logout";
+// Links do Usuário (Mesma pasta)
+$link_painel = "painelAdmin.php";
+$link_perfil = "perfil.php";
+$link_login = "login.php";
+$link_cadastro = "cadastro.php";
+$link_logout = "../controller/authController.php?action=logout"; // Controller volta um nível
 
 $is_logged_in = isset($_SESSION['user_id']);
 $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
@@ -36,6 +39,7 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
     <link rel="icon" type="image/png" href="<?= $path_img ?>">
     
     <style>
+        /* Estilos de Acessibilidade */
         html[data-theme='high-contrast'] { --rosa-vibrante: #FFFF00; --texto-principal: #FFFFFF; --texto-secundario: #DDDDDD; --fundo-principal: #000000; --fundo-secundario: #1a1a1a; --borda: #FFFF00; }
         html[data-theme='high-contrast'] body, html[data-theme='high-contrast'] header { background-color: var(--fundo-principal) !important; color: var(--texto-principal) !important; }
         html[data-theme='high-contrast'] .text-rosa-vibrante { color: var(--rosa-vibrante) !important; }
@@ -46,19 +50,10 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
         html[data-color-filter="deuteranopia"] { filter: url('#deuteranopia'); }
         html[data-color-filter="tritanopia"] { filter: url('#tritanopia'); }
         html[data-color-filter="achromatopsia"] { filter: url('#achromatopsia'); }
-        
-        /* Garante transição suave nas fontes */
-        html { transition: font-size 0.2s ease; }
-        html[data-font-scale='0.8'] { font-size: 13px; }
-        html[data-font-scale='0.9'] { font-size: 14.5px; }
-        html[data-font-scale='1.0'] { font-size: 16px; }
-        html[data-font-scale='1.1'] { font-size: 17.6px; }
-        html[data-font-scale='1.2'] { font-size: 19.2px; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
-    
-    <header class="w-full bg-white border-b border-gray-100 px-4 md:px-8 py-4 sticky top-0 z-40">
+    <header class="w-full bg-white border-b border-gray-100 px-4 md:px-8 py-4 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex items-center justify-between relative">
 
             <button id="accessibility-toggle" class="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-gray-600 hover:text-rosa-vibrante">
@@ -115,53 +110,69 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
                 <i class="fas fa-bars fa-2x"></i>
             </button>
         </div>
+
+        <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden transition-opacity duration-300"></div>
+        <aside id="mobile-sidebar" class="fixed top-0 right-0 h-full w-72 bg-white shadow-2xl z-[70] transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+            <div class="p-4 flex justify-between items-center border-b border-gray-100">
+                <span class="font-bold text-gray-800 text-lg">Menu</span>
+                <button id="mobile-menu-close" class="text-gray-500 hover:text-rosa-vibrante p-2 focus:outline-none">
+                    <i class="fas fa-times fa-lg"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col p-4 space-y-1">
+                <a href="<?= $link_home ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors">
+                    <i class="fas fa-home w-5 text-center mr-3 text-gray-700"></i> Início
+                </a> 
+                <a href="<?= $link_servicos ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors">
+                    <i class="fas fa-concierge-bell w-5 text-center mr-3 text-gray-700"></i> Serviços
+                </a> 
+                <a href="<?= $link_galeria ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors">
+                    <i class="fas fa-images w-5 text-center mr-3 text-gray-700"></i> Galeria
+                </a> 
+                <a href="<?= $link_contato ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors">
+                    <i class="fas fa-envelope w-5 text-center mr-3 text-gray-700"></i> Contato
+                </a>
+                
+                <?php if ($is_admin): ?>
+                    <a href="<?= $link_painel ?>" class="block px-4 py-3 text-blue-600 font-bold bg-blue-50 rounded-lg mt-2">
+                        <i class="fas fa-cogs w-5 text-center mr-3"></i> Painel Admin
+                    </a>
+                <?php endif; ?>
+
+                <div class="border-t border-gray-100 my-4"></div>
+
+                <?php if ($is_logged_in): ?>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <?php 
+                                $avatarFile = isset($_SESSION['user_avatar']) && !empty($_SESSION['user_avatar']) ? $_SESSION['user_avatar'] : null;
+                                $avatarUrl = $avatarFile ? $path_avatar_dir . $avatarFile : "https://ui-avatars.com/api/?name=" . urlencode($_SESSION['user_nome']) . "&background=C53366&color=fff";
+                            ?>
+                            <img src="<?= $avatarUrl ?>" alt="Avatar" class="w-10 h-10 rounded-full object-cover border border-gray-200">
+                            <div class="overflow-hidden">
+                                <p class="text-sm font-bold text-gray-800 truncate"><?= htmlspecialchars($_SESSION['user_nome']) ?></p>
+                                <p class="text-xs text-gray-500 truncate"><?= htmlspecialchars($_SESSION['user_email']) ?></p>
+                            </div>
+                        </div>
+                        <a href="<?= $link_perfil ?>" class="block w-full text-left py-2 text-sm text-gray-700 hover:text-rosa-vibrante">
+                            <i class="fas fa-user-circle mr-2 text-gray-700"></i> Meu Perfil
+                        </a>
+                        <a href="<?= $link_logout ?>" class="block w-full text-left py-2 text-sm text-red-600 hover:text-red-800">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Sair
+                        </a>
+                    </div>
+                <?php else: ?>
+                    <div class="flex flex-col space-y-3">
+                        <a href="<?= $link_login ?>" class="text-center w-full py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Login</a>
+                        <a href="<?= $link_cadastro ?>" class="text-center w-full py-3 bg-rosa-vibrante text-white rounded-lg hover:opacity-90 font-medium">Cadastre-se</a>
+                    </div>
+                <?php endif; ?>
+            </nav>
+        </aside>
     </header>
 
-    <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden transition-opacity duration-300"></div>
-    
-    <aside id="mobile-sidebar" class="fixed top-0 right-0 h-full w-72 bg-white shadow-2xl z-[60] transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
-        <div class="p-4 flex justify-between items-center border-b border-gray-100">
-            <span class="font-bold text-gray-800 text-lg">Menu</span>
-            <button id="mobile-menu-close" class="text-gray-500 hover:text-rosa-vibrante p-2 focus:outline-none">
-                <i class="fas fa-times fa-lg"></i>
-            </button>
-        </div>
-        <nav class="flex flex-col p-4 space-y-1">
-            <a href="<?= $link_home ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors"><i class="fas fa-home w-5 text-center mr-3 text-gray-700"></i> Início</a> 
-            <a href="<?= $link_servicos ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors"><i class="fas fa-concierge-bell w-5 text-center mr-3 text-gray-700"></i> Serviços</a> 
-            <a href="<?= $link_galeria ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors"><i class="fas fa-images w-5 text-center mr-3 text-gray-700"></i> Galeria</a> 
-            <a href="<?= $link_contato ?>" class="block px-4 py-3 text-gray-700 hover:bg-rosa-suave hover:text-rosa-vibrante rounded-lg transition-colors"><i class="fas fa-envelope w-5 text-center mr-3 text-gray-700"></i> Contato</a>
-            
-            <?php if ($is_admin): ?>
-                <a href="<?= $link_painel ?>" class="block px-4 py-3 text-blue-600 font-bold bg-blue-50 rounded-lg mt-2"><i class="fas fa-cogs w-5 text-center mr-3"></i> Painel Admin</a>
-            <?php endif; ?>
-
-            <div class="border-t border-gray-100 my-4"></div>
-
-            <?php if ($is_logged_in): ?>
-                <div class="bg-gray-50 rounded-lg p-4">
-                    <div class="flex items-center space-x-3 mb-3">
-                        <img src="<?= $avatarUrl ?>" alt="Avatar" class="w-10 h-10 rounded-full object-cover border border-gray-200">
-                        <div class="overflow-hidden">
-                            <p class="text-sm font-bold text-gray-800 truncate"><?= htmlspecialchars($_SESSION['user_nome']) ?></p>
-                            <p class="text-xs text-gray-500 truncate"><?= htmlspecialchars($_SESSION['user_email']) ?></p>
-                        </div>
-                    </div>
-                    <a href="<?= $link_perfil ?>" class="block w-full text-left py-2 text-sm text-gray-700 hover:text-rosa-vibrante"><i class="fas fa-user-circle mr-2 text-gray-700"></i> Meu Perfil</a>
-                    <a href="<?= $link_logout ?>" class="block w-full text-left py-2 text-sm text-red-600 hover:text-red-800"><i class="fas fa-sign-out-alt mr-2"></i> Sair</a>
-                </div>
-            <?php else: ?>
-                <div class="flex flex-col space-y-3">
-                    <a href="<?= $link_login ?>" class="text-center w-full py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">Login</a>
-                    <a href="<?= $link_cadastro ?>" class="text-center w-full py-3 bg-rosa-vibrante text-white rounded-lg hover:opacity-90 font-medium">Cadastre-se</a>
-                </div>
-            <?php endif; ?>
-        </nav>
-    </aside>
-
-    <div id="accessibility-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden transition-opacity duration-300"></div>
-    
-    <aside id="accessibility-sidebar" class="fixed top-0 left-0 h-full w-72 bg-white shadow-lg z-[60] transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <div id="accessibility-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+    <aside id="accessibility-sidebar" class="fixed top-0 left-0 h-full w-72 bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 ease-in-out">
         <div class="p-4">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-lg font-semibold text-gray-800">Acessibilidade</h2>
@@ -171,7 +182,7 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
                 <li><button id="btn-contrast" class="w-full text-left p-3 rounded-md hover:bg-gray-100 flex items-center space-x-3"><i class="fas fa-adjust w-5 text-center"></i><span>Alternar Alto Contraste</span></button></li>
                 <li>
                     <div class="p-3">
-                        <label for="select-color-filter" class="block text-sm font-medium text-gray-700 mb-2">Filtro de Cor</label>
+                        <label for="select-color-filter" class="block text-sm font-medium text-gray-700 mb-2">Filtro de Cor (Daltonismo)</label>
                         <select id="select-color-filter" class="w-full border-gray-300 rounded-md shadow-sm focus:border-rosa-vibrante focus:ring-rosa-vibrante">
                             <option value="none">Desativado</option>
                             <option value="protanopia">Protanopia (Sem Vermelho)</option>
