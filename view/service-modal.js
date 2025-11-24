@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // A variável 'serviceData' agora vem do script que colocamos no index.php
+    // A variável 'serviceData' vem do index.php
     
-    // --- Seleção dos Elementos do DOM ---
+    // --- Seleção dos Elementos ---
     const serviceModal = document.getElementById('service-modal');
     const closeModalButton = document.getElementById('close-service-modal');
     const openModalButtons = document.querySelectorAll('.open-service-modal');
@@ -13,22 +13,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Funções ---
     const openModal = (serviceKey) => {
-        // A lógica agora é simples: apenas busca os dados no objeto que já existe
         const data = serviceData[serviceKey];
         if (!data) return;
 
-        // Preenche o conteúdo do modal
+        // Preenche textos
         modalTitle.textContent = data.titulo;
         modalDescription.textContent = data.descricao;
         
-        // Limpa e preenche a galeria de fotos
+        // Limpa e preenche a galeria
         modalGallery.innerHTML = '';
+        
         if (data.imagens && data.imagens.length > 0) {
             data.imagens.forEach(img => {
                 const imgElement = document.createElement('img');
                 imgElement.src = `view/uploads/parceiros/${img.caminho_arquivo}`;
                 imgElement.alt = img.titulo_alt;
-                imgElement.className = 'w-full h-40 object-cover rounded-lg';
+                
+                // --- AQUI ESTÁ A MUDANÇA ---
+                // Adicionamos 'zoomable' e 'cursor-pointer' para o Lightbox funcionar
+                imgElement.className = 'w-full h-40 object-cover rounded-lg zoomable cursor-pointer hover:opacity-90 transition-opacity';
+                
                 modalGallery.appendChild(imgElement);
             });
         } else {
@@ -52,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     closeModalButton.addEventListener('click', closeModal);
+    
     serviceModal.addEventListener('click', (event) => {
         if (event.target === serviceModal) {
             closeModal();

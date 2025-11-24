@@ -86,36 +86,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('lightbox-next');
     const prevBtn = document.getElementById('lightbox-prev');
     
-    const images = Array.from(document.querySelectorAll('.zoomable'));
+    // Estado Global da Galeria Atual
+    let currentGalleryImages = [];
     let currentIndex = 0;
 
-    if(images.length > 0) {
-        images.forEach((img, index) => {
-            img.addEventListener('click', function() {
-                currentIndex = index;
-                updateImage();
-                openModal();
-            });
-        });
-    }
+    // --- DETECTA CLIQUE DINÂMICO (Para imagens carregadas depois) ---
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('zoomable')) {
+            e.preventDefault();
+            
+            // Atualiza a lista de imagens baseada no que está visível AGORA na tela
+            // (Isso resolve o problema dos modais de serviço)
+            currentGalleryImages = Array.from(document.querySelectorAll('.zoomable'));
+            
+            // Acha o índice da imagem clicada nesta lista
+            currentIndex = currentGalleryImages.indexOf(e.target);
+            
+            updateImage();
+            openModal();
+        }
+    });
 
     function updateImage() {
-        const img = images[currentIndex];
+        if (currentGalleryImages.length === 0) return;
+        const img = currentGalleryImages[currentIndex];
         modalImg.src = img.src;
-        modalImg.alt = img.alt;
+        modalImg.alt = img.alt || 'Imagem';
     }
 
     function nextImage(e) {
         if(e) e.stopPropagation();
+        if (currentGalleryImages.length === 0) return;
+        
         currentIndex++;
-        if (currentIndex >= images.length) currentIndex = 0;
+        if (currentIndex >= currentGalleryImages.length) currentIndex = 0;
         updateImage();
     }
 
     function prevImage(e) {
         if(e) e.stopPropagation();
+        if (currentGalleryImages.length === 0) return;
+
         currentIndex--;
-        if (currentIndex < 0) currentIndex = images.length - 1;
+        if (currentIndex < 0) currentIndex = currentGalleryImages.length - 1;
         updateImage();
     }
 
@@ -150,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <style>
-    /* CSS para forçar o posicionamento */
     div[vw] {
         left: auto !important;
         right: 20px !important;
