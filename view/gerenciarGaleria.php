@@ -20,6 +20,8 @@ $imagens = $model->listarPorCategoria($categoria, false); // O "false" diz para 
     <title>Gerenciar Galeria: <?= ucfirst($categoria) ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="../view/imagens/logo.png">
+    <link rel="apple-touch-icon" href="../view/imagens/logo.png">
 </head>
 <body class="bg-gray-100">
 

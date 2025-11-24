@@ -17,6 +17,9 @@ $registros = $model->listar();
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="icon" type="image/png" href="../view/imagens/logo.png">
+    <link rel="apple-touch-icon" href="../view/imagens/logo.png">
 </head>
 <body class="bg-gray-100 font-['SF_Pro_Display',_sans_serif]">
 
