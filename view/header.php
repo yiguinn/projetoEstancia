@@ -256,6 +256,6 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
         accOverlay.addEventListener('click', toggleAccMenu);
     </script>
 
-    <script src="<?= $path_js_acc ?>"></script>
+    <script src="../view/accessibility.js"></script>
 </body>
 </html>
