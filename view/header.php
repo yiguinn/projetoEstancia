@@ -71,7 +71,7 @@ $is_admin = $is_logged_in && isset($_SESSION['user_role']) && $_SESSION['user_ro
                         : null;
                     
                     $avatarUrl = $avatarFile 
-                        ? 'uploads/avatars/' . $avatarFile 
+                        ? '../view/uploads/avatars/' . $avatarFile 
                         : "https://ui-avatars.com/api/?name=" . urlencode($_SESSION['user_nome']) . "&background=C53366&color=fff";
                 ?>
                     
