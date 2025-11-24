@@ -9,10 +9,10 @@ $in_view_folder = strpos($_SERVER['SCRIPT_NAME'], '/view/') !== false;
 
 if ($in_view_folder) {
     // ESTOU DENTRO DA PASTA VIEW (Ex: Galeria, Perfil, Login)
-    $path_css = "style.css";
+    $path_css = "../view/style.css";
     $path_img = "../view/imagens/logo.png";
-    $path_avatar_dir = "uploads/avatars/";
-    $path_js_acc = "accessibility.js"; // Script na mesma pasta
+    $path_avatar_dir = "../view/uploads/avatars/";
+    $path_js_acc = "../view/accessibility.js"; // Script na mesma pasta
     
     // Links de Navegação
     $link_home = "../index.php";
@@ -21,10 +21,10 @@ if ($in_view_folder) {
     $link_contato = "../index.php#contato"; // NOVO LINK
     
     // Links do Usuário
-    $link_painel = "painelAdmin.php";
-    $link_perfil = "perfil.php";
-    $link_login = "login.php";
-    $link_cadastro = "cadastro.php";
+    $link_painel = "../view/painelAdmin.php";
+    $link_perfil = "../view/perfil.php";
+    $link_login = "../view/login.php";
+    $link_cadastro = "../view/cadastro.php";
     $link_logout = "../controller/authController.php?action=logout";
 
 } else {
